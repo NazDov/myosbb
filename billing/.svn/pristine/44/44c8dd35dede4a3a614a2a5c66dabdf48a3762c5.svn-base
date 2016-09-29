@@ -1,0 +1,14 @@
+driverClassName=net.sourceforge.jtds.jdbc.Driver
+username=lmruser
+userpassword=#lmruser#
+#url=jdbc:jtds:sqlserver://10.5.1.45:1433/LVKLegals_prod;instance=DEV_VOSTAP
+#url=jdbc:jtds:sqlserver://10.5.1.44:1433/lvklegals_prod;instance=LG1
+#url=jdbc:jtds:sqlserver://10.5.1.45:1433/lvklegals;instance=dev_vostap
+#urlReport=jdbc:jtds:sqlserver://10.5.1.44:1433/LVKReports;instance=LG1
+#url=jdbc:jtds:sqlserver://10.5.1.56:1433/LVKLegals_prod;instance=CC12
+
+
+#url=jdbc:jtds:sqlserver://10.5.1.45:1433/LVKLegalsUnitTest;instance=DEV_VOSTAP
+url=jdbc:jtds:sqlserver://10.5.1.56:1433/LVKLegals_prod;instance=CC12
+#url=jdbc:jtds:sqlserver://10.5.1.45:1433/LVKLegals_prodNew;instance=DEV_VOSTAP
+#url=jdbc:jtds:sqlserver://10.5.1.45:1433/LVKLegals_prod;instance=DEV_VOSTAP
