@@ -11,7 +11,6 @@ import com.softserve.osbb.service.BillService;
 import com.softserve.osbb.service.UserService;
 import com.softserve.osbb.util.paging.PageDataObject;
 import com.softserve.osbb.util.resources.impl.BillResourceList;
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

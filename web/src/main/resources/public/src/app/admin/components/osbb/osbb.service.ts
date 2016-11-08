@@ -7,6 +7,7 @@ import "rxjs/add/operator/toPromise";
 import {IOsbb} from "../../../../shared/models/osbb";
 import {OsbbDTO} from "../../../../shared/models/osbbDTO";
 import ApiService = require("../../../../shared/services/api.service");
+import {Attachment} from "../../../../shared/models/attachment";
 
 const attachmentUploadUrl = ApiService.serverUrl + '/restful/attachment';
 
