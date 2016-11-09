@@ -24,6 +24,15 @@
             </dependencies>
         </profile>
         <profile>
+            <id>mariadb</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
             <id>jenkins</id>
             <dependencies>
                 <dependency>
@@ -90,14 +99,16 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                         </manifest>
+                        <excludes>
+                            <exclude>${basedir}/src/main/webapp</exclude>
+                        </excludes>
                     </archive>
-                        <webResources>
-                            <resource>
-                                <!-- this is relative to the pom.xml directory -->
-                                <directory>${basedir}\src\main\resources</directory>
-                            </resource>
-
-                        </webResources>
+                        <!--<webResources>-->
+                            <!--<resource>-->
+                                <!--&lt;!&ndash; this is relative to the pom.xml directory &ndash;&gt;-->
+                                <!--<directory>${basedir}\src\main\resources</directory>-->
+                            <!--</resource>-->
+                        <!--</webResources>-->
                 </configuration>
                 <executions>
                     <execution>
