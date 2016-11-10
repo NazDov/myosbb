@@ -70,10 +70,6 @@
 
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                    </plugin>
                     <!-- disable tests during maven build -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -101,10 +97,6 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                    </plugin>
-                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>${maven-surefire-plugin}</version>
@@ -127,10 +119,6 @@
             <id>jenkins</id>
             <build>
                 <plugins>
-                    <plugin>
-                        <groupId>org.springframework.boot</groupId>
-                        <artifactId>spring-boot-maven-plugin</artifactId>
-                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -166,16 +154,16 @@
                 <executions>
                     <execution>
                         <id>copy-resources</id>
-                        <phase>validate</phase>
+                        <phase>compile</phase>
                         <goals>
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${basedir}/web/target/classes/public</outputDirectory>
+                            <outputDirectory>${project.basedir}/web/target/classes/public</outputDirectory>
                             <resources>
                                 <resource>
-                                    <directory>${basedir}/web/src/main/webapp</directory>
-                                    <filtering>true</filtering>
+                                    <directory>${project.basedir}/client</directory>
+                                    <filtering>false</filtering>
                                 </resource>
                             </resources>
                         </configuration>

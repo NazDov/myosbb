@@ -8,7 +8,8 @@
     "tsc:w": "gulp",
     "typings": "typings",
     "gulp": "gulp",
-    "start": "concurrent \"npm run gulp\" \"npm run lite\" "
+    "start": "concurrent \"npm run gulp\" \"npm run lite\" ",
+    "build":"npm install && npm run tsc"
   },
   "license": "ISC",
   "dependencies": {

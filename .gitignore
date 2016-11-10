@@ -15,3 +15,7 @@ web/src/main/resources/public/assets/node_modules/
 /web/src/main/resources/public/bin/
 /web/src/main/resources/public/typings/*
 /web/src/main/resources/public/npm-debug.log
+client/node_modules/
+client/typings/
+client/bin/
+
