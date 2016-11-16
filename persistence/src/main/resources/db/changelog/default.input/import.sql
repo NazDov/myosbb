@@ -248,5 +248,5 @@
 -- INSERT into streets(street_id,name,city)VALUES(17,'Бандери',7);
 -- INSERT into streets(street_id,name,city)VALUES(18,'Володимирська',8);
 -- INSERT into streets(street_id,name,city)VALUES(19,'Собранецька',8);
--- INSERT into streets(street_id,name,city)VALUES(19,'Садова',9);
+-- INSERT into streets(street_id,name,city)VALUES(20,'Садова',9);
 
