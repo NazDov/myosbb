@@ -72,6 +72,11 @@
     },
     {
       "includeAll": {
+        "path": "classpath:/db/changelog/street/"
+      }
+    },
+    {
+      "includeAll": {
         "path": "classpath:/db/changelog/report/"
       }
     },
