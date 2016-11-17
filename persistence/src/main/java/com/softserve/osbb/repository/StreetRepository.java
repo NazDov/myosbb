@@ -14,9 +14,12 @@ import java.util.List;
 @Repository
 public interface StreetRepository extends JpaRepository<Street,Integer>, JpaSpecificationExecutor<Street> {
 
-    public Street findByStreetId(Integer id);
+    public Street findById(Integer id);
+    public List<Street> findAll();
     public List<Street> findByName(String name);
     public List<Street> findByCity(City city);
+    public List<Street> findByCityName(String nameCity);
+    public List<Street> findByCityId(int idCity);
 
 
 }

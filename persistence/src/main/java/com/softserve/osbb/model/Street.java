@@ -9,10 +9,9 @@ import java.io.Serializable;
 @Entity
 @Table(name = "streets")
 public class Street implements Serializable {
-    private Integer streetId;
+    private Integer id;
     private String name;
     private City city;
-//    private Collection<User> users;
 
     public Street(){}
 
@@ -23,13 +22,13 @@ public class Street implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "street_id")
-    public Integer getStreetId() {
-        return streetId;
+    @Column(name = "id")
+    public Integer getId() {
+        return id;
     }
 
-    public void setStreetId(Integer streetId) {
-        this.streetId = streetId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Basic
@@ -49,12 +48,7 @@ public class Street implements Serializable {
 
     public void setCity(City city) {
         this.city = city;
+        
     }
     
-/*    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    @JsonIgnore
-    public Collection<User> getUsers() {
-        return users;
-    }
-  */
 }

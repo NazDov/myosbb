@@ -96,7 +96,7 @@ public class HouseController {
                 .addOrderType(pageParams.getOrderType())
                 .addRows(pageParams.getRowNum())
                 .toPageRequest();
-        Page<House> housesByPage = houseService.getAllHouses(pageRequest);
+        Page<House> housesByPage = houseService.getAllHouses(pageRequest); 
         PageRequestGenerator.PageSelector pageSelector = PageRequestGenerator.generatePageSelectorData(housesByPage);
         EntityResourceList<HouseDTO> houseDTOEntityResourceList = new HouseResourceList();
         housesByPage.forEach(house -> {

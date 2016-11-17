@@ -16,7 +16,7 @@
                       "primaryKey": true,
                       "primaryKeyName": "region_pkey"
                     },
-                    "name": "region_id",
+                    "name": "id",
                     "type": "INT"
                   }
                 },

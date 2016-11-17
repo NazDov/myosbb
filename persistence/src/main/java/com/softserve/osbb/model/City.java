@@ -1,7 +1,12 @@
 package com.softserve.osbb.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yuri Pushchalo on 15.11.2016.
@@ -9,10 +14,13 @@ import java.io.Serializable;
 @Entity
 @Table(name = "cities")
 public class City implements Serializable {
-    private Integer cityId;
+    private Integer id;
     private String name;
     private Region region;
-//    private Collection<User> users;
+    
+    @OneToMany(mappedBy="city")
+    @JsonIgnore
+    private List<Street> streets = new ArrayList<>();
 
     public City(){}
 
@@ -23,13 +31,13 @@ public class City implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "city_id")
-    public Integer getCityId() {
-        return cityId;
+    @Column(name = "id")
+    public Integer getid() {
+        return id;
     }
 
-    public void setCityId(Integer cityId) {
-        this.cityId = cityId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     @Basic
@@ -49,6 +57,14 @@ public class City implements Serializable {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+    
+    public void addStreet(Street street) {
+    	streets.add(street);
+    }
+    
+    public Street getStreet(int index) {
+    	return streets.get(index);
     }
     
 /*    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)

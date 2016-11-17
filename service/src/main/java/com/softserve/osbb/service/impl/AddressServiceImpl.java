@@ -58,6 +58,8 @@ public class AddressServiceImpl implements AddressService {
     @Autowired
     CityRepository cityRepository;
 
+    
+    
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     @Override
     public City addCity(City city) {

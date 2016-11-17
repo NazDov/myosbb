@@ -16,7 +16,7 @@
                       "primaryKey": true,
                       "primaryKeyName": "city_pkey"
                     },
-                    "name": "city_id",
+                    "name": "id",
                     "type": "INT"
                   }
                 },
@@ -54,7 +54,7 @@
               "initiallyDeferred": false,
               "onDelete": "NO ACTION",
               "onUpdate": "NO ACTION",
-              "referencedColumnNames": "region_id",
+              "referencedColumnNames": "id",
               "referencedTableName": "regions"
             }
           }

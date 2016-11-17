@@ -15,10 +15,12 @@ import java.util.List;
 @Repository
 public interface RegionRepository extends JpaRepository<Region, Integer>, JpaSpecificationExecutor<Region> {
 
-	public Region findByRegionId(Integer id);
-	public List<Region> findByName(String name);
+	public Region findById(Integer id);
+	
+	public List<Region> findAll();
+	
 	//    @Query("select reg from regions reg where reg.name = :name")
-	//public Region findByName(@Param("name") String name);
+	public Region findByName(String name);
 
 //    public Role findByUsers(User users);
 

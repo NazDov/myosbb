@@ -42,7 +42,16 @@ export class RegisterService {
             .map((response)=> response.json())
             .catch((error)=>Observable.throw(error));
     }
+    
+    
+    
+    getAllRegion(): Observable<any> {
+        return this.http.get("myosbb/restful.region/all')
+            .map((response)=> response.json())
+            .catch((error)=>Observable.throw(error));
+    }
 
+    
     getAllHouses(): Observable<any> {
         return this.http.get(this.houseAllURL)
             .map((response)=> response.json())
