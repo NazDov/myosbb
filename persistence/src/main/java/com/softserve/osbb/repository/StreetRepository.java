@@ -18,5 +18,4 @@ public interface StreetRepository extends JpaRepository<Street,Integer>, JpaSpec
     public List<Street> findByName(String name);
     public List<Street> findByCity(City city);
 
-
 }
