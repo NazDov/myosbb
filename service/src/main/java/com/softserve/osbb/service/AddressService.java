@@ -3,7 +3,6 @@ package com.softserve.osbb.service;
 import com.softserve.osbb.model.Region;
 import com.softserve.osbb.model.City;
 import com.softserve.osbb.model.Street;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,24 +14,10 @@ import java.util.List;
 @Service
 public interface AddressService {
 
-    Region addRegion(Region region);
-
-    Region getRegion(Integer id);
-
-    Region GetRegion(String name);
-
     List<Region> getAllRegion();
 
-    City addCity(City city);
+    List<City> getAllCitiesOfRegion(Integer regionId);
 
-    City getCity(Integer id);
-
-    List<City> getAllCitiesOfRegion(Region region);
-
-    Street addStreet(Street street);
-
-    Street getStreet(Integer id);
-
-    List<Street> getAllStreetsOfCity(City city);
+    List<Street> getAllStreetsOfCity(Integer cityId);
 
 }
