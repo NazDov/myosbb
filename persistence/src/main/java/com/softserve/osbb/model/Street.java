@@ -1,18 +1,16 @@
 package com.softserve.osbb.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by Yuri Pushchalo on 16.11.2016.
  */
 @Entity
 @Table(name = "streets")
-public class Street implements Serializable {
+public class Street {
     private Integer streetId;
     private String name;
     private City city;
-//    private Collection<User> users;
 
     public Street(){}
 
@@ -51,10 +49,4 @@ public class Street implements Serializable {
         this.city = city;
     }
     
-/*    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    @JsonIgnore
-    public Collection<User> getUsers() {
-        return users;
-    }
-  */
 }

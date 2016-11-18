@@ -1,17 +1,17 @@
 package com.softserve.osbb.model;
 
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by Yuri Pushchalo on 15.11.2016.
  */
 @Entity
 @Table(name = "regions")
-public class Region implements Serializable {
+public class Region {
 	private Integer regionId;
 	private String name;
-	// private Collection<User> users;
 
 	public Region() {
 	}
