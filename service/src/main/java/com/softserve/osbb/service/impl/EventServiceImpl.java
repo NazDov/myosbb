@@ -1,10 +1,9 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Event;
-import com.softserve.osbb.model.enums.EventStatus;
-import com.softserve.osbb.repository.EventRepository;
-import com.softserve.osbb.service.EventService;
-import com.softserve.osbb.utils.Constants;
+import java.sql.Timestamp;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -13,9 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.softserve.osbb.model.Event;
+import com.softserve.osbb.model.enums.EventStatus;
+import com.softserve.osbb.repository.EventRepository;
+import com.softserve.osbb.service.EventService;
+import com.softserve.osbb.utils.Constants;
 
 /**
  * Created by nataliia on 10.07.16.

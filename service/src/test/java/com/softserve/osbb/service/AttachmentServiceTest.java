@@ -1,8 +1,18 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.config.ServiceApplication;
-import com.softserve.osbb.model.Attachment;
-import com.softserve.osbb.utils.Constants;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -16,16 +26,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import static org.junit.Assert.*;
+import com.softserve.osbb.config.ServiceApplication;
+import com.softserve.osbb.model.Attachment;
+import com.softserve.osbb.utils.Constants;
 
 /**
  * Created by nataliia on 18.07.16.

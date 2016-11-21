@@ -1,15 +1,16 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Osbb;
-import com.softserve.osbb.repository.OsbbRepository;
-import com.softserve.osbb.service.OsbbService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.softserve.osbb.model.Osbb;
+import com.softserve.osbb.repository.OsbbRepository;
+import com.softserve.osbb.service.OsbbService;
 
 /**
  * Created by Roman on 08.07.2016.

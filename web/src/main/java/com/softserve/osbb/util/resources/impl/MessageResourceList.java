@@ -1,12 +1,12 @@
 package com.softserve.osbb.util.resources.impl;
 
-import com.softserve.osbb.controller.MessageController;
-import com.softserve.osbb.dto.MessageDTO;
-import com.softserve.osbb.model.Message;
-import org.springframework.hateoas.Resource;
-
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import org.springframework.hateoas.Resource;
+
+import com.softserve.osbb.controller.MessageController;
+import com.softserve.osbb.dto.MessageDTO;
 
 /**
  * Created by Kris on 23.08.2016.

@@ -1,5 +1,9 @@
 package com.softserve.osbb.dto.mappers;
 
+import java.util.ArrayList;
+
+import org.slf4j.LoggerFactory;
+
 import com.softserve.osbb.dto.ProviderPageDTO;
 import com.softserve.osbb.model.Attachment;
 import com.softserve.osbb.model.Provider;
@@ -8,9 +12,6 @@ import com.softserve.osbb.model.enums.Periodicity;
 import com.softserve.osbb.service.AttachmentService;
 import com.softserve.osbb.service.ProviderService;
 import com.softserve.osbb.service.ProviderTypeService;
-import org.slf4j.LoggerFactory;
-
-import java.util.ArrayList;
 
 /**
  * Created by Anastasiia Fedorak on 8/2/16.

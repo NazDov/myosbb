@@ -1,11 +1,11 @@
 package com.softserve.osbb.util.paging.impl;
 
-import com.softserve.osbb.dto.MessageDTO;
-import com.softserve.osbb.model.Message;
-import com.softserve.osbb.util.paging.PageDataObject;
+import java.util.List;
+
 import org.springframework.hateoas.Resource;
 
-import java.util.List;
+import com.softserve.osbb.dto.MessageDTO;
+import com.softserve.osbb.util.paging.PageDataObject;
 
 /**
  * Created by Kris on 29.08.2016.

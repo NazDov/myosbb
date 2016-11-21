@@ -1,10 +1,5 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Osbb;
-import com.softserve.osbb.model.Role;
-import com.softserve.osbb.model.Settings;
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.service.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +7,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.softserve.osbb.model.Osbb;
+import com.softserve.osbb.model.Settings;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.service.OsbbService;
+import com.softserve.osbb.service.RegistrationService;
+import com.softserve.osbb.service.RoleService;
+import com.softserve.osbb.service.SettingsService;
+import com.softserve.osbb.service.UserService;
 
 /**
  * Created by nazar.dovhyy on 29.10.2016.

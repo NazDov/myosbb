@@ -1,10 +1,10 @@
 package com.softserve.osbb.dto;
 
+import java.util.Date;
+
 import com.softserve.osbb.dto.mappers.ApartmentDTOMapper;
 import com.softserve.osbb.model.Apartment;
 import com.softserve.osbb.model.User;
-
-import java.util.Date;
 
 /**
  * Created by Roman on 16.08.2016.

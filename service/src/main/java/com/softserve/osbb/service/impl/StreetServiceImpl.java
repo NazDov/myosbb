@@ -19,7 +19,7 @@ public class StreetServiceImpl implements StreetService{
     @Autowired
     StreetRepository streetRepository;
     
-    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Street addStreet(Street street) {
         if(street == null) {
             return null;
@@ -27,36 +27,42 @@ public class StreetServiceImpl implements StreetService{
         return streetRepository.saveAndFlush(street);
     }
 
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	@Override
 	public Street findById(Integer id) {
 		
 		return streetRepository.findById(id);
 	}
 
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	@Override
 	public List<Street> findByName(String name) {
 		
 		return streetRepository.findByName(name);
 	}
 
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	@Override
 	public List<Street> findByCity(City city) {
 		
 		return streetRepository.findByCity(city);
 	}
 
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	@Override
 	public List<Street> findByCityName(String nameCity) {
 		
 		return streetRepository.findByCityName(nameCity);
 	}
 
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
 	@Override
 	public List<Street> findByCityId(int idCity) {
-		// TODO Auto-generated method stub
+		
 		return streetRepository.findByCityId(idCity);
 	}
 
+    
 	@Override
 	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	public List<Street> findAll() {

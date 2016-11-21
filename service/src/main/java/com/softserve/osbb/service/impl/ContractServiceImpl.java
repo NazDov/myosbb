@@ -1,9 +1,7 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Contract;
-import com.softserve.osbb.repository.ContractRepository;
-import com.softserve.osbb.service.ContractService;
-import com.softserve.osbb.utils.Constants;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.softserve.osbb.model.Contract;
+import com.softserve.osbb.repository.ContractRepository;
+import com.softserve.osbb.service.ContractService;
+import com.softserve.osbb.utils.Constants;
 
 /**
  * Created by Roma on 13/07/2016.

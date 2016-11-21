@@ -1,13 +1,18 @@
 package com.softserve.osbb.controller;
 
-import com.softserve.osbb.model.Mail;
-import com.softserve.osbb.service.impl.MailSenderImpl;
+import javax.mail.MessagingException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.mail.MessagingException;
+import com.softserve.osbb.model.Mail;
+import com.softserve.osbb.service.impl.MailSenderImpl;
 
 /**
  * Created by Anastasiia Fedorak on 8/13/16.

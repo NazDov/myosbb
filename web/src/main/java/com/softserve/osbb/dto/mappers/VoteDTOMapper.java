@@ -1,12 +1,12 @@
 package com.softserve.osbb.dto.mappers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.softserve.osbb.dto.VoteDTO;
 import com.softserve.osbb.model.Option;
 import com.softserve.osbb.model.User;
 import com.softserve.osbb.model.Vote;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Roman on 14.08.2016.

@@ -1,13 +1,14 @@
 package com.softserve.osbb.dto.mappers;
 
-import com.softserve.osbb.dto.UserDTO;
-import com.softserve.osbb.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.softserve.osbb.dto.UserDTO;
+import com.softserve.osbb.model.User;
 
 /**
  * Created by Roman on 16.08.2016.

@@ -1,15 +1,15 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Mail;
-import com.softserve.osbb.service.MailSenderService;
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+import com.softserve.osbb.model.Mail;
+import com.softserve.osbb.service.MailSenderService;
 
 /**
  * Created by Anastasiia Fedorak on 8/13/16.

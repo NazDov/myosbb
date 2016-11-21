@@ -1,17 +1,14 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Osbb;
-import com.softserve.osbb.model.Report;
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+
 import com.softserve.osbb.model.Ticket;
 import com.softserve.osbb.model.User;
 import com.softserve.osbb.model.enums.TicketState;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * Created by Kris on 12.07.2016.

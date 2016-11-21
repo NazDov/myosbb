@@ -1,12 +1,12 @@
 package com.softserve.osbb.dto;
 
-import com.softserve.osbb.model.Message;
-import com.softserve.osbb.model.Ticket;
-import com.softserve.osbb.model.User;
-
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+
+import com.softserve.osbb.model.Message;
+import com.softserve.osbb.model.Ticket;
+import com.softserve.osbb.model.User;
 
 /**
  * Created by Kris on 31.08.2016.

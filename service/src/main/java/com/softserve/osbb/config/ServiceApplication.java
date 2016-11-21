@@ -1,6 +1,5 @@
 package com.softserve.osbb.config;
 
-import com.softserve.osbb.PersistenceConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -8,8 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.context.request.RequestContextListener;
+
+import com.softserve.osbb.PersistenceConfiguration;
 
 @SpringBootApplication
 @Import(PersistenceConfiguration.class)

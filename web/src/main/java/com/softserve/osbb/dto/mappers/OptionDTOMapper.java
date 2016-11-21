@@ -1,10 +1,10 @@
 package com.softserve.osbb.dto.mappers;
 
-import com.softserve.osbb.dto.OptionDTO;
-import com.softserve.osbb.model.Option;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import com.softserve.osbb.dto.OptionDTO;
+import com.softserve.osbb.model.Option;
 
 /**
  * Created by Roman on 14.08.2016.

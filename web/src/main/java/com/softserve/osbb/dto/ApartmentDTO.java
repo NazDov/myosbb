@@ -1,7 +1,6 @@
 package com.softserve.osbb.dto;
 
 import com.softserve.osbb.model.House;
-import com.softserve.osbb.model.User;
 
 /**
  * Created by Oleg on 20.08.2016.

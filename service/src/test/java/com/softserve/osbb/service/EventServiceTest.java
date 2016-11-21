@@ -1,13 +1,16 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.config.ServiceApplication;
-import com.softserve.osbb.model.Event;
-import com.softserve.osbb.model.Osbb;
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.model.enums.Periodicity;
-import com.softserve.osbb.repository.UserRepository;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +19,11 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import static org.junit.Assert.*;
+import com.softserve.osbb.config.ServiceApplication;
+import com.softserve.osbb.model.Event;
+import com.softserve.osbb.model.Osbb;
+import com.softserve.osbb.model.enums.Periodicity;
+import com.softserve.osbb.repository.UserRepository;
 
 /**
  * Created by nataliia on 18.07.16.

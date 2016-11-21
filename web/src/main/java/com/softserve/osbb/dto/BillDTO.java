@@ -1,5 +1,7 @@
 package com.softserve.osbb.dto;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.softserve.osbb.model.Apartment;
@@ -7,8 +9,6 @@ import com.softserve.osbb.model.Provider;
 import com.softserve.osbb.model.enums.BillStatus;
 import com.softserve.osbb.utils.CustomLocalDateDeserializer;
 import com.softserve.osbb.utils.CustomLocalDateSerializer;
-
-import java.time.LocalDate;
 
 /**
  * Created by nazar.dovhyy on 18.08.2016.

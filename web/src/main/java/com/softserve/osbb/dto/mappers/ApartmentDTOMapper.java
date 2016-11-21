@@ -1,9 +1,9 @@
 package com.softserve.osbb.dto.mappers;
 
+import org.springframework.stereotype.Component;
+
 import com.softserve.osbb.dto.ApartmentDTO;
 import com.softserve.osbb.model.Apartment;
-import com.softserve.osbb.model.User;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by Oleg on 20.08.2016.

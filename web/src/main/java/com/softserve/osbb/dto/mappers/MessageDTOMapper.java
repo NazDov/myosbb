@@ -1,11 +1,11 @@
 package com.softserve.osbb.dto.mappers;
 
 
+import java.util.List;
+
 import com.softserve.osbb.dto.MessageDTO;
 import com.softserve.osbb.model.Message;
 import com.softserve.osbb.model.User;
-
-import java.util.List;
 
 /**
  * Created by Kris on 31.08.2016.

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.softserve.osbb.model.Osbb;
 import com.softserve.osbb.model.Region;
 import com.softserve.osbb.service.RegionService;
 
@@ -36,7 +34,7 @@ public class RegionController {
 	
 
 	
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/create",method = RequestMethod.POST)
     public ResponseEntity<Resource<Region>> createRegion(@RequestBody Region region) {
         logger.info("Create region:  " + region);
        
@@ -65,7 +63,7 @@ public class RegionController {
     }
 	
 	
-	@RequestMapping(value = "region/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Resource<Region>> getRegionById(@PathVariable("id") Integer id) {
         logger.info("Get one region by id: " + id);
         Region region = regionService.findById(id);

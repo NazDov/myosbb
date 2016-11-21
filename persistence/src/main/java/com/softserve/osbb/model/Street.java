@@ -1,7 +1,12 @@
 package com.softserve.osbb.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Yuri Pushchalo on 16.11.2016.
@@ -12,6 +17,10 @@ public class Street implements Serializable {
     private Integer id;
     private String name;
     private City city;
+    
+//    @OneToMany(mappedBy="street")
+//    @JsonIgnore
+//    private ArrayList<User> user;
 
     public Street(){}
 
@@ -37,7 +46,15 @@ public class Street implements Serializable {
         return name;
     }
 
-    public void setName(String name) {
+//    public ArrayList<User> getUser() {
+//		return user;
+//	}
+//
+//	public void setUser(ArrayList<User> user) {
+//		this.user = user;
+//	}
+
+	public void setName(String name) {
         this.name = name;
     }
 
@@ -50,5 +67,12 @@ public class Street implements Serializable {
         this.city = city;
         
     }
+
+	@Override
+	public String toString() {
+		return "Street [id=" + id + ", name=" + name + ", city=" + city + "]";
+	}
+    
+    
     
 }

@@ -1,9 +1,9 @@
 package com.softserve.osbb.dto;
 
+import java.sql.Timestamp;
+
 import com.softserve.osbb.model.Attachment;
 import com.softserve.osbb.model.User;
-
-import java.sql.Timestamp;
 
 /**
  * Created by Roman on 22.09.2016.

@@ -1,19 +1,16 @@
 package com.softserve.osbb.controller;
 
 
-import com.softserve.osbb.dto.PageParams;
-import com.softserve.osbb.dto.TicketDTO;
-import com.softserve.osbb.dto.mappers.TicketDTOMapper;
-import com.softserve.osbb.model.*;
-import com.softserve.osbb.model.enums.NoticeType;
-import com.softserve.osbb.model.enums.TicketState;
-import com.softserve.osbb.service.*;
-import com.softserve.osbb.util.paging.PageDataUtil;
-import com.softserve.osbb.util.paging.generator.PageRequestGenerator;
-import com.softserve.osbb.util.paging.impl.TicketPageDataObject;
-import com.softserve.osbb.util.resources.impl.EntityResourceList;
-import com.softserve.osbb.util.resources.impl.TicketResourceList;
-import com.softserve.osbb.service.impl.MailSenderImpl;
+import static com.softserve.osbb.util.resources.util.ResourceUtil.toResource;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import java.security.Principal;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +21,31 @@ import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.mail.MessagingException;
-import java.security.Principal;
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-
-import static com.softserve.osbb.util.resources.util.ResourceUtil.toResource;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import com.softserve.osbb.dto.PageParams;
+import com.softserve.osbb.dto.TicketDTO;
+import com.softserve.osbb.dto.mappers.TicketDTOMapper;
+import com.softserve.osbb.model.Notice;
+import com.softserve.osbb.model.Settings;
+import com.softserve.osbb.model.Ticket;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.model.enums.NoticeType;
+import com.softserve.osbb.model.enums.TicketState;
+import com.softserve.osbb.service.NoticeService;
+import com.softserve.osbb.service.SettingsService;
+import com.softserve.osbb.service.TicketService;
+import com.softserve.osbb.service.UserService;
+import com.softserve.osbb.util.paging.generator.PageRequestGenerator;
+import com.softserve.osbb.util.paging.impl.TicketPageDataObject;
+import com.softserve.osbb.util.resources.impl.EntityResourceList;
+import com.softserve.osbb.util.resources.impl.TicketResourceList;
 
 /**
  * Created by Kris on 13.07.2016.

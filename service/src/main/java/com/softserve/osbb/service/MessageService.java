@@ -1,13 +1,14 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Message;
-import com.softserve.osbb.model.Ticket;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.softserve.osbb.model.Message;
+import com.softserve.osbb.model.Ticket;
 
 /**
  * Created by Kris on 12.07.2016.

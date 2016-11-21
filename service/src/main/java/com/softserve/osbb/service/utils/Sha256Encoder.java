@@ -1,15 +1,15 @@
 package com.softserve.osbb.service.utils;
 
-import com.softserve.osbb.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
-
-import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import javax.xml.bind.DatatypeConverter;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.softserve.osbb.service.UserService;
 
 /**
  * Created by cavayman on 16.09.2016.

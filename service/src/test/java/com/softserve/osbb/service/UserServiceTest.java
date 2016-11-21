@@ -2,8 +2,11 @@ package com.softserve.osbb.service; /**
  * Created by cavayman on 11.07.2016.
  */
 
-import com.softserve.osbb.config.ServiceApplication;
-import com.softserve.osbb.model.User;
+import static org.junit.Assert.assertEquals;
+
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,10 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.sql.Timestamp;
-import java.util.Date;
-
-import static org.junit.Assert.assertEquals;
+import com.softserve.osbb.config.ServiceApplication;
+import com.softserve.osbb.model.User;
 
 
 /**

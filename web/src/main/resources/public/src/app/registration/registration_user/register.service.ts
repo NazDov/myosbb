@@ -16,6 +16,9 @@ export class RegisterService {
     public houseAllURL: string = ApiService.serverUrl + '/restful/house/all';
     public houseURL: string = ApiService.serverUrl + '/restful/house';
     public apartmentURL: string = ApiService.serverUrl + '/restful/apartment/';
+    public regionURL: string = ApiService.serverUrl+'/restful/region/all';
+    public cityURL: string = ApiService.serverUrl+'/restful/city';
+    public streetURL: string = ApiService.serverUrl+'/restful/street';
 
     constructor(private http: Http) {
 
@@ -42,15 +45,36 @@ export class RegisterService {
             .map((response)=> response.json())
             .catch((error)=>Observable.throw(error));
     }
-    
-    
-    
-    getAllRegion(): Observable<any> {
-        return this.http.get("myosbb/restful.region/all')
+
+     getAllCityByRegionName(name: string): Observable<any> {
+        return this.http.get(this.cityURL+'/region/'+name)
             .map((response)=> response.json())
             .catch((error)=>Observable.throw(error));
     }
 
+    getAllCitiesByRegionId(id: number): Observable<any> {
+        return this.http.get(this.cityURL+'/region/'+id)
+            .map((response)=> response.json())
+            .catch((error)=>Observable.throw(error));
+
+    }
+
+     getAllStreetssByCityId(id: number): Observable<any> {
+        return this.http.get(this.streetURL+'/city/'+id)
+            .map((response)=> response.json())
+            .catch((error)=>Observable.throw(error));
+
+    }
+
+
+ 
+    
+    getAllRegion(): Observable<any> {
+        return this.http.get(this.regionURL)
+            .map((response)=> response.json())
+            .catch((error)=>Observable.throw(error));
+    }
+    
     
     getAllHouses(): Observable<any> {
         return this.http.get(this.houseAllURL)
@@ -78,19 +102,3 @@ export class RegisterService {
 }
 
 
-// sendOsbb(osbb: Osbb) {
-//     console.log(osbb);
-//     let headers = new Headers({ 'Content-Type': 'application/json' });
-//     return this.http.post(this._pathUrl1, JSON.stringify(osbb), { headers: headers });
-// }
-
-// sendUser(user:User){
-//     console.log(user);
-//     let headers=new Headers({'Content-Type':'application/json'});
-// return this.http.put(this._pathUrl2,JSON.stringify(user),{headers:headers});
-//}
-
-// sendU(user: User){
-//     console.log()
-//     return this.userId;
-// }

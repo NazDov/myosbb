@@ -1,10 +1,10 @@
 package com.softserve.osbb.dto;
 
+import java.util.List;
+
 import com.softserve.osbb.model.Attachment;
 import com.softserve.osbb.model.ProviderType;
 import com.softserve.osbb.model.enums.Periodicity;
-
-import java.util.List;
 
 /**
  * Created by Anastasiia Fedorak on 8/2/16.

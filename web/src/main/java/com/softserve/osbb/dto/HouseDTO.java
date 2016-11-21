@@ -1,9 +1,9 @@
 package com.softserve.osbb.dto;
 
+import java.util.List;
+
 import com.softserve.osbb.model.Apartment;
 import com.softserve.osbb.model.Osbb;
-
-import java.util.List;
 
 /**
  * Created by nazar.dovhyy on 03.08.2016.

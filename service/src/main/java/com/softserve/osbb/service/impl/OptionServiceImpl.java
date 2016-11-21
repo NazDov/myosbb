@@ -1,14 +1,15 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Option;
-import com.softserve.osbb.repository.OptionRepository;
-import com.softserve.osbb.service.OptionService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.softserve.osbb.model.Option;
+import com.softserve.osbb.repository.OptionRepository;
+import com.softserve.osbb.service.OptionService;
 
 /**
  * Created by Roman on 28.07.2016.

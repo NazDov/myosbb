@@ -67,10 +67,5 @@ public class City implements Serializable {
     	return streets.get(index);
     }
     
-/*    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
-    @JsonIgnore
-    public Collection<User> getUsers() {
-        return users;
-    }
-  */
+
 }

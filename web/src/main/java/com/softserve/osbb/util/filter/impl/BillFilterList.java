@@ -1,5 +1,15 @@
 package com.softserve.osbb.util.filter.impl;
 
+import static com.softserve.osbb.util.resources.util.ResourceUtil.toResource;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.hateoas.Resource;
+import org.springframework.stereotype.Component;
+
 import com.softserve.osbb.dto.BillDTO;
 import com.softserve.osbb.dto.mappers.BillDTOMapper;
 import com.softserve.osbb.model.Bill;
@@ -7,15 +17,6 @@ import com.softserve.osbb.model.enums.BillStatus;
 import com.softserve.osbb.util.filter.FilterList;
 import com.softserve.osbb.util.resources.impl.BillResourceList;
 import com.softserve.osbb.util.resources.impl.EntityResourceList;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.hateoas.Resource;
-import org.springframework.stereotype.Component;
-
-import java.util.List;
-
-import static com.softserve.osbb.util.resources.util.ResourceUtil.toResource;
 
 /**
  * Created by nazar.dovhyy on 04.09.2016.

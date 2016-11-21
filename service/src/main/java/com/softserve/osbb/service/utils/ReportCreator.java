@@ -1,20 +1,22 @@
 package com.softserve.osbb.service.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.softserve.osbb.model.Apartment;
 import com.softserve.osbb.model.Bill;
 import com.softserve.osbb.model.User;
 import com.softserve.osbb.model.report.ReportModel;
 import com.softserve.osbb.repository.BillRepository;
 import com.softserve.osbb.repository.UserRepository;
+
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**

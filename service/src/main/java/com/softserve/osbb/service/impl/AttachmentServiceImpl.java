@@ -1,11 +1,17 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Attachment;
-import com.softserve.osbb.model.enums.AttachmentType;
-import com.softserve.osbb.repository.AttachmentRepository;
-import com.softserve.osbb.service.AttachmentService;
-import com.softserve.osbb.utils.Constants;
-import liquibase.util.file.FilenameUtils;
+import static com.softserve.osbb.utils.Constants.DATE_FORMATTER;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +24,13 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+import com.softserve.osbb.model.Attachment;
+import com.softserve.osbb.model.enums.AttachmentType;
+import com.softserve.osbb.repository.AttachmentRepository;
+import com.softserve.osbb.service.AttachmentService;
+import com.softserve.osbb.utils.Constants;
 
-import static com.softserve.osbb.utils.Constants.DATE_FORMATTER;
+import liquibase.util.file.FilenameUtils;
 
 /**
  * Created by nataliia on 11.07.16.

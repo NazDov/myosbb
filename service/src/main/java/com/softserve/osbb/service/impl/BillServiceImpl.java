@@ -1,12 +1,7 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Apartment;
-import com.softserve.osbb.model.Bill;
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.repository.ApartmentRepository;
-import com.softserve.osbb.repository.BillRepository;
-import com.softserve.osbb.repository.UserRepository;
-import com.softserve.osbb.service.BillService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,7 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.softserve.osbb.model.Apartment;
+import com.softserve.osbb.model.Bill;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.repository.ApartmentRepository;
+import com.softserve.osbb.repository.BillRepository;
+import com.softserve.osbb.repository.UserRepository;
+import com.softserve.osbb.service.BillService;
 
 /**
  * Created by nataliia on 11.07.16.

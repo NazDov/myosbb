@@ -1,9 +1,9 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Message;
+import org.springframework.stereotype.Service;
+
 import com.softserve.osbb.model.Settings;
 import com.softserve.osbb.model.User;
-import org.springframework.stereotype.Service;
 
 /**
  * Created by Kris on 17.09.2016.

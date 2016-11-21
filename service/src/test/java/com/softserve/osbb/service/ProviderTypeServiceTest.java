@@ -1,19 +1,24 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.config.ServiceApplication;
-import com.softserve.osbb.model.ProviderType;
-import com.softserve.osbb.repository.ProviderTypeRepository;
-import com.softserve.osbb.service.impl.ProviderTypeServiceImpl;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.*;
+import org.mockito.InjectMocks;
+import org.mockito.Matchers;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.softserve.osbb.config.ServiceApplication;
+import com.softserve.osbb.model.ProviderType;
+import com.softserve.osbb.repository.ProviderTypeRepository;
+import com.softserve.osbb.service.impl.ProviderTypeServiceImpl;
 
 /**
  * Created by Anastasiia Fedorak on 7/21/16.

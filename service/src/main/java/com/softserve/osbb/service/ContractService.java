@@ -1,12 +1,13 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Contract;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.softserve.osbb.model.Contract;
 
 /**
  * Created by Roma on 13/07/2016.

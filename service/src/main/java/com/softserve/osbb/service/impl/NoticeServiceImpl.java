@@ -1,15 +1,16 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Notice;
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.repository.NoticeRepository;
-import com.softserve.osbb.service.NoticeService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.softserve.osbb.model.Notice;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.repository.NoticeRepository;
+import com.softserve.osbb.service.NoticeService;
 
 /**
  * Created by Kris on 06.09.2016.

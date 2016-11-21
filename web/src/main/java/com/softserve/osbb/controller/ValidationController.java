@@ -1,29 +1,26 @@
 package com.softserve.osbb.controller;
 
 
-import com.softserve.osbb.dto.OsbbRegistrationDTO;
-import com.softserve.osbb.dto.UserDTO;
-import com.softserve.osbb.dto.UserRegistrationDTO;
-import com.softserve.osbb.dto.mappers.OsbbRegistrationDTOMapper;
-import com.softserve.osbb.dto.mappers.UserRegistrationDTOMapper;
-import com.softserve.osbb.dto.mappers.UserDTOMapper;
-import com.softserve.osbb.model.Osbb;
+import java.util.HashMap;
 
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.service.*;
-import com.softserve.osbb.service.impl.MailSenderImpl;
-import com.softserve.osbb.service.utils.Sha256Encoder;
+import javax.mail.MessagingException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.mail.MessagingException;
-import javax.servlet.ServletException;
-import java.util.HashMap;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.service.OsbbService;
+import com.softserve.osbb.service.UserService;
+import com.softserve.osbb.service.impl.MailSenderImpl;
+import com.softserve.osbb.service.utils.Sha256Encoder;
 
 /**
  * Created by cavayman on 03.08.2016.

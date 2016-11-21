@@ -1,23 +1,24 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.BarChartData;
-import com.softserve.osbb.model.Bill;
-import com.softserve.osbb.model.BillChartData;
-import com.softserve.osbb.model.enums.BillStatus;
-import com.softserve.osbb.repository.BillRepository;
-import com.softserve.osbb.service.BillChartService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.softserve.osbb.model.BarChartData;
+import com.softserve.osbb.model.Bill;
+import com.softserve.osbb.model.BillChartData;
+import com.softserve.osbb.model.enums.BillStatus;
+import com.softserve.osbb.repository.BillRepository;
+import com.softserve.osbb.service.BillChartService;
 
 /**
  * Created by nazar.dovhyy on 28.08.2016.

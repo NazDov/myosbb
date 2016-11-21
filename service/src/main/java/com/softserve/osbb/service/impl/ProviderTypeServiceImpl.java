@@ -1,15 +1,17 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.ProviderType;
-import com.softserve.osbb.repository.ProviderTypeRepository;
-import com.softserve.osbb.service.ProviderTypeService;
+import java.util.List;
+
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
-import java.util.List;
+import com.softserve.osbb.model.ProviderType;
+import com.softserve.osbb.repository.ProviderTypeRepository;
+import com.softserve.osbb.service.ProviderTypeService;
 
 /**
  * Created by Anastasiia Fedorak on 7/21/16.

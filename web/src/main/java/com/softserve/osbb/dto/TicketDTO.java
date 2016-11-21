@@ -1,11 +1,8 @@
 package com.softserve.osbb.dto;
 
-import com.softserve.osbb.model.Message;
-import com.softserve.osbb.model.enums.TicketState;
-
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
+
+import com.softserve.osbb.model.enums.TicketState;
 
 /**
  * Created by Kris on 22.08.2016.

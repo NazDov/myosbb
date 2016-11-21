@@ -1,13 +1,14 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Apartment;
-import com.softserve.osbb.model.House;
-import com.softserve.osbb.model.Osbb;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.softserve.osbb.model.Apartment;
+import com.softserve.osbb.model.House;
+import com.softserve.osbb.model.Osbb;
 
 /**
  * Created by nazar.dovhyy on 14.07.2016.

@@ -1,19 +1,20 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Report;
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.repository.ReportRepository;
-import com.softserve.osbb.repository.UserRepository;
-import com.softserve.osbb.service.ReportService;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import com.softserve.osbb.model.Report;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.repository.ReportRepository;
+import com.softserve.osbb.repository.UserRepository;
+import com.softserve.osbb.service.ReportService;
 
 /**
  * Created by nazar.dovhyy on 09.07.2016.

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.softserve.osbb.model.Region;
+
 import com.softserve.osbb.model.Street;
 import com.softserve.osbb.service.StreetService;
 
@@ -32,58 +32,72 @@ public class StreetController {
 	
 	@Autowired
 	StreetService streetService;
-	
-	@RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Resource<Street>> createRegion(@RequestBody Street Street) {
-        logger.info("Create Street:  " + Street);
-       
-        return new ResponseEntity<>(addResourceLinkToStreet(Street), HttpStatus.OK);
-    }
-	
-	
-	  @RequestMapping(method = RequestMethod.GET)
-	    public ResponseEntity<List<Resource<Street>>> getAllCities() {
-	   
-	        logger.info("Get all cities");
-	        List<Street> cities  = streetService.findAll();
-	        final List<Resource<Street>> resources = new ArrayList<>();
-	        for(Street Street : cities) {
-	            resources.add(addResourceLinkToStreet(new Street()));
-	        }
-	        return new ResponseEntity<>(resources, HttpStatus.OK);
-	    }
-	
-	  @RequestMapping(value = "street/{id}", method = RequestMethod.GET)
-	    public ResponseEntity<List<Resource<Street>>> getAllStreetByRegionId(
-	            @PathVariable(value = "id") Integer id) {
-	        logger.info("get all houses by OsbbId: " + id);
-	        List<Street> cities = streetService.findByCityId(id);
-	        
-	        final List<Resource<Street>> resources = new ArrayList<>();
-	        for(Street Street : cities) {
-	            resources.add(addResourceLinkToStreet(new Street()));
-	        }
-	        
-	        
-	        return new ResponseEntity<>(resources, HttpStatus.OK);
-	  
-	  }
-	
-	
-	
+
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public ResponseEntity<Resource<Street>> createRegion(@RequestBody Street Street) {
+		logger.info("Create Street:  " + Street);
+
+		return new ResponseEntity<>(addResourceLinkToStreet(Street), HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public ResponseEntity<List<Resource<Street>>> getAllCities() {
+
+		logger.info("Get all Street");
+		List<Street> cities = streetService.findAll();
+		final List<Resource<Street>> resources = new ArrayList<>();
+		for (Street Street : cities) {
+			resources.add(addResourceLinkToStreet(new Street()));
+		}
+		return new ResponseEntity<>(resources, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/city/{id}", method = RequestMethod.GET)
+	public ResponseEntity<List<Resource<Street>>> getAllStreetByCityId(@PathVariable(value = "id") Integer id) {
+		
+		logger.info("get all streets by city: " + id);
+		List<Street> streets = streetService.findByCityId(id);
+		System.out.println("1 -> " + streets);
+		final List<Resource<Street>> resources = new ArrayList<>();
+		System.out.println("2");
+		for (Street street : streets) {
+			resources.add(addResourceLinkToStreet(street));
+		}
+		System.out.println("3");
+		return new ResponseEntity<>(resources, HttpStatus.OK);
+
+	}
+
+//	@RequestMapping(value = "/city/{name}", method = RequestMethod.GET)
+//	public ResponseEntity<List<Resource<Street>>> getAllCityByCityId(@PathVariable(value = "name") String name) {
+//		logger.info("get all city by Region: " + name);
+//		List<Street> streets = streetService.findByCityName(name);
+//
+//		final List<Resource<Street>> resources = new ArrayList<>();
+//		for (Street street : streets) {
+//			resources.add(addResourceLinkToStreet(street));
+//		}
+//
+//		return new ResponseEntity<>(resources, HttpStatus.OK);
+//	}
+
 	private Resource<Street> addResourceLinkToStreet(Street street) {
-        if (street == null) return null;
-        Resource<Street> resource = new Resource<>(street);
-        resource.add(linkTo(methodOn(StreetController.class)
-                .getStreetById(street.getId()))
-                .withSelfRel());
-        return resource;
-    }
-	
+		if (street == null)
+			return null;
+		Resource<Street> resource = new Resource<>(street);
+		System.out.println("--> " + street.getId());
+		resource.add(linkTo(methodOn(StreetController.class)
+				.getStreetById(street.getId()))
+				.withSelfRel());
+		System.out.println("After");
+		return resource;
+	}
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Resource<Street>> getStreetById(@PathVariable("id") Integer id) {
-        logger.info("Get one osbb by id: " + id);
-        Street street = streetService.findById(id);
-        return new ResponseEntity<>(addResourceLinkToStreet(street), HttpStatus.OK);
-    }
+	public ResponseEntity<Resource<Street>> getStreetById(@PathVariable("id") Integer id) {
+		logger.info("Get one osbb by id: " + id);
+		System.out.println("******");
+		Street street = streetService.findById(id);
+		return new ResponseEntity<>(addResourceLinkToStreet(street), HttpStatus.OK);
+	}
 }

@@ -29,6 +29,7 @@ public class User implements Serializable {
     private String phoneNumber;
     private String password;
     private String gender;
+//    private Street street;
 
     private Boolean activated;
     private Role role;
@@ -173,6 +174,16 @@ public class User implements Serializable {
     public void setVotes(Collection<Vote> votes) {
         this.votes = votes;
     }
+    
+//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+//	public Street getStreet() {
+//		return street;
+//	}
+//
+//
+//	public void setStreet(Street street) {
+//		this.street = street;
+//	}
 
 
     @Basic
@@ -301,5 +312,9 @@ public class User implements Serializable {
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
+
+
+    
+    
 
 }

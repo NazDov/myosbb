@@ -1,12 +1,13 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Event;
-import com.softserve.osbb.model.enums.EventStatus;
+import java.sql.Timestamp;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.util.List;
+import com.softserve.osbb.model.Event;
+import com.softserve.osbb.model.enums.EventStatus;
 
 /**
  * Created by nataliia on 10.07.16.

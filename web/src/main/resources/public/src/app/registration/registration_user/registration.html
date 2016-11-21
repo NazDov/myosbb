@@ -154,23 +154,36 @@
                                                            (selected)="selectedOsbb($event)"
                                                            placeholder="Вибрати">
                                                 </ng-select>
-                                            </div>
-                                            <div *ngIf="isSelectedOsbb" class="form-group"><label>Виберіть ваш будинок</label>
+                                                   <div *ngIf="isSelectedOsbb" class="form-group"><label>Виберіть Область</label>
                                                 <ng-select [allowClear]="true"
-                                                           [items]="houses"
-                                                           (selected)="selectedHouse($event)"
+                                                           [items]="regions"
+                                                           (selected)="selectedRegion($event)"
                                                            placeholder="Вибрати">
                                                 </ng-select>
                                             </div>
-                                            <div *ngIf="isSelectedHouse" class="form-group"><label>Виберіть вашу квартиру</label>
+
+                                            <div *ngIf="isSelectedOsbb" class="form-group"><label>Виберіть Місто</label>
                                                 <ng-select [allowClear]="true"
-                                                           [items]="apartment"
-                                                           (selected)="selectedApartment($event)"
+                                                           [items]="cities"
+                                                           (selected)="selectedCity($event)"
                                                            placeholder="Вибрати">
                                                 </ng-select>
                                             </div>
+
+                                            <div *ngIf="isSelectedOsbb" class="form-group"><label>Виберіть Вулицю</label>
+                                                <ng-select [allowClear]="true"
+                                                           [items]="streets"
+                                                           (selected)="selectedStreet($event)"
+                                                           placeholder="Вибрати">
+                                                </ng-select>
+                                            </div>
+                            </div>    
                                             <br>
                             <hr>
+                                                
+                                            
+                                 
+                                            
                     </div>
                     <div class="row form-footer">
                         <br>

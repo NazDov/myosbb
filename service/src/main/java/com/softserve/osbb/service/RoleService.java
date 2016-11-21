@@ -1,10 +1,11 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Role;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.softserve.osbb.model.Role;
 
 /**
  * Created by Roma on 13/07/2016.

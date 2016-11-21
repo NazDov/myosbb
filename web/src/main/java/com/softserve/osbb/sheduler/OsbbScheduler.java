@@ -1,15 +1,16 @@
 package com.softserve.osbb.sheduler;
 
-import com.softserve.osbb.controller.OsbbController;
-import com.softserve.osbb.model.Osbb;
-import com.softserve.osbb.service.OsbbService;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import com.softserve.osbb.controller.OsbbController;
+import com.softserve.osbb.model.Osbb;
+import com.softserve.osbb.service.OsbbService;
 
 /**
  * Created by Roman on 19.09.2016.

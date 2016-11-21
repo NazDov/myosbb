@@ -3,16 +3,17 @@ package com.softserve.osbb.service.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import com.softserve.osbb.model.Role;
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.repository.RoleRepository;
-import com.softserve.osbb.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import com.softserve.osbb.model.Role;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.repository.RoleRepository;
+import com.softserve.osbb.repository.UserRepository;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService {

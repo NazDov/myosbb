@@ -1,10 +1,11 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Notice;
-import com.softserve.osbb.model.User;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.softserve.osbb.model.Notice;
+import com.softserve.osbb.model.User;
 
 /**
  * Created by Kris on 06.09.2016.

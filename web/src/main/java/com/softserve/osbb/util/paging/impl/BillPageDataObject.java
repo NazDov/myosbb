@@ -1,9 +1,10 @@
 package com.softserve.osbb.util.paging.impl;
 
-import com.softserve.osbb.dto.BillDTO;
-import com.softserve.osbb.util.paging.PageDataObject;
 import org.springframework.hateoas.Resource;
 import org.springframework.stereotype.Component;
+
+import com.softserve.osbb.dto.BillDTO;
+import com.softserve.osbb.util.paging.PageDataObject;
 
 /**
  * Created by nazar.dovhyy on 18.08.2016.

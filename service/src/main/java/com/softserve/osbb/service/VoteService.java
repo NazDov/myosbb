@@ -1,10 +1,11 @@
 package com.softserve.osbb.service;
 
 
-import com.softserve.osbb.model.Vote;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.softserve.osbb.model.Vote;
 
 /**
  * Created by Roman on 10.07.2016.

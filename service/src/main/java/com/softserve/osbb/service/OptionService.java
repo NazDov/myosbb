@@ -1,9 +1,10 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Option;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.softserve.osbb.model.Option;
 
 /**
  * Created by Roman on 28.07.2016.

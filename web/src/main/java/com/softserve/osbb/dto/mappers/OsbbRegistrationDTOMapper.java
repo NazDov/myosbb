@@ -1,10 +1,11 @@
 package com.softserve.osbb.dto.mappers;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.softserve.osbb.dto.OsbbRegistrationDTO;
 import com.softserve.osbb.dto.adapter.OsbbRegistartionToOsbbAdapter;
 import com.softserve.osbb.model.Osbb;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by nazar.dovhyy on 29.10.2016.

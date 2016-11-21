@@ -1,12 +1,13 @@
 package com.softserve.osbb.config;
 
-import com.softserve.osbb.PersistenceConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
+
+import com.softserve.osbb.PersistenceConfiguration;
 
 /**
  * Created by ndovhuy on 28.10.2016.

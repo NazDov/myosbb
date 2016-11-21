@@ -1,11 +1,12 @@
 package com.softserve.osbb.dto.mappers;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.softserve.osbb.dto.BillDTO;
 import com.softserve.osbb.model.Bill;
 import com.softserve.osbb.model.enums.BillStatus;
 import com.softserve.osbb.service.BillService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Created by nazar.dovhyy on 18.08.2016.

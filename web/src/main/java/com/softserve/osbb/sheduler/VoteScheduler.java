@@ -1,16 +1,17 @@
 package com.softserve.osbb.sheduler;
 
-import com.softserve.osbb.controller.VoteController;
-import com.softserve.osbb.model.Vote;
-import com.softserve.osbb.service.VoteService;
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import com.softserve.osbb.controller.VoteController;
+import com.softserve.osbb.model.Vote;
+import com.softserve.osbb.service.VoteService;
 
 /**
  * Created by Roman on 22.08.2016.

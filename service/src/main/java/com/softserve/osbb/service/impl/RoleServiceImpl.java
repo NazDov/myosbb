@@ -1,9 +1,7 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Role;
-import com.softserve.osbb.repository.RoleRepository;
-import com.softserve.osbb.service.RoleService;
-import com.softserve.osbb.utils.Constants;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,7 +10,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.softserve.osbb.model.Role;
+import com.softserve.osbb.repository.RoleRepository;
+import com.softserve.osbb.service.RoleService;
+import com.softserve.osbb.utils.Constants;
 
 /**
  * Created by Roma on 13/07/2016.

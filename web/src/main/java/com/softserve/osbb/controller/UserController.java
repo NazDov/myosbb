@@ -1,30 +1,34 @@
 package com.softserve.osbb.controller;
 
-import com.softserve.osbb.dto.UserDTO;
-import com.softserve.osbb.dto.mappers.UserDTOMapper;
-import com.softserve.osbb.model.Osbb;
-import com.softserve.osbb.model.User;
-import com.softserve.osbb.service.OsbbService;
-import com.softserve.osbb.service.SettingsService;
-import com.softserve.osbb.service.UserService;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.hateoas.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import com.softserve.osbb.dto.UserDTO;
+import com.softserve.osbb.dto.mappers.UserDTOMapper;
+import com.softserve.osbb.model.Osbb;
+import com.softserve.osbb.model.User;
+import com.softserve.osbb.service.OsbbService;
+import com.softserve.osbb.service.UserService;
 
 /**
  * Created by cavayman on 12.07.2016.

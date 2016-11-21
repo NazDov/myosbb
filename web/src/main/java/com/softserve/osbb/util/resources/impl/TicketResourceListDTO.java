@@ -1,11 +1,12 @@
 package com.softserve.osbb.util.resources.impl;
 
-import com.softserve.osbb.controller.TicketController;
-import com.softserve.osbb.dto.TicketDTO;
-import org.springframework.hateoas.Resource;
-
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import org.springframework.hateoas.Resource;
+
+import com.softserve.osbb.controller.TicketController;
+import com.softserve.osbb.dto.TicketDTO;
 
 /**
  * Created by Kris on 23.08.2016.

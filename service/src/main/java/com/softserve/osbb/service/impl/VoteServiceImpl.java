@@ -1,14 +1,15 @@
 package com.softserve.osbb.service.impl;
 
-import com.softserve.osbb.model.Vote;
-import com.softserve.osbb.repository.VoteRepository;
-import com.softserve.osbb.service.VoteService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.softserve.osbb.model.Vote;
+import com.softserve.osbb.repository.VoteRepository;
+import com.softserve.osbb.service.VoteService;
 
 /**
  * Created by Roman on 10.07.2016.

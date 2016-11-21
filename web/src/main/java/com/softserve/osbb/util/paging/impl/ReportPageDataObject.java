@@ -1,12 +1,13 @@
 package com.softserve.osbb.util.paging.impl;
 
-import com.softserve.osbb.dto.ReportDTO;
-import com.softserve.osbb.util.paging.PageDataObject;
-import org.springframework.hateoas.Resource;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.hateoas.Resource;
+
+import com.softserve.osbb.dto.ReportDTO;
+import com.softserve.osbb.util.paging.PageDataObject;
 
 /**
  * Created by nazar.dovhyy on 08.08.2016.

@@ -1,12 +1,13 @@
 package com.softserve.osbb.dto.adapter;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import com.softserve.osbb.dto.UserRegistrationDTO;
 import com.softserve.osbb.model.User;
 import com.softserve.osbb.service.ApartmentService;
 import com.softserve.osbb.service.OsbbService;
 import com.softserve.osbb.service.RoleService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 /**
  * Created by ndovhuy on 27.10.2016.

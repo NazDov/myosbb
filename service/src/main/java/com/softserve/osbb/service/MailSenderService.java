@@ -1,9 +1,10 @@
 package com.softserve.osbb.service;
 
-import com.softserve.osbb.model.Mail;
+import javax.mail.MessagingException;
+
 import org.springframework.stereotype.Service;
 
-import javax.mail.MessagingException;
+import com.softserve.osbb.model.Mail;
 
 /**
  * Created by Anastasiia Fedorak on 8/13/16.
