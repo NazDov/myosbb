@@ -11,6 +11,7 @@ import java.util.List;
  * Created by Roman on 05.07.2016.
  */
 @Entity
+@Cacheable
 @Table(name = "vote")
 public class Vote {
     private Integer voteId;

@@ -21,6 +21,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "contract")
+@Cacheable
 public class Contract {
     public static final Currency DEFAULT_CURRENCY = Currency.UAH;
 

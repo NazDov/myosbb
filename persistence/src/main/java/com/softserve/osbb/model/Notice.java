@@ -10,6 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "notice")
+@Cacheable
 public class Notice {
     private Integer noticeId;
     private User user;

@@ -28,4 +28,13 @@ public interface HouseRepository extends JpaRepository<House, Integer> {
     List<House> findByOsbbId(@Param("osbbId") Integer osbbId);
 
     Page<House> findByOsbb(Osbb osbb, Pageable pageable);
+
+    @Query(value = "select COUNT(u.user_id)\n" +
+            "from users u join\n" +
+            "apartment a on a.apartment_id = u.apartment_id\n" +
+            "join house h on h.house_id = a.house_id\n" +
+            "join osbb o on o.osbb_id = h.osbb_id\n" +
+            "where h.house_id =:houseId\n" +
+            "and u.osbb_id = h.osbb_id", nativeQuery = true)
+    int getInhabitantsCountByHouseId(@Param("houseId") Integer houseId);
 }

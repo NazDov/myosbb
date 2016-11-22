@@ -18,6 +18,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "users")
+@Cacheable
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements Serializable {
 

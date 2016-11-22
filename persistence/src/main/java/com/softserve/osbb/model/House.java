@@ -14,6 +14,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "house")
+@Cacheable
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class House implements Serializable {
     public static final House NULL = null;

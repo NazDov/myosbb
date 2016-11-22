@@ -6,10 +6,15 @@
  */
 package com.softserve.osbb.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.softserve.osbb.model.Apartment;
+import com.softserve.osbb.model.House;
 import com.softserve.osbb.model.Osbb;
+import com.softserve.osbb.service.HouseService;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created by nazar.dovhyy on 03.08.2016.
@@ -28,6 +33,7 @@ public class HouseDTO {
     public HouseDTO() {
         //needed for JSON mapping
     }
+
 
     public HouseDTO(HouseDTOBuilder houseDTOBuilder) {
         this.houseId = houseDTOBuilder.houseId;
@@ -81,6 +87,12 @@ public class HouseDTO {
         private String osbbName;
         private Integer apartmentCount;
         private Integer numberOfInhabitants;
+        @JsonIgnore
+        private HouseService houseService;
+
+        public HouseDTOBuilder(HouseService houseService) {
+            this.houseService = houseService;
+        }
 
         public HouseDTOBuilder setHouseId(final Integer houseId) {
             this.houseId = houseId;
@@ -114,16 +126,16 @@ public class HouseDTO {
             return this;
         }
 
-        public HouseDTOBuilder setApartmentCount(final List<Apartment> apartments) {
-            if (apartments != null) {
+        public HouseDTOBuilder setApartmentCount(final Collection<Apartment> apartments) {
+            if (apartments != null && !apartments.isEmpty()) {
                 this.apartmentCount = apartments.size();
             }
             return this;
         }
 
-        public HouseDTOBuilder setNumberOfInhabitants(List<Apartment> apartments) {
-            int inhabitantsCount = 0;
-            this.numberOfInhabitants = inhabitantsCount;
+        public HouseDTOBuilder setNumberOfInhabitants(House house) {
+            this.numberOfInhabitants = (house == null) ? 0 :
+                    this.houseService.getNumberOfInhabitants(house);
             return this;
         }
 

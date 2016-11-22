@@ -12,6 +12,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "message")
+@Cacheable
 public class Message {
     private Integer messageId;
     private Integer parentId;

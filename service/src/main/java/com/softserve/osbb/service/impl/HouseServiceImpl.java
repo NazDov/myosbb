@@ -3,8 +3,11 @@ package com.softserve.osbb.service.impl;
 import com.softserve.osbb.model.Apartment;
 import com.softserve.osbb.model.House;
 import com.softserve.osbb.model.Osbb;
+import com.softserve.osbb.model.User;
 import com.softserve.osbb.repository.HouseRepository;
 import com.softserve.osbb.service.HouseService;
+import com.softserve.osbb.service.UserService;
+import com.softserve.osbb.utils.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,10 +30,33 @@ public class HouseServiceImpl implements HouseService {
     @Autowired
     private HouseRepository houseRepository;
 
+    @Autowired
+    private UserService userService;
+
     @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
     @Override
-    public House addHouse(House house) {
+    public House createHouse(House house) {
         return house == null ? House.NULL : addHouseIfNotNull(house);
+    }
+
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    @Override
+    public House adminCreateHouseWithApartments(House house, int apartmentCount) {
+        house.setApartments(createRandomApartments(apartmentCount, house));
+        house = houseRepository.save(house);
+        return house;
+    }
+
+    private List<Apartment> createRandomApartments(Integer total, House house) {
+        int apartmentCount = total == null ? Constants.TOTAL_APARTMENT_NUMBER : total;
+        List<Apartment> apartmentList = new ArrayList<>();
+        for (int i = 0; i < apartmentCount; i++) {
+            Apartment a = new Apartment();
+            a.setNumber(i + 1);
+            a.setHouse(house);
+            apartmentList.add(a);
+        }
+        return apartmentList;
     }
 
     private House addHouseIfNotNull(House house) {
@@ -56,6 +82,11 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public House findHouseById(Integer houseId) {
         return houseRepository.exists(houseId) ? houseRepository.findOne(houseId) : House.NULL;
+    }
+
+    @Override
+    public int getNumberOfInhabitants(House house) {
+        return house == null ? 0 : houseRepository.getInhabitantsCountByHouseId(house.getHouseId());
     }
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
@@ -127,5 +158,14 @@ public class HouseServiceImpl implements HouseService {
     @Override
     public Page<House> getAllHousesByOsbb(Osbb osbb, Pageable pageable) {
         return houseRepository.findByOsbb(osbb, pageable);
+    }
+
+    @Transactional(readOnly = false, propagation = Propagation.REQUIRED)
+    @Override
+    public House managerCreateHouseWithApartments(House house, String name, Integer apartmentCount) {
+        User user = userService.findUserByEmail(name);
+        house.setOsbb(user.getOsbb());
+        house.setApartments(createRandomApartments(apartmentCount, house));
+        return houseRepository.save(house);
     }
 }

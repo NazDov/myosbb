@@ -13,6 +13,8 @@ export class HouseService {
     public houseURL: string = ApiService.serverUrl + '/restful/house/';
     public housesByPageUrl = ApiService.serverUrl + '/restful/house?pageNumber=';
     public housesBySearchParam = ApiService.serverUrl + '/restful/house/find?searchParam=';
+    public adminHouseURL = ApiService.serverUrl+'/restful/admin/house/';
+    public managerHouseUrl = ApiService.serverUrl+'/restful/manager/house/';
 
     constructor(private _http: Http) {
     }
@@ -24,7 +26,7 @@ export class HouseService {
     }
 
     deleteHouseById(houseId: number): Observable<any> {
-        return this._http.delete(this.houseURL + houseId)
+        return this._http.delete(this.adminHouseURL + houseId)
             .catch((error)=>Observable.throw(error));
     }
 
@@ -41,7 +43,7 @@ export class HouseService {
     }
 
     admin_getAllHouses(pageParams: PageParams): Observable<any> {
-        return this._http.post(this.houseURL + 'admin', JSON.stringify(pageParams))
+        return this._http.post(this.adminHouseURL + 'all', JSON.stringify(pageParams))
             .map((response)=> response.json())
             .catch((error)=>Observable.throw(error));
     }
@@ -60,8 +62,13 @@ export class HouseService {
             .catch((error)=>Observable.throw(error));
     }
 
-    saveHouse(house: HousePageObject): Observable<any> {
-        return this._http.post(this.houseURL, JSON.stringify(house))
+    saveHouseForAdmin(house: HousePageObject): Observable<any> {
+        return this._http.post(this.adminHouseURL, JSON.stringify(house))
+            .catch((error)=> Observable.throw(error));
+    }
+
+    saveHouseForManager(house: HousePageObject): Observable<any> {
+        return this._http.post(this.managerHouseUrl, JSON.stringify(house))
             .catch((error)=> Observable.throw(error));
     }
 

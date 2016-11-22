@@ -15,6 +15,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "apartment")
+@Cacheable
 public class Apartment implements Serializable {
     private Integer apartmentId;
     private Integer number;

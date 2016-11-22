@@ -175,6 +175,11 @@
             <version>${jasper-reports}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+        </dependency>
+
         <!-- Enables XLS generation -->
         <dependency>
             <groupId>org.apache.poi</groupId>

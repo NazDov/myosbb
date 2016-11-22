@@ -17,6 +17,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "event")
+@Cacheable
 public class Event {
 
     private Integer eventId;

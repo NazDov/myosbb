@@ -19,6 +19,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "bill")
+@Cacheable
 public class Bill implements Serializable {
 
     private Integer billId;

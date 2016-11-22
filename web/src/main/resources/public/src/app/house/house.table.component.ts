@@ -69,9 +69,9 @@ export class HouseTableComponent implements OnInit {
 
     initHousesArr() {
         if (this.admin) {
-            this.findAllHousesByPage();
+            this.findAllAdminHouses();
         } else {
-            this.findAllHousesByOsbb();
+            this.findAllUserHouses();
         }
     }
 
@@ -106,12 +106,24 @@ export class HouseTableComponent implements OnInit {
     onAddHouseSubmit() {
         this.cancelAddModal();
         console.log('saving ', JSON.stringify(this.selectedHouse));
-        this._houseService.saveHouse(this.selectedHouse)
-            .subscribe(()=> {
-                    console.log("refreshing...");
-                    this.refresh();
-                },
-                (error)=> this.handleErrors(error))
+        if(this.admin){
+            this._houseService.saveHouseForAdmin(this.selectedHouse)
+                .subscribe(()=> {
+                        console.log("refreshing...");
+                        this.refresh();
+                    },
+                    (error)=> this.handleErrors(error))
+            return;
+        }
+
+        if(this.manager){
+            this._houseService.saveHouseForManager(this.selectedHouse)
+                .subscribe(()=> {
+                        console.log("refreshing...");
+                        this.refresh();
+                    },
+                    (error)=> this.handleErrors(error))
+        }
 
     }
 
@@ -125,10 +137,10 @@ export class HouseTableComponent implements OnInit {
 
     selectByPageNumber(num) {
         this.pageParams.pageNumber = +num;
-        this.findAllHousesByPage();
+        this.findAllAdminHouses();
     }
 
-    private findAllHousesByPage() {
+    private findAllAdminHouses() {
         this.emptyPageList();
         this.pending = true;
         this._houseService.admin_getAllHouses(this.pageParams)
@@ -143,11 +155,11 @@ export class HouseTableComponent implements OnInit {
                 });
     }
 
-    findAllHousesByOsbb() {
+    findAllUserHouses() {
         console.log("find All houses by osbb: " + this.osbbId);
         this.emptyPageList();
         this.pending = true;
-        this._houseService.currentUser_getAllHousesByOsbb(this.pageParams, this.osbbId)
+        this._houseService.currentUser_getAllHousesByOsbb(this.pageParams)
             .subscribe((data)=> {
                     this.pending = false;
                     this.houses = data.rows;
@@ -174,19 +186,19 @@ export class HouseTableComponent implements OnInit {
     prevPage() {
         this.pageParams.pageNumber -= 1;
         console.log("load by page :", this.pageParams.pageNumber);
-        this.findAllHousesByPage()
+        this.findAllAdminHouses()
     }
 
     nextPage() {
         this.pageParams.pageNumber += 1;
         console.log("load by page :", this.pageParams.pageNumber);
-        this.findAllHousesByPage()
+        this.findAllAdminHouses()
     }
 
     selectRowNum(row: number) {
         console.log('load by row number', row);
         this.pageParams.rowNum = +row;
-        this.findAllHousesByPage();
+        this.findAllAdminHouses();
     }
 
     onClickSearchByParam(value: string) {
@@ -227,6 +239,12 @@ export class HouseTableComponent implements OnInit {
             this._router.navigate(['admin/house', id]);
             return;
         }
+
+        if(this.manager){
+            this._router.navigate(['manager/house', id]);
+            return;
+        }
+
         this._router.navigate(['home/house', id]);
     }
 

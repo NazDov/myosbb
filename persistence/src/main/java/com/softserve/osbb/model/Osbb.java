@@ -14,6 +14,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "osbb")
+@Cacheable
 public class Osbb implements Serializable {
     private Integer osbbId;
     private String name;

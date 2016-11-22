@@ -16,6 +16,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name = "attachment")
+@Cacheable
 public class Attachment {
 
     private Integer attachmentId;

@@ -18,6 +18,7 @@ import java.time.LocalDate;
  */
 @Entity
 @Table(name = "report")
+@Cacheable
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Report implements Serializable {
     public static final Report NO_REPORT = null;

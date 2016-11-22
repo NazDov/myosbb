@@ -6,6 +6,7 @@ import javax.persistence.*;
  * Created by Kris on 15.09.2016.
  */
 @Entity
+@Cacheable
 @Table(name = "settings")
 public class Settings {
     private Integer settingsId;

@@ -9,6 +9,7 @@ package com.softserve.osbb.dto.mappers;
 import com.softserve.osbb.dto.HouseDTO;
 import com.softserve.osbb.model.Apartment;
 import com.softserve.osbb.model.House;
+import com.softserve.osbb.service.HouseService;
 
 import java.util.List;
 
@@ -17,19 +18,18 @@ import java.util.List;
  */
 public class HouseDTOMapper {
 
-    public static HouseDTO mapHouseEntityToDTO(House house) {
+    public static HouseDTO mapHouseEntityToDTO(House house, HouseService houseService) {
         HouseDTO houseDTO = null;
-        
         if (house != null) {
-            houseDTO = new HouseDTO.HouseDTOBuilder()
+            houseDTO = new HouseDTO.HouseDTOBuilder(houseService)
                     .setHouseId(house.getHouseId())
                     .setCity(house.getCity())
                     .setDescription(house.getDescription())
                     .setStreet(house.getStreet())
                     .setZipCode(house.getZipCode())
                     .setOsbbName(house.getOsbb())
-                    .setApartmentCount((List<Apartment>) house.getApartments())
-                    .setNumberOfInhabitants((List<Apartment>) house.getApartments())
+                    .setApartmentCount(house.getApartments())
+                    .setNumberOfInhabitants(house)
                     .build();
         }
         return houseDTO;

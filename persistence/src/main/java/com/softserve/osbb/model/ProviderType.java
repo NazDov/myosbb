@@ -13,6 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "provider_type")
+@Cacheable
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProviderType implements Serializable {
     private Integer providerTypeId;

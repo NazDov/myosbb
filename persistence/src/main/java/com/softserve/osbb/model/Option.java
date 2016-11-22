@@ -14,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "option")
+@Cacheable
 public class Option implements Serializable{
 
     private Integer optionId;

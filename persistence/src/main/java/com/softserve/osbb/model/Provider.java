@@ -17,6 +17,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "provider")
+@Cacheable
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Provider implements Serializable {
     public static final Periodicity DEFAULT_PERIODICITY = Periodicity.ONE_TIME;

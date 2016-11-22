@@ -3,9 +3,11 @@ package com.softserve.osbb;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.orm.jpa.EntityScan;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
+@EnableCaching
 @EnableJpaRepositories(basePackages = "com.softserve.osbb")
 @EntityScan
 public class PersistenceConfiguration {

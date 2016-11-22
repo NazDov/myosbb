@@ -13,6 +13,7 @@ import java.util.Collection;
  * Created by cavayman on 05.07.2016.
  */
 @Entity
+@Cacheable
 @Table(name = "role")
 public class Role implements GrantedAuthority, Serializable {
     private Integer roleId;

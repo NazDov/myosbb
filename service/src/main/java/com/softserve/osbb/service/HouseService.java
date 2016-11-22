@@ -16,11 +16,15 @@ import java.util.List;
 @Service
 public interface HouseService {
 
-    House addHouse(House house);
+    House createHouse(House house);
+
+    House adminCreateHouseWithApartments(House house, int apartmentCount);
 
     House updateHouse(Integer houseId, House house);
 
     House findHouseById(Integer houseId);
+
+    int getNumberOfInhabitants(House house);
 
     List<House> getAllHousesBySearchParameter(String searchTerm);
 
@@ -41,4 +45,6 @@ public interface HouseService {
     List<House> getAllHousesByOsbb(Integer osbbId);
 
     Page<House> getAllHousesByOsbb(Osbb osbb, Pageable pageable);
+
+    House managerCreateHouseWithApartments(House house, String name, Integer apartmentCount);
 }

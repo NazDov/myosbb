@@ -15,6 +15,7 @@ import java.util.Collection;
  */
 
 @Entity
+@Cacheable
 @Table(name = "ticket")
 public class Ticket {
     private Integer ticketId;
