@@ -238,7 +238,8 @@
   "debt" : "debt",
   "startDate": "start of ticket",
   "deadline": "Deadline",
-  "deadlineDate": "Project should be finished until"
+  "deadlineDate": "Project should be finished until",
+  "fees for services" : "Fees for services"
 }
 
 
