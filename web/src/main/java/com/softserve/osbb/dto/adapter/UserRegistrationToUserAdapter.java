@@ -8,6 +8,7 @@ import com.softserve.osbb.model.User;
 import com.softserve.osbb.service.ApartmentService;
 import com.softserve.osbb.service.OsbbService;
 import com.softserve.osbb.service.RoleService;
+import com.softserve.osbb.service.StreetService;
 
 /**
  * Created by ndovhuy on 27.10.2016.
@@ -21,6 +22,8 @@ public class UserRegistrationToUserAdapter extends DTOToEntityAdapter<UserRegist
     private OsbbService osbbService;
     @Autowired
     private RoleService roleService;
+    @Autowired
+    private StreetService streetService; 
 
     public UserRegistrationToUserAdapter() {
 
@@ -44,6 +47,7 @@ public class UserRegistrationToUserAdapter extends DTOToEntityAdapter<UserRegist
     }
 
     private void _parse(User user, UserRegistrationDTO userRegistrationDTO) {
+    	System.out.println("_parse AAAAA ___________________------------------------------------------");
         user.setFirstName(userRegistrationDTO.getFirstName());
         user.setLastName(userRegistrationDTO.getLastName());
         user.setBirthDate(userRegistrationDTO.getBirthDate());
@@ -55,6 +59,7 @@ public class UserRegistrationToUserAdapter extends DTOToEntityAdapter<UserRegist
         user.setRole(roleService.getRole(userRegistrationDTO.getRole()));
         user.setApartment(apartmentService.findOneApartmentByID(userRegistrationDTO.getApartmentId()));
         user.setOsbb(osbbService.getOsbb(userRegistrationDTO.getOsbbId()));
+        user.setStreet(streetService.findById(userRegistrationDTO.getStreet()));
     }
 
 

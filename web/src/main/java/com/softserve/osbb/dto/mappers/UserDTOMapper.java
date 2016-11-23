@@ -31,6 +31,7 @@ public class UserDTOMapper {
             userDTO.setPhoneNumber(user.getPhoneNumber());
             userDTO.setOsbbId(user.getOsbb().getOsbbId());
             userDTO.setGender(user.getGender());
+            userDTO.setStreet(user.getStreet());
         }
         return userDTO;
     }
@@ -53,6 +54,7 @@ public class UserDTOMapper {
             user.setEmail(userDTO.getEmail());
             user.setPhoneNumber(userDTO.getPhoneNumber());
             user.setGender(userDTO.getGender());
+            user.setStreet(userDTO.getStreet());
         }
         return user;
     }

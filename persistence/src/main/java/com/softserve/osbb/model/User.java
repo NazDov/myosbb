@@ -29,12 +29,12 @@ public class User implements Serializable {
     private String phoneNumber;
     private String password;
     private String gender;
-//    private Street street;
+    private Street street;
 
     private Boolean activated;
     private Role role;
     private Apartment apartment;
-    private Osbb osbb;
+    private Osbb osbb; 
     private Collection<Notice> notices=new ArrayList<>();
     private Collection<Vote> votes=new ArrayList<>();
     private Collection<Apartment> apartments=new ArrayList<>();
@@ -59,6 +59,7 @@ public class User implements Serializable {
         this.role = user.getRole();
         this.apartment=user.apartment;
         this.osbb=user.getOsbb();
+        this.street = user.getStreet();
     }
 
 
@@ -175,15 +176,15 @@ public class User implements Serializable {
         this.votes = votes;
     }
     
-//    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-//	public Street getStreet() {
-//		return street;
-//	}
-//
-//
-//	public void setStreet(Street street) {
-//		this.street = street;
-//	}
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	public Street getStreet() {
+		return street;
+	}
+
+
+	public void setStreet(Street street) {
+		this.street = street;
+	}
 
 
     @Basic

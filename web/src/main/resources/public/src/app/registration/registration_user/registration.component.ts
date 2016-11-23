@@ -214,12 +214,12 @@ export class RegistrationComponent implements OnInit {
     }
 
     selectedStreet(value: any) {
+    	console.log(value.text);
+        let street: Street = this.getStreetByName(value.text);
+        console.log('select street: ', street);
+        this.newUser.street = street.id;
 
     }
-
-
-
-    
 
 
     selectedHouse(value: any) {
@@ -361,7 +361,17 @@ export class RegistrationComponent implements OnInit {
         return city;
     }
 
-
+    getStreetByName(name: string): Street {
+        let street: Street = new Street();
+        for (let str of this.streetList) {
+            if (str.name.match(name)) {
+                street = str;
+                break;
+            }
+        }
+        return street;
+    }
+    
 
     getHouseIdByName(name: string): number {
         let houseId = 0;

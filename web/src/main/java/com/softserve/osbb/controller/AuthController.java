@@ -39,6 +39,7 @@ public class AuthController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ResponseEntity<UserDTO> putUser(@RequestBody UserRegistrationDTO userRegistrationDTO) {
+    	System.out.println("__________________________________________________________________________________________________________________________");
         User foundUser = userService.findUserByEmail(userRegistrationDTO.getEmail());
         if (foundUser != null) throw new UserAlreadyExistsException("user already exists");
         User registeredUser = registrationService.registrate(

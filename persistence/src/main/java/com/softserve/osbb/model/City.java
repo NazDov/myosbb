@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -16,23 +17,15 @@ import java.util.List;
 public class City implements Serializable {
     private Integer id;
     private String name;
-    private Region region;
-    
-    @OneToMany(mappedBy="city")
-    @JsonIgnore
-    private List<Street> streets = new ArrayList<>();
+    private Region region; 
+    private Collection<Street> streets ;
 
     public City(){}
-
-    public City(String name, Region region) {
-        this.name = name;
-        this.region = region;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    public Integer getid() {
+    public Integer getId() {
         return id;
     }
 
@@ -58,14 +51,20 @@ public class City implements Serializable {
     public void setRegion(Region region) {
         this.region = region;
     }
+
+    @OneToMany(mappedBy="city")
+    @JsonIgnore
+	public Collection<Street> getStreets() {
+		return streets;
+	}
+
+	public void setStreets(Collection<Street> streets) {
+		this.streets = streets;
+	}
     
-    public void addStreet(Street street) {
-    	streets.add(street);
-    }
     
-    public Street getStreet(int index) {
-    	return streets.get(index);
-    }
+    
+   
     
 
 }

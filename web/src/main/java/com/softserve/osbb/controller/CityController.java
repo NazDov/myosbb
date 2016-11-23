@@ -85,7 +85,7 @@ public class CityController {
 			return null;
 		Resource<City> resource = new Resource<>(city);
 		resource.add(linkTo(methodOn(CityController.class)
-				.getCityById(city.getid()))
+				.getCityById(city.getId()))
 				.withSelfRel());
 		return resource;
 	}
