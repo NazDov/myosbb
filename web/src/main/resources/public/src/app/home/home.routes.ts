@@ -22,9 +22,9 @@ import {WaterComponen} from "../home/components/apartment/submenu/water/water.co
 export const homeRoutes: RouterConfig = [
     {
         path: 'home',
-        component: HomeComponent,
+        component: HomeComponent},
 
-        children: [
+        
             { path: 'wall', component: HomeWallComponent },
             { path: '', redirectTo: 'wall', pathMatch: 'full' },
             { path: 'events', component: EventComponent },
@@ -44,6 +44,6 @@ export const homeRoutes: RouterConfig = [
             {path: 'rents/gas', component: GasComponen},
             {path: 'rents/water', component: WaterComponen},
             { path: 'apartment/apartmentprofile/:id', component: ApartmentProfileComponent }
-        ]
-    }
+        
+    
 ];
