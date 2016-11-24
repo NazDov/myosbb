@@ -19,9 +19,7 @@ public interface RegionRepository extends JpaRepository<Region, Integer>, JpaSpe
 	
 	public List<Region> findAll();
 	
-	//    @Query("select reg from regions reg where reg.name = :name")
-	public Region findByName(String name);
 
-//    public Role findByUsers(User users);
+
 
 }

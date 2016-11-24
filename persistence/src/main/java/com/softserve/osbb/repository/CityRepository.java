@@ -19,11 +19,7 @@ public interface CityRepository extends JpaRepository<City,Integer>, JpaSpecific
 
     public City findById(Integer id);
     public List<City> findAll();
-    public List<City> findByName(String name);
-    public List<City> findByRegion(Region region);
-    public List<City> findByRegionName(String nameRegion);
- //   @Query("Select City from City City where region = :id")
-    public List<City> findByRegionId(@Param("id")Integer id );
+    public List<City> findByRegionId(Integer id );
     
 
 

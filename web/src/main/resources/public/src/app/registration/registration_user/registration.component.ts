@@ -83,9 +83,6 @@ export class RegistrationComponent implements OnInit {
         this.listAllOsbb();
         this.ListAllRegion();
         this.IsRegistered = true;
-        
-        
- 
     }
    
 
@@ -292,12 +289,6 @@ export class RegistrationComponent implements OnInit {
                 })
     }
 
-
-
-
-
-
-
     listAllHousesByOsbb(id: number) {
 
         this.registerService.getAllHousesByOsbb(id)
@@ -435,8 +426,6 @@ export class RegistrationComponent implements OnInit {
         console.log('street = '+tempArr)
         return tempArr;
     }
-
-
 
     fillOsbbById(): number[] {
         let tempArr: number[] = [];
