@@ -255,6 +255,9 @@
   "choose_osbb": "виберіть Ваше ОСББ",
   "choose_house": "виберіть Ваш будинок",
   "choose_apartment": "виберіть Вашу квартиру",
-  "choose": "вибрати"
+  "choose": "вибрати",
+  "choose your region": "Виберіть Область",
+  "choose your city": "Виберіть Місто",
+  "choose your street": "Виберіть Вулицю"
 
 }

@@ -38,13 +38,13 @@ public class AddressServiceImpl implements AddressService {
 	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	@Override
 	public List<City> getAllCitiesOfRegion(Integer regionId) {
-		return cityRepository.findByRegion(regionRepository.findById(regionId));
+		return cityRepository.findByRegionId(regionId);
 	}
 
 	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 	@Override
 	public List<Street> getAllStreetsOfCity(Integer cityId) {
-		return streetRepository.findByCity(cityRepository.findById(cityId));
+		return streetRepository.findByCityId(cityId);
 	}
 
 	@Transactional(readOnly = true, propagation = Propagation.SUPPORTS)

@@ -254,7 +254,11 @@
   "choose_osbb": "choose your OSBB",
   "choose_house": "choose your house",
   "choose_apartment": "choose your apartment",
-  "choose": "select"
+  "choose": "select",
+  "choose your region": "Choose your region",
+  "choose your city": "Choose your city",
+  "choose your street": "Choose your street"
+ 
 }
 
 

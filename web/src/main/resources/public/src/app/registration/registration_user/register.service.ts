@@ -16,6 +16,7 @@ export class RegisterService {
     public houseAllURL: string = ApiService.serverUrl + '/restful/house/all';
     public houseURL: string = ApiService.serverUrl + '/restful/house';
     public apartmentURL: string = ApiService.serverUrl + '/restful/apartment/';
+    public addressURL: string = ApiService.serverUrl + '/restful/address/';
 
     constructor(private http: Http) {
 
@@ -39,6 +40,27 @@ export class RegisterService {
 
     getAllOsbb(): Observable<any> {
         return this.http.get(this.osbbURL)
+            .map((response)=> response.json())
+            .catch((error)=>Observable.throw(error));
+    }
+    
+    getAllCitiesByRegionId(id: number): Observable<any> {
+        return this.http.get(this.addressURL+'/city/'+id)
+            .map((response)=> response.json())
+            .catch((error)=>Observable.throw(error));
+
+    }
+
+     getAllStreetssByCityId(id: number): Observable<any> {
+        return this.http.get(this.addressURL+'/street/'+id)
+            .map((response)=> response.json())
+            .catch((error)=>Observable.throw(error));
+
+    }
+
+    
+    getAllRegion(): Observable<any> {
+        return this.http.get(this.addressURL+'/region')
             .map((response)=> response.json())
             .catch((error)=>Observable.throw(error));
     }
@@ -67,21 +89,3 @@ export class RegisterService {
             .catch((error) => Observable.throw(error))
     }
 }
-
-
-// sendOsbb(osbb: Osbb) {
-//     console.log(osbb);
-//     let headers = new Headers({ 'Content-Type': 'application/json' });
-//     return this.http.post(this._pathUrl1, JSON.stringify(osbb), { headers: headers });
-// }
-
-// sendUser(user:User){
-//     console.log(user);
-//     let headers=new Headers({'Content-Type':'application/json'});
-// return this.http.put(this._pathUrl2,JSON.stringify(user),{headers:headers});
-//}
-
-// sendU(user: User){
-//     console.log()
-//     return this.userId;
-// }

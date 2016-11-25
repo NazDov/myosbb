@@ -87,38 +87,38 @@
             <div class="registration-form  center-block" *ngIf="IsRegisteredOsbb">
                 <form class="ui form" (ngSubmit)="onSubmitOsbb()" #registerOsbbForm="ngForm">
                     <div class="form-header">
-                        <h3>Реєстрація ОСББ </h3>
+                        <h3>Р РµС”СЃС‚СЂР°С†С–СЏ РћРЎР‘Р‘ </h3>
                     </div>
                     <div class="form-container">
                         <div class="form-container">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <label>Назва</label>
+                                    <label>РќР°Р·РІР°</label>
                                     <input class="form-control placeholder-no-fix" name="name" [(ngModel)]="newOsbb.name" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <label>Описання</label>
+                                    <label>РћРїРёСЃР°РЅРЅСЏ</label>
                                     <input class="form-control placeholder-no-fix" name="descrption" [(ngModel)]="newOsbb.description" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <label>Адрес</label>
+                                    <label>РђРґСЂРµСЃ</label>
                                     <input class="form-control placeholder-no-fix" name="address" [(ngModel)]="newOsbb.address" type="text" (setAddress)="getAddress($event)"
                                         googleplace required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <label>Район</label>
+                                    <label>Р Р°Р№РѕРЅ</label>
                                     <input class="form-control placeholder-no-fix" name="district" [(ngModel)]="newOsbb.district" type="text" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <label>Посилання на фото дому</label>
+                                    <label>РџРѕСЃРёР»Р°РЅРЅСЏ РЅР° С„РѕС‚Рѕ РґРѕРјСѓ</label>
                                     <input class="form-control placeholder-no-fix" name="logoUrl" [(ngModel)]="newOsbb.logoUrl" type="text">
                                     <div class="text-xs-center">
                                         <br>
@@ -134,10 +134,10 @@
                     <div class="row form-footer">
                         <br>
                         <div class="col-xs-6">
-                            <a class="btn btn-danger col-xs-12" (click)="Back()">Назад</a>
+                            <a class="btn btn-danger col-xs-12" (click)="Back()">РќР°Р·Р°Рґ</a>
                         </div>
                         <div class="col-xs-6">
-                            <button class="btn btn-primary col-xs-12" type='submit' [disabled]="!registerOsbbForm.form.valid">Вперед</button>
+                            <button class="btn btn-primary col-xs-12" type='submit' [disabled]="!registerOsbbForm.form.valid">Р’РїРµСЂРµРґ</button>
                         </div>
                     </div>
 
@@ -159,17 +159,26 @@
                                                            placeholder="{{ 'choose' | translate | capitalize }}">
                                                 </ng-select>
                                             </div>
-                                            <div *ngIf="isSelectedOsbb" class="form-group"><label>{{ 'choose_house' | translate | capitalize }}</label>
+                                            <div class="form-group"><label>{{ 'choose your region' | translate | capitalize }}</label>
                                                 <ng-select [allowClear]="true"
-                                                           [items]="houses"
-                                                           (selected)="selectedHouse($event)"
+                                                           [items]="regions"
+                                                           (selected)="selectedRegion($event)"
                                                            placeholder="{{ 'choose' | translate | capitalize }}">
                                                 </ng-select>
                                             </div>
-                                            <div *ngIf="isSelectedHouse" class="form-group"><label>{{ 'choose_apartment' | translate | capitalize }}</label>
+
+                                            <div class="form-group"><label>{{ 'choose your city' | translate | capitalize }}</label>
                                                 <ng-select [allowClear]="true"
-                                                           [items]="apartment"
-                                                           (selected)="selectedApartment($event)"
+                                                           [items]="cities"
+                                                           (selected)="selectedCity($event)"
+                                                           placeholder="{{ 'choose' | translate | capitalize }}">
+                                                </ng-select>
+                                            </div>
+
+                                            <div  class="form-group"><label>{{ 'choose your street' | translate | capitalize }}</label>
+                                                <ng-select [allowClear]="true"
+                                                           [items]="streets"
+                                                           (selected)="selectedStreet($event)"
                                                            placeholder="{{ 'choose' | translate | capitalize }}">
                                                 </ng-select>
                                             </div>
@@ -182,7 +191,7 @@
                             <a class="btn btn-danger col-xs-12" (click)="Back()">{{ 'cancel' | translate | capitalize }}</a>
                         </div>
                         <div class="col-xs-6">
-                            <button class="btn btn-primary col-xs-12" type='submit' [disabled]="!isSelectedApartment" >{{ 'save' | translate | capitalize }}</button>
+                            <button class="btn btn-primary col-xs-12" type='submit' [disabled]="!isSelectedStreet" >{{ 'save' | translate | capitalize }}</button>
                         </div>
                     </div>
 
