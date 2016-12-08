@@ -1,4 +1,4 @@
-import {City} from "./city.ts";
+import {City} from "./city";
 
 export class Street {	
     

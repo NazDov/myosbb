@@ -37,3 +37,30 @@ hr{
 .panel-footer {
     margin: 0 -15;
 }
+
+.noselect {
+  background : #c2f7ff;
+  border : 1px solid #999;
+  width: 172px;
+  height: 30px;
+  text-align: center;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+                                  
+                                  
+}
+
+.modal-body {
+	border : 1px solid #999;
+}
+
+.refresh {
+	cursor: pointer;
+	margin-left: 10px;
+}
+

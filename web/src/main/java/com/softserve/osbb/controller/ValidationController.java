@@ -60,13 +60,17 @@ public class ValidationController {
 
     @RequestMapping(value = "/sendEmailMail", method = RequestMethod.POST)
     public HttpStatus sendEmailOnMail(@RequestBody String email) throws MessagingException {
+    	System.out.println("Mail = "+email);
         User user = userService.findUserByEmail(email);
+        System.out.println("user = "+user);
+        
         
         if (user != null) {
             sha256Encoder.setSecretKeyForUser(user.getUserId());
             sender.send(email, "My-osbb.Your forgoten password", "Hello there friend! here is your url to change your pass:"
                     + serverUrl
                     + "forgotPass;id=" + user.getUserId() + ";key=" + sha256Encoder.getSecretKeyForEmail(user.getUserId()) + ";");
+            System.out.println("Goood");
             return HttpStatus.ACCEPTED;
         }
         

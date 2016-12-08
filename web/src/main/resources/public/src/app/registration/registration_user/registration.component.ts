@@ -4,7 +4,7 @@ import {Osbb, IOsbb} from "../../../shared/models/osbb";
 import {RegisterService} from "./register.service";
 import {ROUTER_DIRECTIVES, Router} from "@angular/router";
 import MaskedInput from "angular2-text-mask";
-import emailMask from 'node_modules/text-mask-addons/dist/emailMask.js';
+import emailMask from "node_modules/text-mask-addons/dist/emailMask.js";
 import {GoogleplaceDirective} from "./googleplace.directive";
 import {SELECT_DIRECTIVES} from "ng2-select";
 import {IHouse} from "../../../shared/models/House";
@@ -12,7 +12,9 @@ import {IApartment} from "../../../shared/models/apartment.interface";
 import {UserRegistration} from "../../../shared/models/user_registration";
 import {Street} from "../../../shared/models/street";
 import {City} from "../../../shared/models/City";
+import {SelectItem} from "../../../shared/models/ng2-select-item.interface";
 import {Region} from "../../../shared/models/Region";
+import {Mail} from "../../../shared/models/mail";
 import {ToasterContainerComponent, ToasterService, ToasterConfig} from "angular2-toaster/angular2-toaster";
 import {
     onErrorServerNoResponseToastMsg,
@@ -21,13 +23,14 @@ import {
 import {OsbbRegistration} from "../../../shared/models/osbb_registration";
 import {CapitalizeFirstLetterPipe} from "../../../shared/pipes/capitalize-first-letter";
 import {TranslatePipe} from "ng2-translate";
+import { MailService } from "../../../shared/services/mail.sender.service";
 
 
 @Component({ 
     selector: 'app-register',
     templateUrl: 'src/app/registration/registration_user/registration.html',
     styleUrls: ['assets/css/registration/registration.css'],
-    providers: [RegisterService, ToasterService],
+    providers: [RegisterService, ToasterService, MailService],
     pipes: [TranslatePipe, CapitalizeFirstLetterPipe],
     directives: [ROUTER_DIRECTIVES, MaskedInput, GoogleplaceDirective, SELECT_DIRECTIVES,
         ToasterContainerComponent]
@@ -39,7 +42,12 @@ export class RegistrationComponent implements OnInit {
     public toasterconfig: ToasterConfig = new ToasterConfig({showCloseButton: true, tapToDismiss: true, timeout: 5000});
     public emailMask = emailMask;
     public textmask = [/[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/, /[A-zА-яІ-і]/];
-    public phoneMask = ['(', /[0]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    public phoneMask = ['+','3','8','(', /[0]/, /\d/, /\d/, ')',/\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+    public mail:Mail;
+    public itemRegion:SelectItem;
+    public itemCity:SelectItem;
+    public itemStreet:SelectItem;
+    public genders: string[] = ['Чоловік','Жінка'];
     confirmPassword: string = "";
     birthDateError: boolean = false;
     matchError: boolean = false;
@@ -65,28 +73,36 @@ export class RegistrationComponent implements OnInit {
     private isSelectedHouse: boolean = false;
     private isSelectedApartment: boolean = false;
     private isSelectedStreet: boolean = false;
+    private isSelectGender:boolean = false;
     errorMessage: string;
     private IsRegistered: boolean;
     private IsRegisteredOsbb: boolean;
     private isJoinedOsbb: boolean;
     public address: Object;
-
+    public abc:string[] = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    public capcha:string;
+    public capchaUser:string;
+    public map:map<string,string> = new HashMap<>();
+    
     constructor(private registerService: RegisterService,
                 private _router: Router,
-                private _toasterService: ToasterService) {
+                private _toasterService: ToasterService,
+                private mailService:MailService) {
         this.newUser.password = "";
-        this.newUser.activated = true;
+        this.newUser.activated = false;
         this.newOsbb.creationDate = new Date;
         this.osbbList = [];
         this.houseList = [];
         this.apartmentList = [];
         this.newUser.status = this.options[0];
+        this.mail = new Mail();
     }
 
     ngOnInit() {
         this.listAllOsbb();
         this.ListAllRegion();
         this.IsRegistered = true;
+        this.avtoGeneratePassword();
     }
    
     onSubmitUser(status) {
@@ -107,6 +123,14 @@ export class RegistrationComponent implements OnInit {
     }
 
     onSubmitJoin() {
+        if(this.capchaUser == null || this.capchaUser == '' ) {
+            this._toasterService.pop('error',' Ви не заповнили капчу');
+            return;
+        }
+        if(this.capcha != this.capchaUser) {
+            this._toasterService.pop('error',' Ви погано заповнили капчу');
+            return;
+        }
         this.SenderJoin();
     }
 
@@ -115,6 +139,8 @@ export class RegistrationComponent implements OnInit {
         this.registerService.registerUser(this.newUser)
             .subscribe(
                 data => {
+                    this.sendEmailToUser();
+                    this.sendEmailToGolova();
                     isSuccessful = true;
                     this.newUser = data;
                     console.log(data);
@@ -187,21 +213,41 @@ export class RegistrationComponent implements OnInit {
         this.IsRegisteredOsbb = false;
         this.IsRegistered = true;
     }
+    
+    selectedGender(value: any) {
+    	console.log(value.text);
+        this.newUser.gender = value.text;
+        this.isSelectGender = true;
+    }
 
-
+    removedGender(value:any) {
+        this.isSelectGender = false;
+    }
+    
     selectedRegion(value: any) {
-        console.log(value.text);
+        if(this.cities.length!=0){
+            this.itemCity.text = '';
+            this.itemStreet.text = '';
+            this.cities = [];
+            this.streets = [];
+        }
+                this.itemRegion = value;
                 let region: Region = this.getRegionByName(value.text);
                 this.listAllCitiesByRegion(region.id);
+                this.isSelectedStreet = false;  
 
-    
     }
 
     selectedCity(value: any) {
         console.log(value.text);
+         if(this.streets.length!=0){
+            this.itemStreet.text = '';
+                this.streets = [];
+        }
+                this.itemCity = value;
                 let city: City = this.getCityByName(value.text);
                 this.listAllStreetsByCity(city.id);
-
+                this.isSelectedStreet = false;
     }
 
     selectedOsbb(value: any) {
@@ -209,10 +255,11 @@ export class RegistrationComponent implements OnInit {
         let selectedOsbb: Osbb = this.getOsbbByName(value.text);
         this.newUser.osbbId = selectedOsbb.osbbId;
         this.listAllHousesByOsbb(this.newUser.osbbId);
+        this.isSelectedStreet = false;
     }
 
     selectedStreet(value: any) {
-    	console.log(value.text);
+        this.itemStreet = value;
         let street: Street = this.getStreetByName(value.text);
         this.newUser.street = street.id;
         this.isSelectedStreet = true;
@@ -382,10 +429,12 @@ export class RegistrationComponent implements OnInit {
     }
 
     fillRegion(): string[] {
+        let stri:string;
         let tempArr: string[] = [];
         for (let reg of this.regionList) {
             tempArr.push(reg.name);
         }
+
         return tempArr;
     }
 
@@ -441,4 +490,56 @@ export class RegistrationComponent implements OnInit {
         }
         console.log('error msg' + error)
     }
+
+    sendEmailToUser() {
+        this.mail.to = this.newUser.email;
+        this.mail.text = 'Добрий день '+this.newUser.firstName+' '+this.newUser.lastName+
+        ' дякуємо за реєстрацію на сайті OSBB , ваш акаунт буде розлянуто головою ОСББ , після підтвердження головою ОСББ вам на пошту прийде підтвердження';
+        this.mail.subject = 'Регістрація';
+        this.mailService.sendEmail(this.mail)
+        .subscribe((data)=> {},         
+                (error)=> {
+                this.handleErrors(error)
+            });
+    }
+
+    sendEmailToGolova() {
+        this.mail.to = 'golovaosbb@gmail.com';
+        this.mail.text = 'Особа '+this.newUser.firstName+' '+this.newUser.lastName+
+        ' зареєструвався на вашому ОСББ ';
+        this.mail.subject = 'Регістрація';
+        this.mailService.sendEmail(this.mail)
+        .subscribe((data)=> {},         
+                (error)=> {
+                this.handleErrors(error)
+        });
+    }
+
+        avtoGeneratePassword(){
+        let password:string = '';
+        
+        let lenght = Math.floor(Math.random()*(6)+4);
+        let ind:number = 0;
+        while(ind < lenght) {
+            let rand:number = Math.floor(Math.random()*(3)+1);
+            if(rand%3 == 1) {
+                password += this.abc[Math.floor(Math.random()*this.abc.length)];
+            }
+            else if(rand%3 == 2) {
+                password += this.abc[Math.floor(Math.random()*this.abc.length)].toUpperCase();
+            }
+            else{
+                password += Math.floor(Math.random()*10).toString();
+            }
+            ind++;
+        }
+        console.log(password);
+        this.capcha = password;
+    }
+
+    initTextUser(text:any) {
+        this.capchaUser = text.target.value;
+        console.log(this.capchaUser);
+    }
+    
 }

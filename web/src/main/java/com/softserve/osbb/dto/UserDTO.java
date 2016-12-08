@@ -27,12 +27,13 @@ public class UserDTO {
     private String phoneNumber;
     private Integer osbbId;
     private String gender;
+    private String password;
     private ApartmentDTO apartment;
     private Street street;
 
     public UserDTO() {}
 
-    public UserDTO(Integer userId, String firstName, String lastName, String email, Integer osbbId,Apartment apartment,Street street) {
+    public UserDTO(Integer userId, String firstName, String lastName, String email, Integer osbbId,Apartment apartment,Street street,String gender,String password) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -40,6 +41,8 @@ public class UserDTO {
         this.osbbId=osbbId;
         this.apartment= ApartmentDTOMapper.mapApartmentEntityToDTO(apartment);
         this.street = street;
+        this.gender = gender;
+        this.password = password;
 
     }
 
@@ -52,6 +55,7 @@ public class UserDTO {
         this.phoneNumber = user.getPhoneNumber();
         this.gender = user.getGender();
         this.street = user.getStreet();
+        this.password = user.getPassword();
         if(user.getOsbb() != null) {
             this.osbbId = user.getOsbb().getOsbbId();
         }
@@ -138,9 +142,15 @@ public class UserDTO {
 		this.street = street;
 	}
 
+    public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    @Override
+	@Override
     public String toString() {
         return "UserDTO{" +
                 "userId=" + userId +

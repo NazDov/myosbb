@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import {UserRegistration} from "../../../shared/models/user_registration";
 import {OsbbRegistration} from "../../../shared/models/osbb_registration";
+import {Mail} from "../../../shared/models/mail";
 @Injectable()
 export class RegisterService {
 
@@ -17,10 +18,13 @@ export class RegisterService {
     public houseURL: string = ApiService.serverUrl + '/restful/house';
     public apartmentURL: string = ApiService.serverUrl + '/restful/apartment/';
     public addressURL: string = ApiService.serverUrl + '/restful/address/';
+    public mailURL: string = ApiService.serverUrl + '/restful/mail';
 
     constructor(private http: Http) {
 
     }
+
+
 
     registerOsbb(osbb: OsbbRegistration): Observable<any> {
         let headers = new Headers({'Content-Type': 'application/json'});

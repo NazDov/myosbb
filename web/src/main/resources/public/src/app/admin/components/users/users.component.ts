@@ -14,12 +14,15 @@ import { CapitalizeFirstLetterPipe } from "../../../../shared/pipes/capitalize-f
 import { Router } from '@angular/router';
 import { REACTIVE_FORM_DIRECTIVES, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { SELECT_DIRECTIVES } from "ng2-select";
+import { MailService } from "../../../../shared/services/mail.sender.service";
+import { Mail } from "../../../../shared/models/mail";
+
 
 
 @Component({ 
     selector: 'my-users',
     templateUrl: 'src/app/admin/components/users/users.table.html',
-    providers: [UsersService, RegisterService],
+    providers: [UsersService, RegisterService, MailService],
     styleUrls: ['src/app/admin/components/users/users.css'],
     pipes: [TranslatePipe, CapitalizeFirstLetterPipe],
     directives: [REACTIVE_FORM_DIRECTIVES, RegistrationComponent,  SELECT_DIRECTIVES]
@@ -30,6 +33,7 @@ export class UsersComponent implements OnInit {
     roles: Array<string> = [];
     userMy: UserRegistration = new UserRegistration();
     osbbMy: OsbbRegistration = new OsbbRegistration();
+    public mail:Mail;
     private isSelectedOsbb: boolean = false;
     private isSelectedHouse: boolean = false;
     private isSelectedApartment: boolean = false;
@@ -49,13 +53,15 @@ export class UsersComponent implements OnInit {
     ];    
 
     constructor(private _userService:UsersService, private router:Router, private formBuilder:FormBuilder,
-        private registerService: RegisterService) {
+        private registerService: RegisterService,
+        private mailService:MailService) {
         console.log('constructore');
         this.userMy.activated = true;
         this.IsRegistered = false;
         this.isJoinedOsbb = true;
         this.IsRegisteredOsbb = false;
         this.userList = [];
+        this.mail = new Mail();
     }
 
     ngOnInit():any {
@@ -76,7 +82,11 @@ export class UsersComponent implements OnInit {
 
     saveUser(form: NgForm ) {
         console.log(this.userMy);
-        this._userService.saveUser(this.userMy).subscribe((data)=>this.userList.push(data));
+        this._userService.saveUser(this.userMy)
+        .subscribe((data)=>{
+           this.sendEmailRandomPassword(data);
+           this.userList.push(data);
+        });
     }
 
     public changeActivation(user:User) {
@@ -88,6 +98,48 @@ export class UsersComponent implements OnInit {
                 console.log(error);
             }
         )
+    }
+
+    sendEmailActive(user:User) {
+        this.mail.to = user.email;
+        this.mail.text = 'Добрий день '+user.firstName+' '+user.lastName+
+        ' ваш акаунт був підтвердженний головою Осбб';
+        this.mail.subject = 'Активація';
+        this.mailService.sendEmail(this.mail)
+        .subscribe((data)=> {
+        });
+    }
+
+    sendEmailDeactive(user:User) {
+        this.mail.to = user.email;
+        this.mail.text = 'Добрий день '+user.firstName+' '+user.lastName+
+        ' ваш акаунт був деактивований головою Осбб';
+        this.mail.subject = 'Деактивація';
+        this.mailService.sendEmail(this.mail)
+        .subscribe((data)=> {
+        });
+    }
+
+    sendEmailRandomPassword(user:UserRegistration) {
+        console.log('User password '+user.password);
+        this.mail.to = user.email;
+        this.mail.text = 'Добрий день '+user.firstName+' '+user.lastName+
+        ' ваш акаунт зареєстрував голова Осбб , ваш логін  ' 
+        +user.email+ ' , ваш пароль до нашого сайту '+user.password+' будь-ласка не кажіть свій пароль нікому. Хорошого дня';
+        this.mail.subject = 'Реєстрація Головою Осбб';
+        this.mailService.sendEmail(this.mail)
+        .subscribe((data)=> {
+        });
+    }
+
+    sendEmailDelete(user:User) {
+        this.mail.to = user.email;
+        this.mail.text = 'Добрий день '+user.firstName+' '+user.lastName+
+        ' ваш акаунт був видаленний головою Осбб';
+        this.mail.subject = 'Видалення';
+        this.mailService.sendEmail(this.mail)
+        .subscribe((data)=> {
+        });
     }
 
     toUser(id:number){
@@ -250,5 +302,4 @@ export class UsersComponent implements OnInit {
         console.log(tempArr)
         return tempArr;
     }
-
 }

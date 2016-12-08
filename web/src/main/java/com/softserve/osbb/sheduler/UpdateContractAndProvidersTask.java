@@ -50,7 +50,8 @@ public class UpdateContractAndProvidersTask {
                 logger.info("contract #" +contract.getContractId() + " with " + contract.getProvider().getName() + " is over");
                 try {
                     if (contract.getProvider().getEmail() !=null) {
-                        sender.send(new Mail(contract.getProvider().getEmail(), "PRIVET", "Contract is over")); //tmp
+//                        sender.send(new Mail(contract.getProvider().getEmail(), "PRIVET", "Contract is over")); //tmp
+                    	sender.send(contract.getProvider().getEmail(), "PRIVET", "Contract is over"); //tmp
                         logger.info("successfully send message");
                     }
                 } catch (MessagingException e) {

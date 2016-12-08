@@ -1,6 +1,6 @@
 import assign = require("core-js/library/fn/object/assign");
-import {Apartment} from "./apartment.interface.ts";
-import {Street} from "./street.ts";
+import {Apartment} from "./apartment.interface";
+import {Street} from "./street";
 export class User {
     userId:number;
     firstName:string;

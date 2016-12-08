@@ -41,7 +41,7 @@
                 {
                   "column": {
                     "name": "gender",
-                    "type": "VARCHAR(6)"
+                    "type": "VARCHAR(8)"
                   }
                 },
                 {

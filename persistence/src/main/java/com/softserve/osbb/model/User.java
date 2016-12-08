@@ -156,7 +156,7 @@ public class User implements Serializable {
 
     @Basic
     @Column(name = "gender")
-    @Size(max = 6)
+    @Size(max = 8)
     public String getGender() {
         return gender;
     }

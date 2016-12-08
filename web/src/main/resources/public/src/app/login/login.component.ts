@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.loginService.sendCredentials(this.model).subscribe(
             data => {
+                console.log(data);
                 if (!this.loginService.checkLogin()) {
                     this.tokenParseInLocalStorage(data.json());
                     this.loginService.sendToken().subscribe(
