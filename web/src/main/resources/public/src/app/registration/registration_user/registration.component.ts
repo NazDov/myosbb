@@ -241,7 +241,7 @@ export class RegistrationComponent implements OnInit {
         console.log(value.text);
          if(this.streets.length!=0){
             this.itemStreet.text = '';
-                this.streets = [];
+            this.streets = [];
         }
                 this.itemCity = value;
                 let city: City = this.getCityByName(value.text);
@@ -278,7 +278,6 @@ export class RegistrationComponent implements OnInit {
     }
 
     ListAllRegion() {
-
         this.registerService.getAllRegion()
                 .subscribe((data)=> {
                 this.regionList= data;
@@ -301,7 +300,6 @@ export class RegistrationComponent implements OnInit {
     }
 
     listAllStreetsByCity(id: number) {
-
         this.registerService.getAllStreetssByCityId(id)
             .subscribe((data)=> {
                     this.streetList = data;

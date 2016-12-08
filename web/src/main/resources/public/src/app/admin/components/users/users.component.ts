@@ -48,8 +48,8 @@ export class UsersComponent implements OnInit {
     private houses: Array<string> = [];
     private apartment: Array<string> = [];
     genders = [
-        'male',
-        'female'
+        'Чоловік',
+        'Жінка'
     ];    
 
     constructor(private _userService:UsersService, private router:Router, private formBuilder:FormBuilder,

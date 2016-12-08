@@ -56,10 +56,10 @@ public class RegistrationServiceImpl implements RegistrationService {
         
         for(int ind = 0; ind < lenght ; ind++) {
   
-            if(randThreshold % DIVIDER == MIN_THRESHOLD) {
+            if(randThreshold % DIVIDER == INDEX_OF_LOWERCASE_LATTER) {
                 password += alphabet[random.nextInt(alphabet.length)];
             }
-            else if(randThreshold % DIVIDER == MAX_THRESHOLD) {
+            else if(randThreshold % DIVIDER == INDEX_OF_UPPERCASE_LATTER) {
                 password += alphabet[random.nextInt(alphabet.length)].toUpperCase();
             }
             else{

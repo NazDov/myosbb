@@ -295,9 +295,5 @@
   "choose your region": "Choose your region",
   "choose your city": "Choose your city",
   "choose your street": "Choose your street",
-  "choose your gender": "Gender",
-   "registration_active":"Activation is success",
-  "return_to_sign_in": "Return to sign in",
-  "registration_active_text": "Your account has been actived"
-
+  "choose your gender": "Gender"
 }

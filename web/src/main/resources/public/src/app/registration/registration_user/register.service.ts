@@ -24,8 +24,6 @@ export class RegisterService {
 
     }
 
-
-
     registerOsbb(osbb: OsbbRegistration): Observable<any> {
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
