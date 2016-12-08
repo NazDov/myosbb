@@ -293,4 +293,7 @@
   "folder_name": "Назва папки",
   "select_all": "Виділити все",
   "rename": "Переіменувати"
+  "choose your region": "Виберіть Область",
+  "choose your city": "Виберіть Місто",
+  "choose your street": "Виберіть Вулицю"
 }

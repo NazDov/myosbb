@@ -1,8 +1,11 @@
 package com.softserve.osbb.model;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * Created by Yuri Pushchalo on 16.11.2016.
@@ -15,6 +18,8 @@ public class Street implements Serializable {
     private Integer id;
     private String name;
     private City city;
+    private Collection<User> user;
+
 
     public Street(){}
 
@@ -44,7 +49,17 @@ public class Street implements Serializable {
         this.name = name;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy="street")
+    @JsonIgnore
+    public Collection<User> getUser() {
+		return user;
+	}
+
+	public void setUser(Collection<User> user) {
+		this.user = user;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     public City getCity() {
         return city;
     }

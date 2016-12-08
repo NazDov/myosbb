@@ -8,6 +8,7 @@ package com.softserve.osbb.dto;
 
 import com.softserve.osbb.dto.mappers.ApartmentDTOMapper;
 import com.softserve.osbb.model.Apartment;
+import com.softserve.osbb.model.Street;
 import com.softserve.osbb.model.User;
 
 import java.util.Date;
@@ -27,16 +28,18 @@ public class UserDTO {
     private Integer osbbId;
     private String gender;
     private ApartmentDTO apartment;
+    private Street street;
 
     public UserDTO() {}
 
-    public UserDTO(Integer userId, String firstName, String lastName, String email, Integer osbbId,Apartment apartment) {
+    public UserDTO(Integer userId, String firstName, String lastName, String email, Integer osbbId,Apartment apartment,Street street) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.osbbId=osbbId;
         this.apartment= ApartmentDTOMapper.mapApartmentEntityToDTO(apartment);
+        this.street = street;
 
     }
 
@@ -48,6 +51,7 @@ public class UserDTO {
         this.email = user.getEmail();
         this.phoneNumber = user.getPhoneNumber();
         this.gender = user.getGender();
+        this.street = user.getStreet();
         if(user.getOsbb() != null) {
             this.osbbId = user.getOsbb().getOsbbId();
         }
@@ -121,10 +125,20 @@ public class UserDTO {
     public ApartmentDTO getApartment() {
         return apartment;
     }
-
-    public void setApartment(ApartmentDTO apartment) {
+    
+	public void setApartment(ApartmentDTO apartment) {
         this.apartment = apartment;
     }
+
+    public Street getStreet() {
+		return street;
+	}
+
+	public void setStreet(Street street) {
+		this.street = street;
+	}
+
+
 
     @Override
     public String toString() {
