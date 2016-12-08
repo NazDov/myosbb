@@ -79,11 +79,10 @@ export class RegistrationComponent implements OnInit {
     private IsRegisteredOsbb: boolean;
     private isJoinedOsbb: boolean;
     public address: Object;
-    public abc:string[] = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    public alphabet:string[] = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     public capcha:string;
     public capchaUser:string;
-    public map:map<string,string> = new HashMap<>();
-    
+
     constructor(private registerService: RegisterService,
                 private _router: Router,
                 private _toasterService: ToasterService,
@@ -516,20 +515,28 @@ export class RegistrationComponent implements OnInit {
     }
 
         avtoGeneratePassword(){
-        let password:string = '';
-        
-        let lenght = Math.floor(Math.random()*(6)+4);
+        let minLenght:number = 4;
+        let maxLenght:number = 5;
+        let maxThreshold:number = 3;
+        let minThreshold:number = 1;
+        let indexOFLowercaseLatter:number = 1;
+        let indexOFUppercaseLatter:number = 2;
+        let divider:number = 3;
+        let randomArea:number = 10;
+        let password:string = '';       
+        let lenght = Math.floor(Math.random() * (maxLenght) + minLenght);
         let ind:number = 0;
+
         while(ind < lenght) {
-            let rand:number = Math.floor(Math.random()*(3)+1);
-            if(rand%3 == 1) {
-                password += this.abc[Math.floor(Math.random()*this.abc.length)];
+            let rand:number = Math.floor(Math.random() * (maxThreshold) + minThreshold);
+            if(rand % divider == indexOFLowercaseLatter) {
+                password += this.alphabet[Math.floor(Math.random()*this.alphabet.length)];
             }
-            else if(rand%3 == 2) {
-                password += this.abc[Math.floor(Math.random()*this.abc.length)].toUpperCase();
+            else if(rand % divider == indexOFUppercaseLatter) {
+                password += this.alphabet[Math.floor(Math.random()*this.alphabet.length)].toUpperCase();
             }
             else{
-                password += Math.floor(Math.random()*10).toString();
+                password += Math.floor(Math.random() * randomArea).toString();
             }
             ind++;
         }

@@ -6,6 +6,7 @@ import com.softserve.osbb.model.Settings;
 import com.softserve.osbb.model.User;
 import com.softserve.osbb.service.*;
 
+import java.util.Objects;
 import java.util.Random;
 
 import org.slf4j.Logger;
@@ -21,32 +22,51 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
-	public static String[] abc = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+	private  String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+	private Random  random = new Random();
+	private String password;
+	private static final int MIN_LENGHT = 4;
+	private static final int MAX_LENGHT = 13;
+	private static final int MAX_THRESHOLD = 3;
+	private static final int MIN_THRESHOLD = 1;
+	private static final int INDEX_OF_LOWERCASE_LATTER = 1;
+	private static final int INDEX_OF_UPPERCASE_LATTER = 2;
+	private static final int DIVIDER = 3;
+	private static final int RANDOM_AREA = 10;
 	
-	private String password = "";
+	
+	private int generatePasswordLenght() {
+		return random.nextInt(MAX_LENGHT) + MIN_LENGHT;
+	}
+	
+	private int generateRandomThreshold() {
+		return random.nextInt(MAX_THRESHOLD) + MIN_THRESHOLD;
+	}
+	
+	private void checkUserPassword(User user) {
+		if(Objects.isNull(user.getPassword())) {
+        	user.setPassword(generatePassword());
+        }
+	}
 	
 	public  String generatePassword() {
-		Random  random = new Random();
-		String randomPassword = "";
+		password = "";
+        int lenght = generatePasswordLenght();
+        int randThreshold = generateRandomThreshold();
         
-        int lenght = random.nextInt(13)+4;
-        System.out.println(lenght);
-       
         for(int ind = 0; ind < lenght ; ind++) {
-        	int randNum = random.nextInt(3)+1;
   
-            if(randNum%3 == 1) {
-                randomPassword += abc[random.nextInt(abc.length)];
+            if(randThreshold % DIVIDER == MIN_THRESHOLD) {
+                password += alphabet[random.nextInt(alphabet.length)];
             }
-            else if(randNum%3 == 2) {
-                randomPassword += abc[random.nextInt(abc.length)].toUpperCase();
+            else if(randThreshold % DIVIDER == MAX_THRESHOLD) {
+                password += alphabet[random.nextInt(alphabet.length)].toUpperCase();
             }
             else{
-                randomPassword += random.nextInt(10);
+                password += random.nextInt(RANDOM_AREA);
             }
         }
-        password = randomPassword;
-        return randomPassword;
+        return password;
     }
 		
 
@@ -66,10 +86,7 @@ public class RegistrationServiceImpl implements RegistrationService {
     @Override
     public User registrate(User user) {
         logger.info("registrating new user " + user);
-        System.out.println("user out "+user);
-        if(user.getPassword() == null) {
-        	user.setPassword(generatePassword());
-        }
+        checkUserPassword(user);
         User registeredUser = userService.save(user);
         settingsService.save(new Settings(registeredUser));
         return registeredUser;
