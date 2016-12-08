@@ -300,7 +300,6 @@ public class User implements Serializable {
 		return street;
 	}
 
-
 	public void setStreet(Street street) {
 		this.street = street;
 	}

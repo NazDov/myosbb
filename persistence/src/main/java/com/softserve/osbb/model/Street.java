@@ -18,8 +18,7 @@ public class Street implements Serializable {
     private Integer id;
     private String name;
     private City city;
-    private Collection<User> user;
-
+    private Collection<User> users;
 
     public Street(){}
 
@@ -51,12 +50,12 @@ public class Street implements Serializable {
 
     @OneToMany(mappedBy="street")
     @JsonIgnore
-    public Collection<User> getUser() {
-		return user;
+    public Collection<User> getUsers() {
+		return users;
 	}
 
-	public void setUser(Collection<User> user) {
-		this.user = user;
+	public void setUsers(Collection<User> users) {
+		this.users = users;
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)

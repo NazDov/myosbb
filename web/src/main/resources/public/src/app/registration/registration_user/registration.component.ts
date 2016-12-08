@@ -219,21 +219,17 @@ export class RegistrationComponent implements OnInit {
 
     }
 
-
     selectedHouse(value: any) {
         this.isSelectedHouse = true;
         let houseId = this.getHouseIdByName(value.text);
         this.listAllApartmentsByHouse(houseId);
     }
 
-
     selectedApartment(value: any) {
         this.isSelectedApartment = true;
         let selectedApartmentID: number = this.getApartmentByApartmentNumber(value.text);
         this.newUser.apartmentId = selectedApartmentID;
     }
-
-
 
     ListAllRegion() {
 
@@ -308,8 +304,6 @@ export class RegistrationComponent implements OnInit {
             });
     }
 
-
-
     getOsbbByName(name: string): Osbb {
         let selectedOsbb: Osbb = new Osbb();
         for (let osbb of this.osbbList) {
@@ -331,7 +325,6 @@ export class RegistrationComponent implements OnInit {
         }
         return region;
     }
-
 
       getCityByName(name: string): City {
         let city: City = new City();
@@ -355,7 +348,6 @@ export class RegistrationComponent implements OnInit {
         return street;
     }
     
-
     getHouseIdByName(name: string): number {
         let houseId = 0;
         for (let house of this.houseList) {

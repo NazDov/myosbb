@@ -57,8 +57,7 @@ export class RegisterService {
             .catch((error)=>Observable.throw(error));
 
     }
-
-    
+   
     getAllRegion(): Observable<any> {
         return this.http.get(this.addressURL+'/region')
             .map((response)=> response.json())

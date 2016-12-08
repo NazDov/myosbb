@@ -112,7 +112,7 @@
             <div class="registration-form  center-block" *ngIf="IsRegisteredOsbb">
                 <form class="ui form" (ngSubmit)="onSubmitOsbb()" #registerOsbbForm="ngForm">
                     <div class="form-header">
-                        <h3>Р РµС”СЃС‚СЂР°С†С–СЏ РћРЎР‘Р‘ </h3>
+                        <h3>Реєстрація ОСББ</h3>
                     </div>
                     <div class="form-container">
                             <div class="row">
@@ -121,9 +121,6 @@
                                     <label>Назва</label>
                                     <input class="form-control placeholder-no-fix" name="name"
                                            [(ngModel)]="newOsbb.name" type="text" required>
-
-                                    <input class="form-control placeholder-no-fix" name="name" [(ngModel)]="newOsbb.name" type="text" required>
-
                                 </div>
                             </div>
                             <div class="row">
@@ -139,10 +136,13 @@
                                     <input class="form-control placeholder-no-fix" name="address"
                                            [(ngModel)]="newOsbb.address" type="text" (setAddress)="getAddress($event)"
                                            googleplace required>
+
+
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
+
 
                                     <label>Район</label>
                                     <input class="form-control placeholder-no-fix" name="district"
@@ -155,7 +155,7 @@
                                     <label>Посилання на фото дому</label>
                                     <input class="form-control placeholder-no-fix" name="logoUrl"
                                            [(ngModel)]="newOsbb.logoUrl" type="text">
-
+                             
                                     <div class="text-xs-center">
                                         <br>
                                         <img src="{{newOsbb.logoUrl}}" class="img-rounded" style="height: auto; max-height: 300px; max-width: 300px;display: block;
@@ -170,7 +170,7 @@
                     <div class="row form-footer">
                         <br>
                         <div class="col-xs-6">
-                            <a class="btn btn-danger col-xs-12" (click)="Back()">РќР°Р·Р°Рґ</a>
+                            <a class="btn btn-danger col-xs-12" (click)="Back()">Назад</a>
                         </div>
                         <div class="col-xs-6">
                             <button class="btn btn-primary col-xs-12" type='submit'

@@ -26,7 +26,7 @@ public class Region implements Serializable {
     private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
-	private Collection<City> citie;
+	private Collection<City> cities;
 
 	public Region() {
 	}
@@ -58,12 +58,12 @@ public class Region implements Serializable {
 
 	@OneToMany(mappedBy="region")
 	@JsonIgnore
-	public Collection<City> getCitie() {
-		return citie;
+	public Collection<City> getCities() {
+		return cities;
 	}
 
-	public void setCitie(Collection<City> citie) {
-		this.citie = citie;
+	public void setCities(Collection<City> cities) {
+		this.cities = cities;
 	}
 	
 	
