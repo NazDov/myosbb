@@ -216,12 +216,20 @@
                             </ng-select>
                         </div>
 
-                        <div class="modal-body">
+                        <div class="modal-body" >
 
                             <p class="noselect" ><strong>{{capcha}}</strong></p>
 
                             <input class="capcha" type="text" placeholder="Капча" #text (keyup)="initTextUser($event)">
                             <a class="refresh" (click)="avtoGeneratePassword()"> <img alt="kapcha" src="assets/img/dim.jpg" width="35" height="35"></a>
+
+                                   <div class="col-xs-12 centered">
+                                    <label style="color: red" *ngIf='isEmpty' class="error" disabled=true>{{'passLengthError'|
+                                        translate | capitalize}}</label>
+                                    <label style="color: red" *ngIf='isCapNotEquals'
+                                           class="error" disabled=true>{{'passMatchError'| translate |
+                                        capitalize}}</label>
+                                </div>
 
                         </div>
                         <br>

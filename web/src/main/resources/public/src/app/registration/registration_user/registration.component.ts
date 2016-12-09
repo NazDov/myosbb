@@ -82,6 +82,7 @@ export class RegistrationComponent implements OnInit {
     public alphabet:string[] = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
     public capcha:string;
     public capchaUser:string;
+    public isEmpty:boolean = false;
 
     constructor(private registerService: RegisterService,
                 private _router: Router,
