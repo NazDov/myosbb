@@ -52,9 +52,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 	public  String generatePassword() {
 		password = "";
         int lenght = generatePasswordLenght();
-        int randThreshold = generateRandomThreshold();
         
         for(int ind = 0; ind < lenght ; ind++) {
+        	int randThreshold = generateRandomThreshold();
   
             if(randThreshold % DIVIDER == INDEX_OF_LOWERCASE_LATTER) {
                 password += alphabet[random.nextInt(alphabet.length)];
