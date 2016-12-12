@@ -46,26 +46,6 @@ export class RegisterService {
             .catch((error)=>Observable.throw(error));
     }
     
-    getAllCitiesByRegionId(id: number): Observable<any> {
-        return this.http.get(this.addressURL+'/city/'+id)
-            .map((response)=> response.json())
-            .catch((error)=>Observable.throw(error));
-
-    }
-
-     getAllStreetssByCityId(id: number): Observable<any> {
-        return this.http.get(this.addressURL+'/street/'+id)
-            .map((response)=> response.json())
-            .catch((error)=>Observable.throw(error));
-
-    }
-   
-    getAllRegion(): Observable<any> {
-        return this.http.get(this.addressURL+'/region')
-            .map((response)=> response.json())
-            .catch((error)=>Observable.throw(error));
-    }
-
     getAllHouses(): Observable<any> {
         return this.http.get(this.houseAllURL)
             .map((response)=> response.json())

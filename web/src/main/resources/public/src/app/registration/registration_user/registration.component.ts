@@ -15,6 +15,7 @@ import {City} from "../../../shared/models/City";
 import {SelectItem} from "../../../shared/models/ng2-select-item.interface";
 import {Region} from "../../../shared/models/Region";
 import {Mail} from "../../../shared/models/mail";
+import {AddressService} from "../../../shared/services/address.service"
 import {ToasterContainerComponent, ToasterService, ToasterConfig} from "angular2-toaster/angular2-toaster";
 import {
     onErrorServerNoResponseToastMsg,
@@ -30,7 +31,7 @@ import { MailService } from "../../../shared/services/mail.sender.service";
     selector: 'app-register',
     templateUrl: 'src/app/registration/registration_user/registration.html',
     styleUrls: ['assets/css/registration/registration.css'],
-    providers: [RegisterService, ToasterService, MailService],
+    providers: [RegisterService, ToasterService, MailService, AddressService],
     pipes: [TranslatePipe, CapitalizeFirstLetterPipe],
     directives: [ROUTER_DIRECTIVES, MaskedInput, GoogleplaceDirective, SELECT_DIRECTIVES,
         ToasterContainerComponent]
@@ -87,7 +88,8 @@ export class RegistrationComponent implements OnInit {
     constructor(private registerService: RegisterService,
                 private _router: Router,
                 private _toasterService: ToasterService,
-                private mailService:MailService) {
+                private mailService:MailService,
+                private addressServise:AddressService) {
         this.newUser.password = "";
         this.newUser.activated = false;
         this.newOsbb.creationDate = new Date;
@@ -279,7 +281,7 @@ export class RegistrationComponent implements OnInit {
     }
 
     ListAllRegion() {
-        this.registerService.getAllRegion()
+        this.addressServise.getAllRegions()
                 .subscribe((data)=> {
                 this.regionList= data;
                 
@@ -301,7 +303,7 @@ export class RegistrationComponent implements OnInit {
     }
 
     listAllStreetsByCity(id: number) {
-        this.registerService.getAllStreetssByCityId(id)
+        this.addressServise.getAllStreetsOfCity(id)
             .subscribe((data)=> {
                     this.streetList = data;
                     this.streets = this.fillStreet();
@@ -314,7 +316,7 @@ export class RegistrationComponent implements OnInit {
     }
 
     listAllCitiesByRegion(id: number) {
-        this.registerService.getAllCitiesByRegionId(id)
+        this.addressServise.getAllCitiesOfRegion(id)
             .subscribe((data)=> {
                     this.cityList = data;
                     this.cities = this.fillCities();
