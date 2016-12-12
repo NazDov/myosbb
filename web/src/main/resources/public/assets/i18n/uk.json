@@ -3,7 +3,7 @@
   "apartments": "квартири",
   "HELLO": "privet",
   "ourYard": "НАШ ДВІР",
-  "providers": "провайдери",
+  "providers": "надавачі послуг",
   "company": "компанія",
   "type": "тип",
   "price": "ціна",
@@ -137,7 +137,7 @@
   "select_house": "вибрати будинок",
   "select_apartment": "вибрати квартиру",
   "select_provider": "вибрати послугу",
-  "err_numeric": "ведіть числове значення",
+  "err_numeric": "введіть числове значення",
   "statistics": "Статистика",
   "number": "Номер",
   "square": "Площа",
@@ -234,7 +234,7 @@
   "discussed":"На обговоренні",
   "since":"Від",
   "not":"Ні",
-	"electricity" : "електрика",
+  "electricity" : "електрика",
   "gas": "газ",
   "water" : "вода",
   "rate" : "Нараховано",
@@ -281,6 +281,8 @@
   "passMatchError": "Паролі не співпадають. Спробуйте ще раз",
   "passLengthError": "Пароль не може бути коротшим за 4 та довшим за 16 символів",
   "errorBirthDateMsg": "Дата народження вказана невірно",
+  "errorDateMsg": "Неправильна дата",
+  "choosedate":"змінити дату",
   "region": "Область",
   "city": "Місто",
   "street": "Вулиця",
@@ -297,4 +299,6 @@
   "choose your city": "Виберіть Місто",
   "choose your street": "Виберіть Вулицю",
   "choose your gender": "Стать"
+  "add_subBill": "Додати підпослугу",
+  "upload_logo": "завантажити"
 }
