@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface RegistrationService {
 
-	public String getPassword();
+	StringBuilder getPassword();
 
-	void setPassword(String password);
+	void setPassword(StringBuilder password);
 
     User registrate(User user);
 

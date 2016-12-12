@@ -513,21 +513,21 @@ export class RegistrationComponent implements OnInit {
         });
     }
 
-        avtoGeneratePassword(){
-        let minLenght:number = 4;
-        let maxLenght:number = 5;
-        let maxThreshold:number = 3;
-        let minThreshold:number = 1;
-        let indexOFLowercaseLatter:number = 1;
-        let indexOFUppercaseLatter:number = 2;
-        let divider:number = 3;
-        let randomArea:number = 10;
+    avtoGeneratePassword(){
+        const minLenght:number = 4;
+        const maxLenght:number = 5;
+        const maxThreshold:number = 3;
+        const minThreshold:number = 1;
+        const indexOFLowercaseLatter:number = 1;
+        const indexOFUppercaseLatter:number = 2;
+        const divider:number = 3;
+        const randomArea:number = 10;
         let password:string = '';       
-        let lenght = Math.floor(Math.random() * (maxLenght) + minLenght);
+        const lenght = Math.floor(Math.random() * (maxLenght) + minLenght);
         let ind:number = 0;
 
         while(ind < lenght) {
-            let rand:number = Math.floor(Math.random() * (maxThreshold) + minThreshold);
+            const rand:number = Math.floor(Math.random() * (maxThreshold) + minThreshold);
             if(rand % divider == indexOFLowercaseLatter) {
                 password += this.alphabet[Math.floor(Math.random()*this.alphabet.length)];
             }

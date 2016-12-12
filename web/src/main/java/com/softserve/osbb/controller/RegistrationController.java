@@ -64,7 +64,7 @@ public class RegistrationController {
         
         User registeredUser = registrationService.registrate(
                 userRegistrationDTOMapper.mapDTOToEntity(userRegistrationDTO));
-        registeredUser.setPassword(registrationService.getPassword());
+        registeredUser.setPassword(registrationService.getPassword().toString());
         
         return new ResponseEntity<>(UserDTOMapper.mapUserEntityToDTO(registeredUser), HttpStatus.OK);
     }

@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class RegistrationServiceImpl implements RegistrationService {
 	private  String[] alphabet = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
 	private Random  random = new Random();
-	private String password;
+	private StringBuilder password;
 	private static final int MIN_LENGHT = 4;
 	private static final int MAX_LENGHT = 13;
 	private static final int MAX_THRESHOLD = 3;
@@ -50,23 +50,24 @@ public class RegistrationServiceImpl implements RegistrationService {
 	}
 	
 	public  String generatePassword() {
-		password = "";
+		password = new StringBuilder();
+		password.append("");
         int lenght = generatePasswordLenght();
         
         for(int ind = 0; ind < lenght ; ind++) {
         	int randThreshold = generateRandomThreshold();
   
             if(randThreshold % DIVIDER == INDEX_OF_LOWERCASE_LATTER) {
-                password += alphabet[random.nextInt(alphabet.length)];
+                password.append(alphabet[random.nextInt(alphabet.length)]);
             }
             else if(randThreshold % DIVIDER == INDEX_OF_UPPERCASE_LATTER) {
-                password += alphabet[random.nextInt(alphabet.length)].toUpperCase();
+                password.append(alphabet[random.nextInt(alphabet.length)].toUpperCase());
             }
             else{
-                password += random.nextInt(RANDOM_AREA);
+                password.append(random.nextInt(RANDOM_AREA));
             }
         }
-        return password;
+        return password.toString();
     }
 		
 
@@ -112,12 +113,12 @@ public class RegistrationServiceImpl implements RegistrationService {
     }
 
     @Override
-	public String getPassword() {
+	public StringBuilder getPassword() {
 		return password;
 	}
 
     @Override
-	public void setPassword(String password) {
+	public void setPassword(StringBuilder password) {
 		this.password = password;
 	}
     
