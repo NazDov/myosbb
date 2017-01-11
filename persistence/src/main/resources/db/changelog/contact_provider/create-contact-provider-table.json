@@ -1,0 +1,94 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1480002069203-4",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true
+                    },
+                    "name": "id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "provider_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "contact_category",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "first_name",
+                    "type": "VARCHAR(50)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "middle_name",
+                    "type": "VARCHAR(50)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "last_name",
+                    "type": "VARCHAR(50)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "phone",
+                    "type": "VARCHAR(50)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "phone2",
+                    "type": "VARCHAR(50)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "user_id",
+                    "type": "INT"
+                  }
+                }]
+            ,
+              "tableName": "contact_provider"
+            }
+          }]
+
+      }
+    }
+
+  ]
+}

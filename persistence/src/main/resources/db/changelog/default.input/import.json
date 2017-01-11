@@ -18,6 +18,89 @@
           }
         ]
       }
+    },
+    {
+      "changeSet": {
+        "id": "2016/01/11-01",
+        "author": "aska",
+        "changes": [
+          {
+            "loadData": {
+              "columns": [
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "STRING"
+                  }
+                }
+              ]
+            ,
+              "encoding": "UTF-8",
+              "file": "classpath:/db/changelog/default.input/regions.csv",
+              "tableName": "regions"
+            }
+          }]
+
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2016/01/11-02",
+        "author": "aska",
+        "changes": [
+          {
+            "loadData": {
+              "columns": [
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "STRING"
+                  }
+                },{
+                  "column": {
+                    "name": "region",
+                    "type": "STRING"
+                  }
+                }
+              ]
+            ,
+              "encoding": "UTF-8",
+              "file": "classpath:/db/changelog/default.input/cities.csv",
+              "tableName": "cities"
+            }
+          }]
+
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2016/01/11-03",
+        "author": "aska",
+        "changes": [
+          {
+            "loadData": {
+              "columns": [
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "STRING"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "city",
+                    "type": "NUMERIC"
+                  }
+                }
+              ]
+            ,
+              "encoding": "UTF-8",
+              "file": "classpath:/db/changelog/default.input/streets.csv",
+              "tableName": "streets"
+            }
+          }]
+
+      }
     }
   ]
 }

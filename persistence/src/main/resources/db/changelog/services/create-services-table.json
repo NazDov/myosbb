@@ -1,0 +1,88 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1480002069203-7",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true
+                    },
+                    "name": "service_id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": true
+                    },
+                    "name": "provider_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "name",
+                    "type": "VARCHAR(50)"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": true
+                    },
+                    "name": "tariff",
+                    "type": "DOUBLE"
+                  }
+                },
+                {
+                  "column": {
+                    "defaultValue": "грн/м²",
+                    "name": "units_of_measurement",
+                    "type": "VARCHAR(50)"
+                  }
+                }]
+            ,
+              "tableName": "services"
+            }
+          },
+
+          {
+            "changeSet": {
+              "id": "1480002069203-26",
+              "author": "afedorak (generated)",
+              "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+              "changes": [
+                {
+                  "addForeignKeyConstraint": {
+                    "baseColumnNames": "service_id",
+                    "baseTableName": "sub_services",
+                    "constraintName": "FK1_services",
+                    "deferrable": true,
+                    "initiallyDeferred": false,
+                    "onDelete": "RESTRICT",
+                    "onUpdate": "RESTRICT",
+                    "referencedColumnNames": "service_id",
+                    "referencedTableName": "services"
+                  }
+                }]
+
+            }
+          }
+        ]
+
+      }
+    }
+  ]
+}

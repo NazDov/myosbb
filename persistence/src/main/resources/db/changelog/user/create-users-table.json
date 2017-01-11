@@ -404,6 +404,46 @@
           }
         ]
       }
+    },
+    {
+      "changeSet": {
+        "id": "1480002069203-30",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "user_id",
+              "baseTableName": "contact_osbb",
+              "constraintName": "FK2_contact_osbb_user",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT",
+              "referencedColumnNames": "user_id",
+              "referencedTableName": "users"
+            }
+          }]
+
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1480002069203-33",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "user_id",
+              "baseTableName": "contact_provider",
+              "constraintName": "FK2_user",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT",
+              "referencedColumnNames": "user_id",
+              "referencedTableName": "users"
+            }
+          }]
+
+      }
     }
 
   ]

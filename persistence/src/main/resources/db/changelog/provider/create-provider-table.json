@@ -274,6 +274,47 @@
           }
         ]
       }
+    },
+    {
+      "changeSet": {
+        "id": "2016/01/11-1",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "provider_id",
+              "baseTableName": "contact_provider",
+              "constraintName": "FK1_provider",
+              "onDelete": "NO ACTION",
+              "onUpdate": "NO ACTION",
+              "referencedColumnNames": "provider_id",
+              "referencedTableName": "provider"
+            }
+          }]
+
+      }
+    },
+
+    {
+      "changeSet": {
+        "id": "2016/01/11-02",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "provider_id",
+              "baseTableName": "services",
+              "constraintName": "FK1_provider_service",
+              "onDelete": "NO ACTION",
+              "onUpdate": "NO ACTION",
+              "referencedColumnNames": "provider_id",
+              "referencedTableName": "provider"
+            }
+          }]
+
+      }
     }
   ]
 }

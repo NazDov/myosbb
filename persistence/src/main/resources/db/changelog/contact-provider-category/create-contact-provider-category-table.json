@@ -1,0 +1,59 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "1480002069203-3",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true
+                    },
+                    "name": "id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "name",
+                    "type": "VARCHAR(50)"
+                  }
+                }]
+            ,
+              "tableName": "contact_provider_category"
+            }
+          }]
+
+      }
+    },
+    {
+      "changeSet": {
+        "id": "1480002069203-34",
+        "author": "afedorak (generated)",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "contact_category",
+              "baseTableName": "contact_provider",
+              "constraintName": "FK3_contact_category",
+              "onDelete": "RESTRICT",
+              "onUpdate": "RESTRICT",
+              "referencedColumnNames": "id",
+              "referencedTableName": "contact_provider_category"
+            }
+          }]
+
+      }
+    }
+  ]
+}

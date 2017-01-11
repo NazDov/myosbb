@@ -60,9 +60,45 @@
         "path": "classpath:/db/changelog/district/"
       }
     },
+
+    {
+      "includeAll": {
+        "path": "classpath:/db/changelog/contact_osbb/"
+      }
+    },
+    {
+      "includeAll": {
+        "path": "classpath:/db/changelog/contact_osbb_category/"
+      }
+    },
+
+
     {
       "includeAll": {
         "path": "classpath:/db/changelog/osbb/"
+      }
+    },
+
+    {
+      "includeAll": {
+        "path": "classpath:/db/changelog/sub_services/"
+      }
+    },
+
+    {
+      "includeAll": {
+        "path": "classpath:/db/changelog/services/"
+      }
+    },
+    {
+      "includeAll": {
+        "path": "classpath:/db/changelog/contact_provider/"
+      }
+    },
+
+    {
+      "includeAll": {
+        "path": "classpath:/db/changelog/contact-provider-category/"
       }
     },
     {
@@ -118,6 +154,11 @@
     {
       "includeAll": {
         "path": "classpath:/db/changelog/default.input/"
+      }
+    },
+    {
+      "includeAll": {
+        "path": "classpath:/db/changelog/native_sql/"
       }
     }
   ]
