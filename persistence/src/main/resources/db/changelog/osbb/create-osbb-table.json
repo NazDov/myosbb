@@ -76,6 +76,30 @@
                     "name": "logo_id",
                     "type": "INT"
                   }
+                },
+                {
+                  "column": {
+                    "name": "bank_id",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "bank_number",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "mfo",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "edrpo",
+                    "type": "VARCHAR(255)"
+                  }
                 }
               ],
               "tableName": "osbb"

@@ -253,3 +253,23 @@ INSERT into event(title, author, start_time, end_time, description, repeats, osb
 '1 липня 2015 р. набрав чинності Закон України «Про особливості здійснення права власності в багатоквартирному будинку».','ONE_TIME',4);
 
 --rollback
+
+
+INSERT INTO contact_osbb_category (name, management) VALUE ('Голова ОСББ', FALSE );
+INSERT INTO contact_osbb_category (name, management) VALUE ('Голова правління', TRUE );
+INSERT INTO contact_osbb_category (name, management) VALUE ('Член правління', TRUE );
+INSERT INTO contact_osbb_category (name, management) VALUE ('Бухгалтер', FALSE );
+INSERT INTO contact_osbb_category (name, management) VALUE ('Диспетчер', FALSE );
+INSERT INTO contact_osbb_category (name, management) VALUE ('Дільничий лікар', FALSE );
+--
+INSERT INTO contact_provider_category (name) VALUE ('Начальник');
+INSERT INTO contact_provider_category (name) VALUE ('Директор');
+INSERT INTO contact_provider_category (name) VALUE ('Зам. директор');
+INSERT INTO contact_provider_category (name) VALUE ('Бухгалтер');
+--
+INSERT INTO services (name) VALUE ('Утримання будинку');
+
+INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Вивезення твердих побутових відходів', 1, 0.23);
+INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Консьєржі', 1, 0.23);
+INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Освітлення місць загального користування', 2, 0.5);
+INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Охорона', 2, 0.5);

@@ -6,7 +6,7 @@
         "author": "serg",
         "changes": [
           {
-              "sqlFile": {
+            "sqlFile": {
               "dbms": "PostgreSQL, MySQL",
               "encoding": "utf8",
               "endDelimiter": ";",
@@ -33,14 +33,13 @@
                     "type": "STRING"
                   }
                 }
-              ]
-            ,
+              ],
               "encoding": "UTF-8",
               "file": "classpath:/db/changelog/default.input/regions.csv",
               "tableName": "regions"
             }
-          }]
-
+          }
+        ]
       }
     },
     {
@@ -56,20 +55,20 @@
                     "name": "name",
                     "type": "STRING"
                   }
-                },{
+                },
+                {
                   "column": {
                     "name": "region",
                     "type": "STRING"
                   }
                 }
-              ]
-            ,
+              ],
               "encoding": "UTF-8",
               "file": "classpath:/db/changelog/default.input/cities.csv",
               "tableName": "cities"
             }
-          }]
-
+          }
+        ]
       }
     },
     {
@@ -92,14 +91,43 @@
                     "type": "NUMERIC"
                   }
                 }
-              ]
-            ,
+              ],
               "encoding": "UTF-8",
               "file": "classpath:/db/changelog/default.input/streets.csv",
               "tableName": "streets"
             }
-          }]
+          }
+        ]
+      }
 
+    },
+    {
+      "changeSet": {
+        "id": "2016/01/11-04",
+        "author": "aska",
+        "changes": [
+          {
+            "loadData": {
+              "columns": [
+                {
+                  "column": {
+                    "name": "mfo",
+                    "type": "NUMERIC"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "name",
+                    "type": "STRING"
+                  }
+                }
+              ],
+              "encoding": "UTF-8",
+              "file": "classpath:/db/changelog/default.input/banks.csv",
+              "tableName": "bank"
+            }
+          }
+        ]
       }
     }
   ]

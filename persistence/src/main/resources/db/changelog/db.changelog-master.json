@@ -78,6 +78,11 @@
         "path": "classpath:/db/changelog/osbb/"
       }
     },
+     {
+      "includeAll": {
+        "path": "classpath:/db/changelog/bank/"
+      }
+    },
 
     {
       "includeAll": {

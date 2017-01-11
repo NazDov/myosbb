@@ -2,7 +2,7 @@
   "databaseChangeLog": [
     {
       "changeSet": {
-        "id": "1480002069203-1",
+        "id": "2016/11/01-10",
         "author": "afedorak (generated)",
         "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
         "changes": [
@@ -25,7 +25,7 @@
                       "nullable": false
                     },
                     "name": "name",
-                    "type": "VARCHAR(50)"
+                    "type": "VARCHAR(255)"
                   }
                 },
                 {
@@ -33,12 +33,30 @@
                     "constraints": {
                       "nullable": false
                     },
-                    "name": "management",
-                    "type": "BOOLEAN"
+                    "name": "mfo",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "edrpo",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "address",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "phone",
+                    "type": "VARCHAR(255)"
                   }
                 }
               ],
-              "tableName": "contact_osbb_category"
+              "tableName": "bank"
             }
           }
         ]
@@ -46,22 +64,22 @@
     },
     {
       "changeSet": {
-        "id": "1480002069203-29",
+        "id": "2016/11/01-11",
         "author": "afedorak (generated)",
         "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
         "changes": [
           {
             "addForeignKeyConstraint": {
-              "baseColumnNames": "contact_category_id",
-              "baseTableName": "contact_osbb",
-              "constraintName": "FK2_contact_category_id",
+              "baseColumnNames": "bank_id",
+              "baseTableName": "osbb",
+              "constraintName": "FK2_bank_id",
               "onDelete": "RESTRICT",
               "onUpdate": "RESTRICT",
               "referencedColumnNames": "id",
-              "referencedTableName": "contact_osbb_category"
+              "referencedTableName": "bank"
             }
-          }]
-
+          }
+        ]
       }
     }
   ]
