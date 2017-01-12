@@ -252,9 +252,6 @@ INSERT into event(title, author, start_time, end_time, description, repeats, osb
 'Мешканців міста знайомлять з порядком створення ОСББ',4,'2016-01-01 08:00:00','2017-01-01 08:00:00',
 '1 липня 2015 р. набрав чинності Закон України «Про особливості здійснення права власності в багатоквартирному будинку».','ONE_TIME',4);
 
---rollback
-
-
 INSERT INTO contact_osbb_category (name, management) VALUE ('Голова ОСББ', FALSE );
 INSERT INTO contact_osbb_category (name, management) VALUE ('Голова правління', TRUE );
 INSERT INTO contact_osbb_category (name, management) VALUE ('Член правління', TRUE );
@@ -273,3 +270,23 @@ INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Ви
 INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Консьєржі', 1, 0.23);
 INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Освітлення місць загального користування', 2, 0.5);
 INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Охорона', 2, 0.5);
+
+--rollback
+
+INSERT INTO contact_osbb (osbb_id, contact_category_id, first_name, middle_name, last_name, phone, phone2, user_id) VALUE
+  (1, 1, 'Aska', 'Fedorak', 'Pavlivna', '0932268634', '544728', 1);
+INSERT INTO contact_osbb (osbb_id, contact_category_id, first_name, middle_name, last_name, phone, phone2, user_id) VALUE
+(1, 2, 'Aska', 'Fedorak', 'Pavlivna', '0932268634', '544728', 1);
+INSERT INTO contact_osbb (osbb_id, contact_category_id, first_name, middle_name, last_name, phone, phone2, user_id) VALUE
+(1, 3, 'Aska', 'Fedorak', 'Pavlivna', '0932268634', '544728', 1);
+INSERT INTO contact_osbb (osbb_id, contact_category_id, first_name, middle_name, last_name, phone, phone2, user_id) VALUE
+(1, 4, 'Aska', 'Fedorak', 'Pavlivna', '0932268634', '544728', 1);
+INSERT INTO contact_osbb (osbb_id, contact_category_id, first_name, middle_name, last_name, phone, phone2, user_id) VALUE
+(1, 5, 'Aska', 'Fedorak', 'Pavlivna', '0932268634', '544728', 1);
+
+
+INSERT INTO contact_osbb (osbb_id, contact_category_id, first_name, middle_name, last_name, phone, phone2, user_id) VALUE
+  (1, 6, 'Aska', 'Fedorak', 'Pavlivna', '0932268634', '544728', 1);
+
+
+INSERT INTO contact_osbb_attachments (contact_osbb, attachments) VALUE (1, 1);

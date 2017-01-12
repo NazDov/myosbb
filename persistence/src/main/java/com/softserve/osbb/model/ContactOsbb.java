@@ -1,29 +1,36 @@
 package com.softserve.osbb.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by afedorak on 25.11.2016.
  */
 @Entity
-@Table(name = "contact_osbb", schema = "myosbb", catalog = "")
-public class ContactOsbb {
+@Table(name = "contact_osbb")
+public class ContactOsbb  implements Serializable {
+    private static final long serialVersionUID = 165454L;
+
     private long id;
-    private long osbbId;
-    private long contactCategoryId;
+    private Osbb osbb;
+    private ContactOsbbCategory contactCategory;
     private String firstName;
     private String middleName;
     private String lastName;
     private String phone;
     private String phone2;
-    private Long userId;
+    private User user;
 
-    public ContactOsbb(long osbbId, String firstName) {
-        this.osbbId = osbbId;
+    private List<Attachment> attachments;
+
+
+    public ContactOsbb(Osbb osbb, String firstName) {
+        this.osbb = osbb;
         this.firstName = firstName;
+    }
+
+    public ContactOsbb() {
     }
 
     @Id
@@ -36,22 +43,24 @@ public class ContactOsbb {
         this.id = id;
     }
 
-    @Column(name = "osbb_id", nullable = false)
-    public long getOsbbId() {
-        return osbbId;
+    @ManyToOne
+    @JoinColumn(name = "osbb_id")
+    public Osbb getOsbb() {
+        return osbb;
     }
 
-    public void setOsbbId(long osbbId) {
-        this.osbbId = osbbId;
+    public void setOsbb(Osbb osbb) {
+        this.osbb = osbb;
     }
 
-    @Column(name = "contact_category_id", nullable = false)
-    public long getContactCategoryId() {
-        return contactCategoryId;
+    @ManyToOne
+    @JoinColumn(name = "contact_category_id")
+    public ContactOsbbCategory getContactCategory() {
+        return contactCategory;
     }
 
-    public void setContactCategoryId(long contactCategoryId) {
-        this.contactCategoryId = contactCategoryId;
+    public void setContactCategory(ContactOsbbCategory contactCategory) {
+        this.contactCategory = contactCategory;
     }
 
     @Column(name = "first_name", nullable = false, length = 50)
@@ -103,13 +112,25 @@ public class ContactOsbb {
         this.phone2 = phone2;
     }
 
-    @Column(name = "user_id", nullable = true)
-    public Long getUserId() {
-        return userId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH )
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
     }
 
     @Override
@@ -120,29 +141,45 @@ public class ContactOsbb {
         ContactOsbb that = (ContactOsbb) o;
 
         if (id != that.id) return false;
-        if (osbbId != that.osbbId) return false;
-        if (contactCategoryId != that.contactCategoryId) return false;
+        if (osbb != that.osbb) return false;
+        if (contactCategory != null ? !contactCategory.equals(that.contactCategory) : that.contactCategory != null)
+            return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
         if (middleName != null ? !middleName.equals(that.middleName) : that.middleName != null) return false;
         if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (phone2 != null ? !phone2.equals(that.phone2) : that.phone2 != null) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        return user != null ? user.equals(that.user) : that.user == null;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (osbbId ^ (osbbId >>> 32));
-        result = 31 * result + (int) (contactCategoryId ^ (contactCategoryId >>> 32));
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + osbb.hashCode();
+        result = 31 * result + (contactCategory != null ? contactCategory.hashCode() : 0);
+        result = 31 * result + firstName.hashCode();
         result = 31 * result + (middleName != null ? middleName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (phone2 != null ? phone2.hashCode() : 0);
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactOsbb{" +
+                "id=" + id +
+                ", osbb=" + osbb +
+                ", contactCategory=" + contactCategory +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", phone2='" + phone2 + '\'' +
+                ", user=" + user +
+                ", attachments=" + attachments +
+                '}';
     }
 }

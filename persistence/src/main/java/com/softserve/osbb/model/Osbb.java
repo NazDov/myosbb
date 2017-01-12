@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Roman on 05.07.2016.
@@ -31,6 +32,14 @@ public class Osbb implements Serializable {
     private Collection<House> houses;
     private Collection<Report> reports;
     private Collection<User> users;
+    private List<ContactOsbb> contacts;
+
+    public Osbb(Integer osbbId) {
+        this.osbbId = osbbId;
+    }
+
+    public Osbb() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -170,6 +179,16 @@ public class Osbb implements Serializable {
 
     public void setUsers(Collection<User> users) {
         this.users = users;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "osbb", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    public List<ContactOsbb> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<ContactOsbb> contacts) {
+        this.contacts = contacts;
     }
 
     @Override

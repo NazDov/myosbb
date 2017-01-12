@@ -99,4 +99,16 @@ public class Attachment implements Serializable {
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this);
     }
+
+    @Override
+    public String toString() {
+        return "Attachment{" +
+                "attachmentId=" + attachmentId +
+                ", path='" + path + '\'' +
+                ", url='" + url + '\'' +
+                ", type=" + type +
+                ", date=" + date +
+                ", fileName='" + fileName + '\'' +
+                '}';
+    }
 }

@@ -7,12 +7,14 @@ import { CapitalizeFirstLetterPipe } from '../../../shared/pipes/capitalize-firs
 import { CurrentUserService } from "../../../shared/services/current.user.service";
 import { User } from '../../../shared/models/User';
 import { HeaderComponent } from '../../header/header.component';
+import {OssbbContact} from "../../../shared/models/osbb_contact";
+import {OsbbContactService} from "./osbb-contact-service";
 
 @Component({
     selector: 'user-menu-osbb-contacts',
     templateUrl: 'src/app/home/osbb-contacts/osbb-contacts.html',
     styleUrls: ['src/app/home/osbb-contacts/osbb-contacts.css'],
-    providers: [OsbbService],
+    providers: [OsbbService, OsbbContactService],
     pipes:[CapitalizeFirstLetterPipe, TranslatePipe]
 })
 export class OsbbContactsComponent implements OnInit {
@@ -21,14 +23,32 @@ export class OsbbContactsComponent implements OnInit {
     private user: User;
     private osbbRetrieved = false;
 
-    constructor(private osbbService: OsbbService, private userSevice: CurrentUserService) {
+    private contacts: Array<OssbbContact> = [];
+    private managementContacts : Array<OssbbContact> = [];
+    private managementMembers : Array<OssbbContact> = [];
+    private managementHead : OssbbContact = {id: '', osbbId: null, contactCategoryName: '', contactCategoryId: null,
+        firstName: '', middleName: '', lastName: '', phone: '', phone2: '', userId: null, apartmentNum: null, attachments: null
+    };
+
+
+
+    constructor(private osbbService: OsbbService, private userSevice: CurrentUserService, private osbbContactService : OsbbContactService) {
         this.userOsbb = null;
      }
 
     ngOnInit(): any {
-        console.log('Initializing OSBB contacts...');
         this.getUser();
         this.getOsbb();
+        console.log('Initializing OSBB contacts...');
+         this.osbbContactService.getOsbbContacts().subscribe((data)=> {
+             this.contacts = data;
+             console.log(this.contacts);
+         });
+        this.osbbContactService.getManagementContacts().subscribe((data)=> {
+            this.managementContacts = data;
+            console.log(this.managementContacts);
+
+        });
     }
 
     getUser() {

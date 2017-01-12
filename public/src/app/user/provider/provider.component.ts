@@ -320,7 +320,8 @@ export class ProviderComponent {
             phone: '',
             address: '',
             schedule: '',
-            active: false
+            active: false,
+            attachments: null
         };
     }
 

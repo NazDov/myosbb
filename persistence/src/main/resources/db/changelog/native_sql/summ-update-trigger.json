@@ -8,7 +8,7 @@
           {
             "sql": {
               "comment": "update sum of services after insert sub-service",
-              "dbms": "mysql, mariadb",
+              "dbms": "mariadb",
               "endDelimiter": "//",
               "splitStatements": true,
               "sql": " CREATE TRIGGER upd_summ_insert AFTER INSERT ON sub_services FOR EACH ROW BEGIN UPDATE services a, ( select sum(s1.tariff)as sum, s1.service_id as service_id  from sub_services as s1  group by s1.service_id) b SET a.tariff  = b.sum where a.service_id = b.service_id; END//",
@@ -27,13 +27,14 @@
           {
             "sql": {
               "comment": "update sum of services after update sub-service",
-              "dbms": "mysql, mariadb",
+              "dbms": "mariadb",
               "endDelimiter": "//",
               "splitStatements": true,
               "sql": " CREATE TRIGGER upd_summ_update  AFTER UPDATE ON sub_services FOR EACH ROW BEGIN UPDATE services a, ( select sum(s1.tariff)as sum, s1.service_id as service_id  from sub_services as s1  group by s1.service_id) b SET a.tariff  = b.sum where a.service_id = b.service_id; END//",
               "stripComments": true
             }
-          }]
+          }
+        ]
       }
     }
   ]

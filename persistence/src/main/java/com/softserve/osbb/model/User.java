@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -60,9 +61,14 @@ public class User implements Serializable {
     private Collection<Event> events = new ArrayList<>();
     private Collection<Option> options = new ArrayList<>();
     private Collection<Report> reports = new ArrayList<>();
+    private List<ContactOsbb> contactOsbbs;
 
     public User() { }
-    
+
+    public User(Integer userId) {
+        this.userId = userId;
+    }
+
     public User(User user) {
         this.userId = user.getUserId();
         this.firstName = user.getFirstName();
@@ -295,16 +301,6 @@ public class User implements Serializable {
         this.options = options;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        return EqualsBuilder.reflectionEquals(this, obj);
-    }
-
-    @Override
-    public int hashCode() {
-        return HashCodeBuilder.reflectionHashCode(this);
-    }
-    
     @ManyToOne
     @JoinColumn(name = "house_id")
     public House getHouse() {
@@ -315,7 +311,17 @@ public class User implements Serializable {
 		this.house = house;
 	}
 
-	@Override
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
+    public List<ContactOsbb> getContactOsbbs() {
+        return contactOsbbs;
+    }
+
+    public void setContactOsbbs(List<ContactOsbb> contactOsbbs) {
+        this.contactOsbbs = contactOsbbs;
+    }
+
+    @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
@@ -327,4 +333,64 @@ public class User implements Serializable {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (!userId.equals(user.userId)) return false;
+        if (!firstName.equals(user.firstName)) return false;
+        if (!lastName.equals(user.lastName)) return false;
+        if (!birthDate.equals(user.birthDate)) return false;
+        if (!email.equals(user.email)) return false;
+        if (!phoneNumber.equals(user.phoneNumber)) return false;
+        if (!password.equals(user.password)) return false;
+        if (!gender.equals(user.gender)) return false;
+        if (!activated.equals(user.activated)) return false;
+        if (!isOwner.equals(user.isOwner)) return false;
+        if (!role.equals(user.role)) return false;
+        if (!apartment.equals(user.apartment)) return false;
+        if (!osbb.equals(user.osbb)) return false;
+        if (!house.equals(user.house)) return false;
+        if (!notices.equals(user.notices)) return false;
+        if (!votes.equals(user.votes)) return false;
+        if (!messages.equals(user.messages)) return false;
+        if (!assigned.equals(user.assigned)) return false;
+        if (!tickets.equals(user.tickets)) return false;
+        if (!events.equals(user.events)) return false;
+        if (!options.equals(user.options)) return false;
+        if (!reports.equals(user.reports)) return false;
+        return contactOsbbs.equals(user.contactOsbbs);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userId.hashCode();
+        result = 31 * result + firstName.hashCode();
+        result = 31 * result + lastName.hashCode();
+        result = 31 * result + birthDate.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + phoneNumber.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + gender.hashCode();
+        result = 31 * result + activated.hashCode();
+        result = 31 * result + isOwner.hashCode();
+        result = 31 * result + role.hashCode();
+        result = 31 * result + apartment.hashCode();
+        result = 31 * result + osbb.hashCode();
+        result = 31 * result + house.hashCode();
+        result = 31 * result + notices.hashCode();
+        result = 31 * result + votes.hashCode();
+        result = 31 * result + messages.hashCode();
+        result = 31 * result + assigned.hashCode();
+        result = 31 * result + tickets.hashCode();
+        result = 31 * result + events.hashCode();
+        result = 31 * result + options.hashCode();
+        result = 31 * result + reports.hashCode();
+        result = 31 * result + contactOsbbs.hashCode();
+        return result;
+    }
 }

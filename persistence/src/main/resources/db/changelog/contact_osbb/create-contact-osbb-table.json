@@ -86,5 +86,101 @@
 
       }
     }
+
+  ,
+    {
+      "changeSet": {
+        "id": "2016/12/01-01",
+        "author": "aska",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "contact_osbb",
+                    "type": "BIGINT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
+                    "name": "attachments",
+                    "type": "INT"
+                  }
+                }
+              ],
+              "tableName": "contact_osbb_attachments"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2016/12/01-02",
+        "author": "aska",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addUniqueConstraint": {
+              "columnNames": "attachments",
+              "constraintName": "uk_lhpd3rdk724n2etghjhgjghj3ac7cb7ykd",
+              "tableName": "contact_osbb_attachments"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2016/12/01-03",
+        "author": "aska",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "contact_osbb",
+              "baseTableName": "contact_osbb_attachments",
+              "constraintName": "fk_ght0wa64x3i2564444444ljj9pq7ektb4bp3",
+              "deferrable": false,
+              "initiallyDeferred": false,
+              "onDelete": "NO ACTION",
+              "onUpdate": "NO ACTION",
+              "referencedColumnNames": "id",
+              "referencedTableName": "contact_osbb"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2016/08/03-57",
+        "author": "aska",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "attachments",
+              "baseTableName": "contact_osbb_attachments",
+              "constraintName": "fk_lhpd3rdk724565ojk4n2et3ac7cb7ykd",
+              "deferrable": false,
+              "initiallyDeferred": false,
+              "onDelete": "CASCADE",
+              "onUpdate": "NO ACTION",
+              "referencedColumnNames": "attachment_id",
+              "referencedTableName": "attachment"
+            }
+          }
+        ]
+      }
+    }
   ]
 }

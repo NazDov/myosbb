@@ -2,7 +2,7 @@
   "databaseChangeLog": [
     {
       "changeSet": {
-        "id": "1480002069203-1",
+        "id": "2017/12/01-1",
         "author": "afedorak (generated)",
         "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
         "changes": [
@@ -33,6 +33,7 @@
                     "constraints": {
                       "nullable": false
                     },
+                    "defaultValue": false,
                     "name": "management",
                     "type": "BOOLEAN"
                   }

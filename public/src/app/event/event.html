@@ -61,7 +61,7 @@
                     <td>{{formatDate(event.start)}}</td>
                     <td>{{formatDate(event.end)}}</td>
                     <td>{{event.repeat | translate}}</td>
-                    <td><a (click)="toUser(event.author.userId)">{{event.author.firstName + " " + event.author.lastName}}</a></td>
+                    <td><a (click)="toUser(event.author.user)">{{event.author.firstName + " " + event.author.lastName}}</a></td>
                     <td>
                         <div *ngIf="event.status == 'FINISHED'">
                             <span class="label btn-round label-danger">{{event.status.toLowerCase() | translate | capitalize}}</span>
@@ -83,7 +83,7 @@
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"
-                                    *ngIf="(event.author.userId == currentUser.userId) || (currentUser.userId == 1)">
+                                    *ngIf="(event.author.user == currentUser.user) || (currentUser.user == 1)">
                                     {{'options' | translate | capitalize}}
                                 <span class="caret"></span>
                             </button>
@@ -358,7 +358,7 @@
                 {{'create' | translate | capitalize}}
             </button>
             <button type="button" class="btn btn-danger" (click)="openDelAllModal()"
-                    *ngIf="(currentUser.userId == 1) || showAllEvents">
+                    *ngIf="(currentUser.user == 1) || showAllEvents">
                 {{'delete' | translate | capitalize}} {{'all' | translate}}
             </button>
         </div>

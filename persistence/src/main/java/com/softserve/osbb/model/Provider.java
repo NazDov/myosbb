@@ -189,7 +189,8 @@ public class Provider implements Serializable {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "provider_attachment",
-            joinColumns = { @JoinColumn(name = "provider_id") }, inverseJoinColumns = { @JoinColumn(name = "attachment_id") })
+            joinColumns = { @JoinColumn(name = "provider_id") },
+            inverseJoinColumns = { @JoinColumn(name = "attachment_id") })
     public List<Attachment> getAttachments() {
         return attachments;
     }
