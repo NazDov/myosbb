@@ -27,6 +27,10 @@ public class Osbb implements Serializable {
     private Boolean available= true;
     private Attachment logo;
     private Timestamp creationDate;
+    private Bank bank;
+    private String bankNumber;
+    private String edrpo;
+    private String mfo;
     private Collection<Contract> contracts;
     private Collection<Event> events;
     private Collection<House> houses;
@@ -90,6 +94,16 @@ public class Osbb implements Serializable {
 
     public void setDistrict(District district) {
         this.district = district;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="bank_id", referencedColumnName = "id")
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 
     @Basic
@@ -189,6 +203,33 @@ public class Osbb implements Serializable {
 
     public void setContacts(List<ContactOsbb> contacts) {
         this.contacts = contacts;
+    }
+
+    @Column(name = "bank_number")
+    public String getBankNumber() {
+        return bankNumber;
+    }
+
+    public void setBankNumber(String bankNumber) {
+        this.bankNumber = bankNumber;
+    }
+
+    @Column(name = "edrpo")
+    public String getEdrpo() {
+        return edrpo;
+    }
+
+    public void setEdrpo(String edrpo) {
+        this.edrpo = edrpo;
+    }
+
+    @Column(name = "mfo")
+    public String getMfo() {
+        return mfo;
+    }
+
+    public void setMfo(String mfo) {
+        this.mfo = mfo;
     }
 
     @Override

@@ -5,7 +5,7 @@
     -->
 <div id="main-content" class="content ">
     <div class="panel panel-default pos-top animated slideInRight">
-        <div *ngIf="osbbRetrieved && !loading">
+        <div *ngIf="osbbRetrieved">
             <!-- OSBB contacts and requisites -->
             <div class="row">
                 <div class="col-md-1"></div>
@@ -25,13 +25,13 @@
                             <p><h5><strong>{{'address' | translate | capitalize}}</strong></h5>
                             {{userOsbb.address}}
                             <p><h5><strong>{{'phone' | translate | capitalize}}</strong></h5>
-                            +38 (032) 244 58 86
+                            {{userOsbb.bank.phone}}
                             <p><h5><strong>{{'EDRPOU' | translate }}</strong></h5>
-                            34566773
+                            {{userOsbb.edrpo}}
                             <p><h5><strong>{{'MFO' | translate}}</strong></h5>
-                            123456
+                            {{userOsbb.bank.mfo}}
                             <p><h5><strong>{{'bank_account' | translate | capitalize}}</strong></h5>
-                            49000012345678 в КБ "УКРСИББАНК"
+                           {{userOsbb.bank.number}}в {{userOsbb.bank.name}}
                     </span>
 
                 </div>
@@ -86,6 +86,6 @@
             </div>
         </div>
         <!-- loading circle -->
-        <!--<div class="loader" *ngIf="loading"></div>-->
+        <div class="loader" *ngIf="!osbbRetrieved"></div>
     </div>
 </div>

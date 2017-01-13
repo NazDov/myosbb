@@ -7,6 +7,7 @@
 package com.softserve.osbb.dto;
 
 import com.softserve.osbb.model.Attachment;
+import com.softserve.osbb.model.Bank;
 import com.softserve.osbb.model.District;
 import com.softserve.osbb.model.User;
 
@@ -28,6 +29,12 @@ public class OsbbDTO {
     private User creator;
     private Integer countOfHouses;
     private Integer countOfUsers;
+
+    private Bank bank;
+    private String bankMfo;
+    private String bankEdrpo;
+    private String baankNumber;
+
 
     public OsbbDTO(){}
 
@@ -117,5 +124,39 @@ public class OsbbDTO {
 
     public void setCountOfUsers(Integer countOfUsers) {
         this.countOfUsers = countOfUsers;
+    }
+
+
+    public String getBankMfo() {
+        return bankMfo;
+    }
+
+    public void setBankMfo(String bankMfo) {
+        this.bankMfo = bankMfo;
+    }
+
+    public String getBankEdrpo() {
+        return bankEdrpo;
+    }
+
+    public void setBankEdrpo(String bankEdrpo) {
+        this.bankEdrpo = bankEdrpo;
+    }
+
+
+    public String getBaankNumber() {
+        return baankNumber;
+    }
+
+    public void setBaankNumber(String baankNumber) {
+        this.baankNumber = baankNumber;
+    }
+
+    public Bank getBank() {
+        return bank;
+    }
+
+    public void setBank(Bank bank) {
+        this.bank = bank;
     }
 }

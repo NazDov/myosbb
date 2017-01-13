@@ -10,24 +10,28 @@ export class OsbbContactService{
     constructor(private _http: Http) {
     }
     getOsbbContacts() : Observable<any> {
-       return this._http.get(this.url + "osbb/")
+       //noinspection TypeScriptUnresolvedFunction
+        return this._http.get(this.url + "osbb/")
            .map(res => res.json())
            .catch((err) => Observable.throw(err));
     }
 
     getManagementContacts() : Observable<any> {
+        //noinspection TypeScriptUnresolvedFunction
         return this._http.get(this.url + "management/")
             .map(res => res.json())
             .catch((err) => Observable.throw(err));
     }
 
     getManagementHeadContacts() : Observable<any> {
+        //noinspection TypeScriptUnresolvedFunction
         return this._http.get(this.url + "management/head/")
             .map(res => res.json())
             .catch((err) => Observable.throw(err));
     }
 
     getManagementMemberContacts() : Observable<any> {
+        //noinspection TypeScriptUnresolvedFunction
         return this._http.get(this.url + "management/member/")
             .map(res => res.json())
             .catch((err) => Observable.throw(err));

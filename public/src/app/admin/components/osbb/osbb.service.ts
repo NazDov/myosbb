@@ -9,6 +9,7 @@ import 'rxjs/add/operator/catch';
 import { IOsbb } from "../../../../shared/models/osbb";
 import { OsbbDTO } from "../../../../shared/models/osbbDTO";
 import ApiService = require("../../../../shared/services/api.service");
+import {Attachment} from "../../../../shared/models/attachment";
 
 const attachmentUploadUrl = ApiService.serverUrl + '/restful/attachment';
 
@@ -20,6 +21,7 @@ export class OsbbService {
     }
 
     getAllOsbb(): Promise<IOsbb[]> {
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.url)
                  .toPromise()
                  .then(res => res.json())
@@ -47,6 +49,7 @@ export class OsbbService {
     }
 
     getByAvailable(available:boolean): Promise<IOsbb[]> {
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.get(this.url + '/status/' + available)
                  .toPromise()
                  .then(res => res.json())
@@ -55,6 +58,7 @@ export class OsbbService {
     
     getAllOsbbByNameContaining(osbbName: string ):Promise<IOsbb[]> {
         let url = this.url + '/search/' + osbbName;
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.get(url)
                  .toPromise()
                  .then(res => res.json())
@@ -63,7 +67,8 @@ export class OsbbService {
 
    getAllOsbbByOrder(sortedBy: string, asc: boolean) {
         let url = this.url + '?sortedBy=' + sortedBy + '&&asc=' + asc;
-        return this.http.get(url)
+        //noinspection TypeScriptUnresolvedFunction
+       return this.http.get(url)
                  .toPromise()
                  .then(res => res.json())
                  .catch(this.handleError);
@@ -71,7 +76,8 @@ export class OsbbService {
 
     getDTOOsbbById(osbbId: number): Promise<OsbbDTO> {
          let url = this.url + "/dto/" + osbbId;
-         return this.http.get(url)
+         //noinspection TypeScriptUnresolvedFunction
+        return this.http.get(url)
                  .toPromise()
                  .then(res => res.json())
                  .catch(this.handleError);
@@ -79,13 +85,15 @@ export class OsbbService {
 
     getOsbbById(osbbId: number): Promise<IOsbb> {
          let url = this.url + "/" + osbbId;
-         return this.http.get(url)
+         //noinspection TypeScriptUnresolvedFunction
+        return this.http.get(url)
                  .toPromise()
                  .then(res => res.json())
                  .catch(this.handleError);
     }
 
     addOsbb(osbb:IOsbb): Promise<IOsbb> {
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.post(this.url, JSON.stringify(osbb))
                         .toPromise()
                         .then(res => res.json())
@@ -93,6 +101,7 @@ export class OsbbService {
     }
 
     editOsbb(osbb:IOsbb):Promise<IOsbb>  {
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.put(this.url, JSON.stringify(osbb))
                         .toPromise()
                         .then(res => res.json())
@@ -100,6 +109,7 @@ export class OsbbService {
     }
 
     deleteOsbb(osbb:IOsbb): Promise<IOsbb> {
+        //noinspection TypeScriptUnresolvedFunction
         return this.http.delete(this.url + '/' + osbb.osbbId)
                     .toPromise()
                     .then(res => osbb)

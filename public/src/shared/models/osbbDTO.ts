@@ -1,5 +1,6 @@
 import { Attachment } from './attachment';
 import { Street, District } from './addressDTO';
+import {Bank} from "./bank.interface";
 
 export class OsbbDTO {
     osbbId: number;
@@ -12,6 +13,5 @@ export class OsbbDTO {
     logo: Attachment;
     creationDate: Date;
     available: boolean;
-    countOfHouses: number;
-    countOfUsers: number;
+    bank: Bank;
 }

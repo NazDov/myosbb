@@ -26,6 +26,10 @@ public class OsbbDTOMapper {
             osbbDTO.setCreationDate(osbb.getCreationDate());
             osbbDTO.setCountOfHouses(osbb.getHouses().size());
             osbbDTO.setCountOfUsers(osbb.getUsers().size());
+            osbbDTO.setBank(osbb.getBank());
+            osbbDTO.setBaankNumber(osbb.getBankNumber());
+            osbbDTO.setBankEdrpo(osbb.getEdrpo());
+            osbbDTO.setBankMfo(osbb.getBank().getMfo());
         }
         return osbbDTO;
     }

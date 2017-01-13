@@ -24,8 +24,6 @@ export class OsbbContactsComponent implements OnInit {
     private user: User;
     private osbbRetrieved = false;
 
-    private loading: boolean = true;
-
     private contacts: Array<OssbbContact> = [];
     private managementMembers: Array<OssbbContact> = [];
     private managementHead: OssbbContact = null;
@@ -38,21 +36,6 @@ export class OsbbContactsComponent implements OnInit {
     ngOnInit(): any {
         this.getUser();
         this.getOsbb();
-        console.log('Initializing OSBB contacts...');
-        this.osbbContactService.getOsbbContacts().subscribe((data)=> {
-            this.contacts = data;
-            console.log('contacts', this.contacts);
-            this.osbbContactService.getManagementMemberContacts().subscribe((data)=> {
-                this.managementMembers = data;
-                console.log('members', this.managementMembers);
-
-                this.osbbContactService.getManagementHeadContacts().subscribe((data)=> {
-                    this.managementHead = data;
-                    console.log('head', this.managementHead);
-                    this.loading = false;
-                });
-            });
-        });
     }
 
     getUser() {
@@ -65,9 +48,21 @@ export class OsbbContactsComponent implements OnInit {
         this.osbbService.getDTOOsbbById(this.user.osbbId)
             .then(osbb => {
                 this.userOsbb = osbb;
-                console.log('Retrieving OSBB for ' + this.user.firstName + ' ' + this.user.lastName);
                 console.log(this.userOsbb);
-                this.osbbRetrieved = true;
+                this.getOsbbContacts();
             });
+    }
+
+    private getOsbbContacts(){
+        this.osbbContactService.getOsbbContacts().subscribe((data)=> {
+            this.contacts = data;
+            this.osbbContactService.getManagementMemberContacts().subscribe((data)=> {
+                this.managementMembers = data;
+                this.osbbContactService.getManagementHeadContacts().subscribe((data)=> {
+                    this.managementHead = data;
+                    this.osbbRetrieved = true;
+                });
+            });
+        });
     }
 }

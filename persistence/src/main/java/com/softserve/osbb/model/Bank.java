@@ -1,6 +1,9 @@
 package com.softserve.osbb.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by afedorak on 11.01.2017.
@@ -16,8 +19,10 @@ public class Bank {
     private String address;
     private String phone;
 
+    private List<Osbb> osbbs;
+
     @Id
-    @Column(name = "bank_id")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
@@ -70,5 +75,15 @@ public class Bank {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
+    @JsonIgnore
+    public List<Osbb> getOsbbs() {
+        return osbbs;
+    }
+
+    public void setOsbbs(List<Osbb> osbbs) {
+        this.osbbs = osbbs;
     }
 }
