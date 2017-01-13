@@ -264,7 +264,7 @@ INSERT INTO contact_provider_category (name) VALUE ('Директор');
 INSERT INTO contact_provider_category (name) VALUE ('Зам. директор');
 INSERT INTO contact_provider_category (name) VALUE ('Бухгалтер');
 --
-INSERT INTO services (name) VALUE ('Утримання будинку');
+INSERT INTO services (name, osbb_id) VALUE ('Утримання будинку', 3);
 
 INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Вивезення твердих побутових відходів', 1, 0.23);
 INSERT INTO sub_services (service_id, name, provider_id, tariff) VALUE (1, 'Консьєржі', 1, 0.23);

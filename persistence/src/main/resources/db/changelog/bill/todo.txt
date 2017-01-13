@@ -1,0 +1,13 @@
+rm columns:
+name
+tariff
+parentBillId
+
+
+add columns:
+borg - борг за попередный місяць
+invoice - нараховано за поточний
+paid - оплачено
+to_pay - фінальна сума до сплати
+
+service_id

@@ -1,5 +1,6 @@
 package com.softserve.osbb.service.impl;
 
+import com.softserve.osbb.model.Osbb;
 import com.softserve.osbb.model.Services;
 import com.softserve.osbb.repository.ServicesRepository;
 import com.softserve.osbb.service.ServicesService;
@@ -45,6 +46,11 @@ public class ServicesServiceImpl implements ServicesService {
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<Services> findAllSevices() {
         return servicesRepository.findAll();
+    }
+
+    @Override
+    public List<Services> findSevicesByOsbb(Osbb osbb) {
+        return null;
     }
 
     @Override

@@ -1,9 +1,7 @@
 package com.softserve.osbb.model;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by afedorak on 25.11.2016.
@@ -15,6 +13,15 @@ public class Services {
     private String name;
     private Double tariff;
     private String unitsOfMeasurement;
+    private Osbb osbb;
+
+    public Services(long serviceId) {
+        this.serviceId = serviceId;
+    }
+
+    public Services() {
+    }
+
 
     @Id
     @Column(name = "service_id", nullable = false)
@@ -60,6 +67,16 @@ public class Services {
 
     public void setUnitsOfMeasurement(String unitsOfMeasurement) {
         this.unitsOfMeasurement = unitsOfMeasurement;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "osbb_id")
+    public Osbb getOsbb() {
+        return osbb;
+    }
+
+    public void setOsbb(Osbb osbb) {
+        this.osbb = osbb;
     }
 
     @Override

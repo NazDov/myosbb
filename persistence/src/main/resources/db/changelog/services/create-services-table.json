@@ -33,6 +33,15 @@
                     "constraints": {
                       "nullable": false
                     },
+                    "name": "osbb_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "constraints": {
+                      "nullable": false
+                    },
                     "name": "name",
                     "type": "VARCHAR(50)"
                   }
@@ -74,6 +83,29 @@
                     "onDelete": "RESTRICT",
                     "onUpdate": "RESTRICT",
                     "referencedColumnNames": "service_id",
+                    "referencedTableName": "services"
+                  }
+                }]
+
+            }
+          },
+
+          {
+            "changeSet": {
+              "id": "2016/13/01-01",
+              "author": "afedorak (generated)",
+              "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+              "changes": [
+                {
+                  "addForeignKeyConstraint": {
+                    "baseColumnNames": "osbb_id",
+                    "baseTableName": "osbb",
+                    "constraintName": "FK1_services",
+                    "deferrable": true,
+                    "initiallyDeferred": false,
+                    "onDelete": "RESTRICT",
+                    "onUpdate": "RESTRICT",
+                    "referencedColumnNames": "osbb_id",
                     "referencedTableName": "services"
                   }
                 }]

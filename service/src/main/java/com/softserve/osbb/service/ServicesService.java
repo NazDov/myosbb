@@ -1,5 +1,6 @@
 package com.softserve.osbb.service;
 
+import com.softserve.osbb.model.Osbb;
 import com.softserve.osbb.model.Services;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public interface ServicesService {
     Services findOneSevicesByID(Long id);
 
     List<Services> findAllSevices();
+    List<Services> findSevicesByOsbb(Osbb osbb);
 
     void deleteSevice(Services sevices);
 

@@ -158,12 +158,12 @@
     },
     {
       "includeAll": {
-        "path": "classpath:/db/changelog/default.input/"
+        "path": "classpath:/db/changelog/native_sql/"
       }
     },
     {
       "includeAll": {
-        "path": "classpath:/db/changelog/native_sql/"
+        "path": "classpath:/db/changelog/default.input/"
       }
     }
   ]

@@ -37,6 +37,7 @@ public class Osbb implements Serializable {
     private Collection<Report> reports;
     private Collection<User> users;
     private List<ContactOsbb> contacts;
+    private List<Services> services;
 
     public Osbb(Integer osbbId) {
         this.osbbId = osbbId;
@@ -230,6 +231,16 @@ public class Osbb implements Serializable {
 
     public void setMfo(String mfo) {
         this.mfo = mfo;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "osbb", cascade = CascadeType.ALL)
+    @JsonIgnore
+    public List<Services> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Services> services) {
+        this.services = services;
     }
 
     @Override

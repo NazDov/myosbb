@@ -190,7 +190,7 @@ public class UserController {
     	 logger.info("Get Creator");
     	 User user;
     	 if ((user = userService.getCreatorOsbb(id)) == null) {
-    		 return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+    		 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     	 }
     	 
     	 return new ResponseEntity<>(user,HttpStatus.OK);

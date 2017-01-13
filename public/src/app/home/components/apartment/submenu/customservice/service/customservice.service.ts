@@ -16,7 +16,8 @@ export class CustomserviceService {
     }
 
     getAllParentId(): Observable<any> {  
-         return this._http.get(this.billsURL+'/parentbillid')
+         //noinspection TypeScriptUnresolvedFunction
+        return this._http.get(this.billsURL+'/parentbillid')
              .map((response)=> response.json())
              .catch((error)=>Observable.throw(error));
      }

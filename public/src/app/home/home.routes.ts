@@ -22,6 +22,7 @@ import { CustomserviceComponent } from "./components/apartment/submenu/customser
 import { SubbillComponent } from "./components/apartment/submenu/customservice/subbill/subbill.component";
 import { OsbbContactsComponent } from "./osbb-contacts/osbb-contacts.component";
 import { OsbbDocumentsAndReportsComponent } from "./osbb-docs-and-reports/osbb-docs-and-reports.component";
+import {ServicesComponent} from "./services/services.component";
 
 export const homeRoutes: RouterConfig = [
     {
@@ -50,7 +51,8 @@ export const homeRoutes: RouterConfig = [
             { path: 'osbb/contacts', component: OsbbContactsComponent },
             { path: 'osbb/documents-and-reports', component: OsbbDocumentsAndReportsComponent },             
 			{ path: 'bill/parentbillid', component: CustomserviceComponent},
-            { path: 'bill/parentbillid/subbill/:id', component: SubbillComponent }
+            { path: 'bill/parentbillid/subbill/:id', component: SubbillComponent },
+            { path: 'services', component: ServicesComponent}
         ]
     }
 ];
