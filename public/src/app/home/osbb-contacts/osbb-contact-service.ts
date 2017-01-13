@@ -20,4 +20,16 @@ export class OsbbContactService{
             .map(res => res.json())
             .catch((err) => Observable.throw(err));
     }
+
+    getManagementHeadContacts() : Observable<any> {
+        return this._http.get(this.url + "management/head/")
+            .map(res => res.json())
+            .catch((err) => Observable.throw(err));
+    }
+
+    getManagementMemberContacts() : Observable<any> {
+        return this._http.get(this.url + "management/member/")
+            .map(res => res.json())
+            .catch((err) => Observable.throw(err));
+    }
 }

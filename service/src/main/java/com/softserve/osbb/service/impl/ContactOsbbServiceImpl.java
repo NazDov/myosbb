@@ -18,6 +18,9 @@ import java.util.List;
 @Service
 public class ContactOsbbServiceImpl implements ContactOsbbService {
 
+    public static final Long MANAGEMENT_OSBB_HEAD_ID = 2L;
+    public static final Long MANAGEMENT_OSBB_MEMBER_ID = 3L;
+
     @Autowired
     private ContactOsbbRepository contactOsbbRepository;
 
@@ -50,5 +53,16 @@ public class ContactOsbbServiceImpl implements ContactOsbbService {
         return contactsOsbbs;
     }
 
+    @Override
+    public ContactOsbb getManagementOsbbHeadContacts() {
+        ContactOsbbCategory category = new ContactOsbbCategory(MANAGEMENT_OSBB_HEAD_ID);
+        List<ContactOsbb> list =  contactOsbbRepository.findByContactCategory(category);
+        return contactOsbbRepository.findByContactCategory(category).get(0);
+    }
 
+    @Override
+    public List<ContactOsbb> getManagementOsbbMemberContacts() {
+        ContactOsbbCategory category = new ContactOsbbCategory(MANAGEMENT_OSBB_MEMBER_ID);
+        return contactOsbbRepository.findByContactCategory(category);
+    }
 }

@@ -13,5 +13,7 @@ public interface ContactOsbbService {
     public List<ContactOsbb> getAllOsbbContacts();
     public List<ContactOsbb> getManagementOsbbContacts();
     public List<ContactOsbb> getOsbbContacts();
+    public ContactOsbb getManagementOsbbHeadContacts();
+    public List<ContactOsbb> getManagementOsbbMemberContacts();
 
 }

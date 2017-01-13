@@ -85,6 +85,36 @@ public class ContactsController {
         return new ResponseEntity<>(contactResourceList, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/management/member/", method = RequestMethod.GET)
+    public ResponseEntity<List<Resource<ContactOsbbDto>>> getManagementMemberContact() {
+        List<ContactOsbb> contactOsbbs = contactOsbbService.getManagementOsbbMemberContacts();
+        List<Resource<ContactOsbbDto>> contactResourceList = new ArrayList<>();
+        for (ContactOsbb c : contactOsbbs) {
+            try {
+                ContactOsbbDto contactOsbbDto = new ContactOsbbDtoMapper().mapEntityToDTO(c);
+                contactResourceList.add(addResourceLinkToContactOsbb(contactOsbbDto));
+            } catch (EntityNotFoundException e) {
+                logger.error("Cannot find contact osbb entity" + e);
+                new ResponseEntity<>(contactResourceList, HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+        return new ResponseEntity<>(contactResourceList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/management/head/", method = RequestMethod.GET)
+    public ResponseEntity<Resource<ContactOsbbDto>> getManagementHeadContact() {
+        ContactOsbb contactHead = contactOsbbService.getManagementOsbbHeadContacts();
+        Resource<ContactOsbbDto> contactHeadResource = null;
+        try {
+            ContactOsbbDto contactOsbbDto = new ContactOsbbDtoMapper().mapEntityToDTO(contactHead);
+            contactHeadResource = addResourceLinkToContactOsbb(contactOsbbDto);
+        } catch (EntityNotFoundException e) {
+            logger.error("Cannot find contact osbb entity" + e);
+            new ResponseEntity<>(contactHeadResource, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(contactHeadResource, HttpStatus.OK);
+    }
+
 
     private Resource<ContactOsbbDto> addResourceLinkToContactOsbb(ContactOsbbDto ContactOsbbDto) throws EntityNotFoundException {
         if (ContactOsbbDto == null) {
