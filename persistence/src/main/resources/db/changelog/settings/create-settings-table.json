@@ -1,0 +1,65 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2016/09/15-24",
+        "author": "krisrina",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "primaryKeyName": "settings_pkey"
+                    },
+                    "name": "settings_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "user_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "assigned",
+                    "type": "boolean",
+                    "defaultValue": "true"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "creator",
+                    "type": "boolean",
+                    "defaultValue": "true"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "comment",
+                    "type": "boolean",
+                    "defaultValue": "true"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "answer",
+                    "type": "boolean",
+                    "defaultValue": "true"
+                  }
+                }
+              ],
+              "tableName": "settings"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
