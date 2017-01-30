@@ -1,0 +1,55 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2016/08/03-17",
+        "author": "nataliia",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "primaryKeyName": "apartment_pkey"
+                    },
+                    "name": "apartment_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "number",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "square",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "house_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "owner_id",
+                    "type": "INT"
+                  }
+                }
+              ],
+              "tableName": "apartment"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

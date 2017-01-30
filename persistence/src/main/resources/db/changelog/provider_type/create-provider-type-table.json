@@ -1,0 +1,63 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2016/08/30-25",
+        "author": "nataliia",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "primaryKeyName": "provider_type_pkey"
+                    },
+                    "name": "provider_type_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "type_name",
+                    "type": "VARCHAR(255)",
+                    "constraints": {
+                      "unique": true,
+                      "constraintName": "provider_type_unique_constrain"
+                    }
+                  }
+                }
+              ],
+              "tableName": "provider_type"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "changeSet": {
+        "id": "2016/08/31-01",
+        "author": "aska",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "addForeignKeyConstraint": {
+              "baseColumnNames": "provider_type_id",
+              "baseTableName": "provider",
+              "constraintName": "fk_66kfo4kfkseyqcngxer7m6eiukhl65abracadabra2",
+              "deferrable": false,
+              "initiallyDeferred": false,
+              "onDelete": "CASCADE",
+              "onUpdate": "CASCADE",
+              "referencedColumnNames": "provider_type_id",
+              "referencedTableName": "provider_type"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

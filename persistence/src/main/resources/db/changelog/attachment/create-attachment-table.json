@@ -1,0 +1,62 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet": {
+        "id": "2016/08/03-18",
+        "author": "nataliia",
+        "objectQuotingStrategy": "QUOTE_ALL_OBJECTS",
+        "changes": [
+          {
+            "createTable": {
+              "columns": [
+                {
+                  "column": {
+                    "autoIncrement": true,
+                    "constraints": {
+                      "primaryKey": true,
+                      "primaryKeyName": "attachment_pkey"
+                    },
+                    "name": "attachment_id",
+                    "type": "INT"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "path",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "url",
+                    "type": "VARCHAR(255)"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "type",
+                    "type": "VARCHAR(255)",
+                    "defaultValue": "DATA"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "date",
+                    "type": "date"
+                  }
+                },
+                {
+                  "column": {
+                    "name": "file_name",
+                    "type": "VARCHAR(255)"
+                  }
+                }
+              ],
+              "tableName": "attachment"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
