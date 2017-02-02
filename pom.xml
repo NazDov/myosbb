@@ -103,9 +103,34 @@
             </build>
             <properties>
                 <db.driver>org.mariadb.jdbc.Driver</db.driver>
-                <db.connectionURL>jdbc:mariadb://127.0.0.1:1100/tmposbb</db.connectionURL>
+                <db.connectionURL>jdbc:mariadb://127.0.0.1:1100/myosbb</db.connectionURL>
                 <db.username>root</db.username>
                 <db.password>root</db.password>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin}</version>
+                        <configuration>
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <properties>
+                <db.driver>org.mariadb.jdbc.Driver</db.driver>
+                <db.connectionURL>jdbc:mariadb://10.5.3.135:3306/myosbb</db.connectionURL>
+                <db.username>csc_user</db.username>
+                <db.password>5eRK^Hua6Z&lt;b</db.password>
             </properties>
         </profile>
 
