@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 public class Services {
     private long serviceId;
-    private Long providerId;
+    private Provider provider;
     private String name;
     private Double tariff;
     private String unitsOfMeasurement;
@@ -33,13 +33,14 @@ public class Services {
         this.serviceId = serviceId;
     }
 
-    @Column(name = "provider_id", nullable = true)
-    public Long getProviderId() {
-        return providerId;
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    public Provider getProvider() {
+        return provider;
     }
 
-    public void setProviderId(Long providerId) {
-        this.providerId = providerId;
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
     @Column(name = "name", nullable = false, length = 50)
@@ -87,22 +88,23 @@ public class Services {
         Services services = (Services) o;
 
         if (serviceId != services.serviceId) return false;
-        if (providerId != null ? !providerId.equals(services.providerId) : services.providerId != null) return false;
+        if (provider != null ? !provider.equals(services.provider) : services.provider != null) return false;
         if (name != null ? !name.equals(services.name) : services.name != null) return false;
         if (tariff != null ? !tariff.equals(services.tariff) : services.tariff != null) return false;
         if (unitsOfMeasurement != null ? !unitsOfMeasurement.equals(services.unitsOfMeasurement) : services.unitsOfMeasurement != null)
             return false;
+        return osbb != null ? osbb.equals(services.osbb) : services.osbb == null;
 
-        return true;
     }
 
     @Override
     public int hashCode() {
         int result = (int) (serviceId ^ (serviceId >>> 32));
-        result = 31 * result + (providerId != null ? providerId.hashCode() : 0);
+        result = 31 * result + (provider != null ? provider.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (tariff != null ? tariff.hashCode() : 0);
         result = 31 * result + (unitsOfMeasurement != null ? unitsOfMeasurement.hashCode() : 0);
+        result = 31 * result + (osbb != null ? osbb.hashCode() : 0);
         return result;
     }
 }

@@ -49,8 +49,9 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
     @Override
+    @Transactional
     public List<Services> findSevicesByOsbb(Osbb osbb) {
-        return null;
+        return servicesRepository.findByOsbb(osbb);
     }
 
     @Override

@@ -28,7 +28,8 @@ export class CurrentOsbbService{
     }
 
      getCurrentOsbbId():number{
-         return this.currentOsbbId;
+         return  this.currentUserService.getUser().osbbId;
+         // return this.currentOsbbId;
         //return this.currentUser.osbb.osbbId;
     }
 }
