@@ -30,6 +30,7 @@ public class Provider implements Serializable {
     private Collection<Contract> contracts;
     private Collection<Bill> bills;
     private List<Services> services;
+    private List<SubServices> subServices;
 
     private Periodicity periodicity;
     private ProviderType type;
@@ -196,6 +197,16 @@ public class Provider implements Serializable {
 
     public void setServices(List<Services> services) {
         this.services = services;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "provider", cascade = CascadeType.ALL)
+    @JsonIgnore
+    public List<SubServices> getSubServices() {
+        return subServices;
+    }
+
+    public void setSubServices(List<SubServices> subServices) {
+        this.subServices = subServices;
     }
 
     @Override

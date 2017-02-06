@@ -42,7 +42,7 @@ public class SubServicesServiceImpl implements SubServicesService {
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public List<SubServices> findSubSevicesByParentID(Long id) {
         Services services = new Services(id);
-        return subServicesRepository.findByServiceId(services.getServiceId());
+        return subServicesRepository.findByService(services);
     }
 
     @Override

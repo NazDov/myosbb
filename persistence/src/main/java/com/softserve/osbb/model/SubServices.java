@@ -1,9 +1,6 @@
 package com.softserve.osbb.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by afedorak on 25.11.2016.
@@ -12,9 +9,9 @@ import javax.persistence.Table;
 @Table(name = "sub_services", schema = "myosbb", catalog = "")
 public class SubServices {
     private long id;
-    private long serviceId;
+    private Services service;
     private String name;
-    private long providerId;
+    private Provider provider;
     private double tariff;
     private String unitsOfMeasurement;
 
@@ -28,13 +25,14 @@ public class SubServices {
         this.id = id;
     }
 
-    @Column(name = "service_id", nullable = false)
-    public long getServiceId() {
-        return serviceId;
+    @ManyToOne
+    @JoinColumn(name = "service_id")
+    public Services getService() {
+        return service;
     }
 
-    public void setServiceId(long serviceId) {
-        this.serviceId = serviceId;
+    public void setService(Services service) {
+        this.service = service;
     }
 
     @Column(name = "name", nullable = false, length = 50)
@@ -46,13 +44,14 @@ public class SubServices {
         this.name = name;
     }
 
-    @Column(name = "provider_id", nullable = false)
-    public long getProviderId() {
-        return providerId;
+    @ManyToOne
+    @JoinColumn(name = "provider_id")
+    public Provider getProvider() {
+        return provider;
     }
 
-    public void setProviderId(long providerId) {
-        this.providerId = providerId;
+    public void setProvider(Provider provider) {
+        this.provider = provider;
     }
 
     @Column(name = "tariff", nullable = false, precision = 0)
@@ -81,14 +80,12 @@ public class SubServices {
         SubServices that = (SubServices) o;
 
         if (id != that.id) return false;
-        if (serviceId != that.serviceId) return false;
-        if (providerId != that.providerId) return false;
         if (Double.compare(that.tariff, tariff) != 0) return false;
+        if (service != null ? !service.equals(that.service) : that.service != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (unitsOfMeasurement != null ? !unitsOfMeasurement.equals(that.unitsOfMeasurement) : that.unitsOfMeasurement != null)
-            return false;
+        if (provider != null ? !provider.equals(that.provider) : that.provider != null) return false;
+        return unitsOfMeasurement != null ? unitsOfMeasurement.equals(that.unitsOfMeasurement) : that.unitsOfMeasurement == null;
 
-        return true;
     }
 
     @Override
@@ -96,9 +93,9 @@ public class SubServices {
         int result;
         long temp;
         result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (serviceId ^ (serviceId >>> 32));
+        result = 31 * result + (service != null ? service.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (int) (providerId ^ (providerId >>> 32));
+        result = 31 * result + (provider != null ? provider.hashCode() : 0);
         temp = Double.doubleToLongBits(tariff);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (unitsOfMeasurement != null ? unitsOfMeasurement.hashCode() : 0);

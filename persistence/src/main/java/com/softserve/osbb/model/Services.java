@@ -1,7 +1,10 @@
 package com.softserve.osbb.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by afedorak on 25.11.2016.
@@ -14,6 +17,8 @@ public class Services {
     private Double tariff;
     private String unitsOfMeasurement;
     private Osbb osbb;
+
+    private List<SubServices> subServices;
 
     public Services(long serviceId) {
         this.serviceId = serviceId;
@@ -68,6 +73,16 @@ public class Services {
 
     public void setUnitsOfMeasurement(String unitsOfMeasurement) {
         this.unitsOfMeasurement = unitsOfMeasurement;
+    }
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "service", cascade = CascadeType.ALL)
+    @JsonIgnore
+    public List<SubServices> getSubServices() {
+        return subServices;
+    }
+
+    public void setSubServices(List<SubServices> subServices) {
+        this.subServices = subServices;
     }
 
     @ManyToOne

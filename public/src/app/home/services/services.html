@@ -11,98 +11,52 @@
                 <thead>
                 <!-- table headers -->
                 <tr>
-                    <th class="sorting">name<span class="fa fa-fw fa-sort pull-right"></span></th>
-                    <th class="sorting">tariff<span class="fa fa-fw fa-sort pull-right"></span></th>
-                    <th class="sorting">units<span class="fa fa-fw fa-sort pull-right"></span></th>
-                    <th class="sorting">provider<span class="fa fa-fw fa-sort pull-right"></span></th>
+                    <th class="sorting">{{'name' | translate}}<span class="fa fa-fw fa-sort pull-right"></span></th>
+                    <th class="sorting">{{'tariff' | translate}}<span class="fa fa-fw fa-sort pull-right"></span></th>
+                    <th class="sorting">{{'units' | translate}}<span class="fa fa-fw fa-sort pull-right"></span></th>
+                    <th class="sorting">{{'provider' | translate}}<span class="fa fa-fw fa-sort pull-right"></span></th>
                 </tr>
                 </thead>
                 <tbody>
                  <!--table body -->
-                <div *ngIf="services.length === 0" class="text-center not-found-search-elem-center">
+                <div *ngIf="servicesMap.length === 0" class="text-center not-found-search-elem-center">
                 <h5>Немає результатів пошуку</h5>
                 </div>
-                <tr *ngFor="let service of services">
-                    <td><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                           aria-expanded="true">
+                <tr *ngFor="let service of servicesMap">
+                    <td><a (click)="displaySub(service)">
                         <span> {{service.service.name}} <span class="caret animated"></span> </span></a>
                         <br>
-                            <ul>
+                            <ul *ngIf="service.displaySub">
                                 <li *ngFor="let sub of service.subServices">{{sub.name}}</li>
                                 <li role="separator" class="divider"></li>
                             </ul>
                     </td>
                     <td>{{service.service.tariff }}
                         <br>
-                            <ul>
+                            <ul *ngIf="service.displaySub">
                                 <li *ngFor="let sub of service.subServices">{{sub.tariff}}</li>
                                 <li role="separator" class="divider"></li>
                             </ul>
                     </td>
                     <td>{{service.service.unitsOfMeasurement}}
                         <br>
-                            <ul>
+                            <ul *ngIf="service.displaySub">
                                 <li *ngFor="let sub of service.subServices">{{sub.unitsOfMeasurement}}</li>
                                 <li role="separator" class="divider"></li>
                             </ul>
                     </td>
-                    <td>{{service.service.providerId}}
+                    <td>{{service.service.provider?.name}}
                         <br>
-                            <ul>
-                                <li *ngFor="let sub of service.subServices">{{sub.providerId}}</li>
+                            <ul *ngIf="service.displaySub">
+                                <li *ngFor="let sub of service.subServices">{{sub.provider?.name}}</li>
                                 <li role="separator" class="divider"></li>
                             </ul>
+
                     </td>
                 </tr>
-                <!--<tr>-->
-                    <!--<table class="table table-striped table-advance table-hover">-->
-                        <!--<thead>-->
-                        <!--&lt;!&ndash; table headers &ndash;&gt;-->
-                        <!--<tr>-->
-                            <!--<th class="sorting">name<span class="fa fa-fw fa-sort pull-right"></span></th>-->
-                            <!--<th class="sorting">tariff<span class="fa fa-fw fa-sort pull-right"></span></th>-->
-                            <!--<th class="sorting">units<span class="fa fa-fw fa-sort pull-right"></span></th>-->
-                            <!--<th class="sorting">provider<span class="fa fa-fw fa-sort pull-right"></span></th>-->
-                        <!--</tr>-->
-                        <!--</thead>-->
-                        <!--<tbody>-->
-                        <!--<tr *ngFor="let sub of service.subServices">{{sub.name}}-->
-                            <!--<td>{{sub.tariff}}</td>-->
-                            <!--<td>{{sub.unitsOfMeasurement}}</td>-->
-                            <!--<td>{{sub.providerId}}</td>-->
-                        <!--</tr>-->
-
-                        <!--</tbody>-->
-                    <!--</table>-->
-                <!--</tr>-->
-
-
-                <!--<div>-->
-                <!--<ul>-->
-                <!--<li *ngFor="let sub of service.subServices">{{sub.name}}</li>-->
-                <!--<li role="separator" class="divider"></li>-->
-                <!--</ul>-->
-                <!--</div>-->
-                <!--<tr *ngFor="let sub of service.subServices">-->
-                <!--<td>{{sub.name}}</td>-->
-                <!--<td>{{sub.tariff}}</td>-->
-                <!--<td>{{sub.unitsOfMeasurement}}</td>-->
-                <!--<td>kj</td>-->
-                <!--</tr>-->
                 </tbody>
             </table>
         </div>
-
-        <li class="dropdown" *ngFor="let service of services">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-               aria-expanded="true">
-                <span> {{service.service.name}} <span class="caret animated"></span> </span>
-            </a>
-            <ul class="dropdown-menu updown">
-                <li *ngFor="let sub of service.subServices">{{sub.name}}</li>
-                <li role="separator" class="divider"></li>
-            </ul>
-        </li>
 
     </div>
 </div>

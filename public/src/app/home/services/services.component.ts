@@ -23,7 +23,7 @@ export class ServicesComponent implements OnInit {
     isLoggedIn: boolean;
     loading: boolean = true;
 
-    services : Array<any> = [];
+    servicesMap : Array<any> = [];
     obssId: number = null;
 
     constructor(private _loginStat: LoginStat, private _osbbService: CurrentOsbbService, private _services: Services) {
@@ -39,13 +39,21 @@ export class ServicesComponent implements OnInit {
         this._services.getAllServicesByOsbb(this.obssId).subscribe((data)=> {
             for (let service of data) {
                 this._services.getSubServicesByServiceId(service.serviceId).subscribe((data)=> {
-                    this.services.push(new Object({service : service, subServices : data}));
-                        console.info("All", this.services);
+                    this.servicesMap.push(new Object({service : service, subServices : data, displaySub: false}));
+                        console.info("All", this.servicesMap);
                     }
                 );
                 this.loading = false;
             }
         });
+    }
+
+    displaySub(service: any){
+        for (let s of this.servicesMap) {
+            if (service.serviceId == s.serviceId) {
+               s.displaySub = !s.displaySub;
+            }
+        }
     }
 
 

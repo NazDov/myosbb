@@ -4,6 +4,7 @@
   "HELLO": "privet",
   "ourYard": "НАШ ДВІР",
   "providers": "надавачі послуг",
+  "provider": "надавач послуг",
   "company": "компанія",
   "type": "тип",
   "price": "ціна",
@@ -327,5 +328,6 @@
   "gender_female": "Жінка",
   "could_not_update": "Не вдалось зберегти зміни",
   "services": "послуги",
-  "tariff": "Тарифи на послуги"
+  "tariff": "Тарифи на послуги",
+  "units" : ""
 }

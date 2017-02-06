@@ -13,5 +13,5 @@ import java.util.List;
  */
 @Repository
 public interface SubServicesRepository extends JpaRepository<SubServices, Long> {
-    List<SubServices> findByServiceId(long id);
+    List<SubServices> findByService(Services service);
 }
